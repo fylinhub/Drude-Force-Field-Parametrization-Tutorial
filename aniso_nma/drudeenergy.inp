@@ -1,0 +1,77 @@
+* NMA/ALAD with SOD/water
+* compute Drude interaction energy
+*
+
+bomlev 0
+set resi nma
+set resi2 pot
+
+set r1 2.6
+set aincr 15
+set dincr 15
+
+ioformat extended
+
+set 3 16.0  ! cutim
+set 4 99.0  ! cutnb
+set 5 90.0  ! ctonnb
+set 6 92.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+! Read in Topology and  Parameter files
+set lib ./libtop
+stream @lib/toppar_drude_master_example.str
+stream @lib/toppar_drude_example.str
+
+! first compute the energy of @resi alone
+! NMA
+read sequence @resi 1
+generate A   first none last none setup warn drude dmass 0.4
+
+open unit 10 read form name @resi.@resi2.@r1_180_180.crd
+read coor card unit 10
+
+coor sdrude
+coor shake
+
+cons harm force 100000000. mass select .not. type D* end
+mini SD   nstep 500 inbfrq 1000 tolgrd 0.0001 cutnb @4 ctofnb @6 ctonnb @5 nprint 50
+mini ABNR   nstep 500 inbfrq 1000 tolgrd 0.00001 cutnb @4 ctofnb @6 ctonnb @5 nprint 50
+cons harm force 0.0 sele all end
+
+ener
+
+set e0 ?ener
+
+delete atom sele all end
+
+! open data file
+open write unit 30 card name drude.@resi.@resi2.@r1.ene
+
+! if angle equals 180 then the dihedral must be 180
+set a1 180
+set d1 180
+
+stream drude_@resi_@resi2.str
+
+! loop over to generate different conformations 
+
+decr a1 by @aincr
+label angle_loop
+set d1 180
+label dihe_loop
+
+stream drude_@resi_@resi2.str
+
+decr d1 by @dincr
+if d1 .gt. -180 goto dihe_loop
+
+decr a1 by @aincr
+if a1 .ge. 90 goto angle_loop
+
+stop
+
+
+

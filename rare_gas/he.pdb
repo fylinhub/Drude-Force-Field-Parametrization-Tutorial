@@ -1,0 +1,6 @@
+REMARK  WATER INTERACTIONS                                                            
+REMARK   DATE:     3/26/17      0:55:53      CREATED BY USER: fylin                   
+ATOM      1  HE  HE      1    9999.0009999.0009999.000  1.00  0.00      HE  
+ATOM      2  DHE HE      1    9999.0009999.0009999.000  1.00  0.00      HE  
+TER       3      HE       1
+END

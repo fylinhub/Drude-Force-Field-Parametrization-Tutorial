@@ -1,0 +1,44 @@
+#!/usr/bin/awk -f
+BEGIN{low=32000;lop=32000}
+/^    Symbolic PED matrix/{getline; copy=1; next}
+/^ GFX option finished/{exit}
+(copy){
+  if ($0 ~ "^ *[0-9]+ ") {nu=$2; start=3}
+   else start=1;
+  for(i=start;i<NF;i+=2){nam=$i; w=$(i+1);sum[nam]+=nu*w; weight[nam]+=w;
+    if (w<low) low=w;
+    if (w>0 && w<lop) lop=w} }
+END {
+  for (i in weight){ptr[++j]=i;sum[i]=sum[i]/weight[i]};
+  c255=sprintf("%c",255);ptr[j+1]=c255;sum[c255]=32000;
+  qsort(1,j);
+  for(i=1;i<=j;i++){nam=ptr[i];
+    printf("%4i   %6.1f   %-8s %3i.\n",i,sum[nam],nam,weight[nam])};
+  printf("\nLowest percentage = %i\nLowest positive percentage = %i\n\n",low,lop)}
+
+# This is a simplified version of awk sortlib 2.0 by Kenno Vanommeslaeghe
+function qsort(min,max) {
+  if (partition(min,max,lohi)) return;
+  qsort(min,lohi[2]);
+  qsort(lohi[1]+1,max)}
+function partition(min,max,lohi) {
+  if (min>=max) return 1;
+  if (min+1==max) {
+    x=ptr[min];y=ptr[max];
+    if (sum[x]>sum[y]) {ptr[min]=y;ptr[max]=x };
+    return 1} ;
+  if (min+2==max) pp=min+1
+   else
+    pp=int((max+min)/2);
+  z=ptr[pp];ptr[pp]=ptr[max];ptr[max]=z;
+  lo=min; hi=max;
+  piv=sum[ptr[hi--]];
+  while (1) {
+    x=ptr[lo];
+    while (sum[x]<=piv) x=ptr[++lo] ;
+    y=ptr[hi];
+    while (sum[y]>=piv) y=ptr[--hi] ;
+    if (hi<lo) break ;
+    ptr[lo++]=y;ptr[hi--]=x } ;
+  if (lo<max) {ptr[lo]=ptr[max];ptr[max]=x};
+  lohi[1]=lo;lohi[2]=hi}

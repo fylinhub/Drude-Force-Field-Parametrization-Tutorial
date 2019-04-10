@@ -1,0 +1,158 @@
+* for the pure solvent MD simulation
+* from the box of butane
+* 
+
+bomlev 0
+
+ioformat extended
+
+set 3 16.0  ! cutim
+set 4 16.0  ! cutnb
+set 5 10.0  ! ctonnb
+set 6 12.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+set start 0
+set nstep 250000  
+
+set timestep 0.001
+set temp 298.00
+set atemp   298
+
+set seed 34679 1 1 1
+
+set resi nma
+set segid nma
+set resn       swm4
+set molecs  1
+set nwater  250  
+
+! determine boxsize
+set boxsize = 19.65 
+
+! Read in Topology and  Parameter files
+stream  ./toppar.str
+
+ioformat noextended
+
+! Read in Coordinate file
+read sequence NMA      @molecs
+generate @segid   first none last none setup warn drude dmass 0.4 show
+
+read sequ SWM4 @nwater
+generate WAT  noangle nodihedral setup drude dmass 0.4 !show
+
+open read card unit 10 name nma_wbox.crd 
+read coor card unit 10
+close unit 10
+
+coor sdrude
+coor shake
+
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select  .not. type D*  end -
+      select  .not. type D*  end
+
+coor print
+
+! Statistical information about initial box dimenstions
+coor stat
+! Calculate box dimensions
+calc a = ?xmax - ?xmin
+calc b = ?ymax - ?ymin
+calc c = ?zmax - ?zmin
+
+set ord 6
+set kap 0.34  !determined in ../2-pme-params
+
+coor rgyr mass sele segid @segid end
+
+!! Setup crystal
+crystal define cubic @boxsize @boxsize @boxsize 90.00 90.00 90.00
+crystal build Noper 0 cutoff @3
+image byres xcen 0.0 ycen 0.0 zcen 0.0 -
+      sele all end
+
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+ewald pmewald kappa @kap fftx 32 ffty 32 fftz 32 order @ord -
+lrc -
+@7 @8 @9 vswitch cutimg @3 cutnb @4 ctofnb @6 ctonnb @5 
+
+! minimize energy using adopted basis Newton-Raphson algorithm 200 steps
+!cons harm force 100000000. mass select .not. type D* end
+mini ABNR nstep 200 tolgrd 0.00001 cutnb @4 ctofnb @6 ctonnb @5 nprint 50
+!cons harm force 0.0 mass select all end
+
+
+! Statistical info about coordinates
+coor stat 
+
+MMFP
+GEO  sphere  RCM -
+     xref ?xcm yref ?ycm zref ?zcm -
+     force 10.0 droff 0.0 select segid @segid end
+END
+
+! Set up temperature control for the NPT simulation
+bomlev -1
+  TPCONTROL NTHER 2  CMDAMP 10.0  NSTEP 20  -
+    THER 1 TAU  0.1   TREF @temp   SELECT .NOT. TYPE D* END  -
+    THER 2 TAU  0.005 TREF 1.00   SELECT TYPE D* END  -
+    BARO   BTAU 0.1   PREF 1.00   DSCY
+
+!open write card unit 51 name @resn_box_md@atemp_@id1.rst
+open write file unit 52 name @resn_box_md@atemp.trj
+!open write file unit 53 name @resn_box_md@atemp_@id1.vel
+!open write card unit 62 name @resn_box_md@atemp_@id1.nose
+
+! ipfrq step frequency for computing averages
+! save trajectory every 1000 steps i.e. 1 ps
+! NVT simulation according to the TPCONTROL setup
+DYNA vv2 start nstep @nstep time @timestep ntrfrq @nstep -
+     iprfrq 1000 nprint 1000 -
+     iseed @seed -
+     iasvel 1 firstt @temp finalt @temp -
+     iunread -1 iunwrite -1 iuncrd 52 iunvel -1 kunit -1 -
+     nsavc 1000 nsavv -1 
+
+coor stat
+
+! Calculate box dimensions
+calc a = ?xmax - ?xmin
+calc b = ?ymax - ?ymin
+calc c = ?zmax - ?zmin
+
+open unit 20 write form name @coorfile2
+write coor card unit 20
+* @resn box of 128 molecules
+* Box dimensions
+* a=?xtla b=?xtlb c=?xtlc
+* Actual atomic dimensions
+* a=@a b=@b c=@c
+*
+
+scalar charge mult 0 sele all end
+dele atom sele type D* end
+dele atom sele type OM end
+dele atom sele type L* end
+
+open unit 20 write form name box_end.crd
+write coor card unit 20
+* @resn box of 128 molecules
+* Box dimensions
+* a=?xtla b=?xtlb c=?xtlc
+* Actual atomic dimensions
+* a=@a b=@b c=@c
+*
+
+stop
+
+!open write form unit 27 name prod_@g.psf
+!write psf card unit 27
+!* PSF 
+
+stop
+

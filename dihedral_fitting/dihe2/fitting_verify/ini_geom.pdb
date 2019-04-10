@@ -1,0 +1,252 @@
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.025  -0.013   0.111  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.025  -0.013   0.111  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.586  -0.951   0.129  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.381  -0.016   0.066  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.381  -0.016   0.066  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.920  -0.968   0.101  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.078   1.192  -0.100  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.078   1.192  -0.100  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.169   1.196  -0.178  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.362   2.404  -0.082  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.362   2.404  -0.082  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.908   3.353  -0.083  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.052   2.446  -0.039  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.052   2.446  -0.039  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.432   3.349   0.454  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.729   1.205   0.093  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.729   1.205   0.093  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.401   1.093  -0.471  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.401   1.093  -0.471  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -3.952   0.990  -0.994  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.021  -0.023   0.084  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.021  -0.023   0.084  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.582  -0.961   0.101  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.385  -0.021   0.050  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.385  -0.021   0.050  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.926  -0.972   0.075  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.087   1.192  -0.075  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.087   1.192  -0.075  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.179   1.194  -0.130  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.374   2.406  -0.063  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.374   2.406  -0.063  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.919   3.355  -0.067  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.036   2.433  -0.037  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.036   2.433  -0.037  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.495   3.353   0.341  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.717   1.199   0.073  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.717   1.199   0.073  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.426   1.134  -0.351  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.426   1.134  -0.351  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.017   1.073  -0.745  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.018  -0.030   0.056  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.018  -0.030   0.056  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.579  -0.968   0.072  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.388  -0.024   0.034  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.388  -0.024   0.034  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.930  -0.974   0.051  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.093   1.191  -0.050  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.093   1.191  -0.050  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.185   1.192  -0.085  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.383   2.407  -0.043  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.383   2.407  -0.043  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.927   3.357  -0.049  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.026   2.424  -0.030  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.026   2.424  -0.030  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.540   3.355   0.225  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.709   1.195   0.050  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.709   1.195   0.050  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.443   1.165  -0.231  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.443   1.165  -0.231  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.062   1.137  -0.493  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.017  -0.034   0.029  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.017  -0.034   0.029  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.577  -0.973   0.041  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.390  -0.026   0.019  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.390  -0.026   0.019  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.933  -0.976   0.027  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.096   1.191  -0.026  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.096   1.191  -0.026  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.189   1.191  -0.042  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.389   2.408  -0.023  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.389   2.408  -0.023  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.931   3.358  -0.030  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.019   2.419  -0.019  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.019   2.419  -0.019  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.568   3.355   0.108  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.704   1.192   0.026  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.704   1.192   0.026  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.453   1.184  -0.111  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.453   1.184  -0.111  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.088   1.176  -0.239  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.016  -0.036   0.005  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.016  -0.036   0.005  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.576  -0.974   0.009  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.391  -0.026   0.004  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.391  -0.026   0.004  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.933  -0.976   0.007  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.097   1.191  -0.002  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.097   1.191  -0.002  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.191   1.191  -0.002  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.390   2.408  -0.005  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.390   2.408  -0.005  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.933   3.358  -0.009  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.017   2.417  -0.004  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.017   2.417  -0.004  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.577   3.355  -0.007  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.702   1.191   0.002  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.702   1.191   0.002  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.456   1.190   0.004  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.456   1.190   0.004  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.096   1.190   0.006  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.017  -0.034  -0.019  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.017  -0.034  -0.019  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.577  -0.973  -0.022  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.390  -0.026  -0.012  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.390  -0.026  -0.012  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.933  -0.976  -0.014  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.096   1.191   0.023  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.096   1.191   0.023  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.189   1.192   0.036  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.389   2.408   0.013  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.389   2.408   0.013  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.931   3.358   0.012  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.019   2.419   0.011  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.019   2.419   0.011  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.567   3.355  -0.121  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.704   1.192  -0.024  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.704   1.192  -0.024  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.453   1.184   0.118  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.453   1.184   0.118  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.088   1.178   0.250  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.019  -0.030  -0.046  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.019  -0.030  -0.046  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.579  -0.969  -0.054  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.388  -0.024  -0.027  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.388  -0.024  -0.027  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.930  -0.975  -0.038  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.093   1.192   0.047  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.093   1.192   0.047  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.186   1.193   0.079  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.383   2.407   0.033  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.383   2.407   0.033  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.927   3.357   0.032  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.026   2.424   0.023  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.026   2.424   0.023  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.541   3.353  -0.237  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.709   1.194  -0.048  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.709   1.194  -0.048  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.443   1.166   0.236  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.443   1.166   0.236  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.061   1.140   0.502  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.022  -0.023  -0.075  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.022  -0.023  -0.075  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.582  -0.962  -0.085  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.385  -0.021  -0.043  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.385  -0.021  -0.043  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.926  -0.972  -0.063  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.087   1.192   0.072  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.087   1.192   0.072  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.179   1.195   0.125  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.374   2.406   0.054  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.374   2.406   0.054  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.919   3.356   0.051  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.036   2.433   0.030  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.036   2.433   0.030  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.496   3.350  -0.352  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.717   1.199  -0.070  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.717   1.199  -0.070  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.425   1.136   0.357  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.425   1.136   0.357  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -4.015   1.078   0.755  1.00  0.00      CHLB
+TER      21      CHLB     1
+END
+REMARK  POTENTIAL ENERGY SCAN                                                         
+REMARK  CHARMM < ALLSCAN_DRUDE_LSFITPAR.INP > ALLSCAN_DRUDE_LSFITPAR.OUT              
+REMARK 1. PREPARE THE REFERENCE DATA: FROM QM CALCULATIONS                            
+REMARK 2. CHANGE THE FILE "initialize": ./INITIALIZE                                  
+REMARK 3. SET SOME GLOBAL VARIABLES                                                   
+REMARK   DATE:     3/27/17     12:19:35      CREATED BY USER: fylin                   
+ATOM      1  C1  CHLB    1      -0.026  -0.013  -0.103  1.00  0.00      CHLB
+ATOM      2  DC1 CHLB    1      -0.026  -0.013  -0.103  1.00  0.00      CHLB
+ATOM      3  H1  CHLB    1      -0.586  -0.952  -0.114  1.00  0.00      CHLB
+ATOM      4  C2  CHLB    1       1.381  -0.017  -0.060  1.00  0.00      CHLB
+ATOM      5  DC2 CHLB    1       1.381  -0.017  -0.060  1.00  0.00      CHLB
+ATOM      6  H2  CHLB    1       1.920  -0.969  -0.090  1.00  0.00      CHLB
+ATOM      7  C3  CHLB    1       2.078   1.193   0.098  1.00  0.00      CHLB
+ATOM      8  DC3 CHLB    1       2.078   1.193   0.098  1.00  0.00      CHLB
+ATOM      9  H3  CHLB    1       3.169   1.198   0.174  1.00  0.00      CHLB
+ATOM     10  C4  CHLB    1       1.362   2.405   0.074  1.00  0.00      CHLB
+ATOM     11  DC4 CHLB    1       1.362   2.405   0.074  1.00  0.00      CHLB
+ATOM     12  H4  CHLB    1       1.908   3.353   0.068  1.00  0.00      CHLB
+ATOM     13  C5  CHLB    1      -0.052   2.446   0.033  1.00  0.00      CHLB
+ATOM     14  DC5 CHLB    1      -0.052   2.446   0.033  1.00  0.00      CHLB
+ATOM     15  H5  CHLB    1      -0.433   3.346  -0.464  1.00  0.00      CHLB
+ATOM     16  C6  CHLB    1      -0.730   1.204  -0.090  1.00  0.00      CHLB
+ATOM     17  DC6 CHLB    1      -0.730   1.204  -0.090  1.00  0.00      CHLB
+ATOM     18  CL6 CHLB    1      -2.400   1.096   0.477  1.00  0.00      CHLB
+ATOM     19 DCL6 CHLB    1      -2.400   1.096   0.477  1.00  0.00      CHLB
+ATOM     20  LP6 CHLB    1      -3.950   0.995   1.003  1.00  0.00      CHLB
+TER      21      CHLB     1
+END

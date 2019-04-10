@@ -1,0 +1,19 @@
+#!/bin/sh
+if [ $# -ne 1 ] ; then
+  echo "Processes output of Gaussian MP2 minimzation for water interactions and
+CHARMM alignment.
+Usage: `basename $0` <gaussian output file>
+Note: this script makes a lot of assumptions about directory structures and
+filenames!"
+  exit 1
+ fi
+resid=${1%%_*}
+xyz=${1%.*}out.xyz
+$CONPATH/recover03symm $1 $xyz
+awk -v crdin=./${resid}_min.crd -v crdout=./${resid}_mp2.crd '
+  BEGIN{while (getline < crdin && substr($0,1,1)=="*");
+    print > crdout}
+  (NF==4){x=$2;y=$3;z=$4;getline < crdin;
+    printf("%10i%10i  %-10s%-8s%20.10f%20.10f%20.10f  %-5s%6i       %20.10f\n",
+      $1,$2,$3,$4,x,y,z,$8,$9,$10) > crdout;
+    printf("%-6s%12.6f%12.6f%12.6f\n",$4,x,y,z)}' $xyz > ${resid}_water_mp2.xyz

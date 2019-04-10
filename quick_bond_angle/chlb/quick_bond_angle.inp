@@ -1,0 +1,67 @@
+* analysis for molec polarizabilities
+*
+
+ioformat extended
+! Note: You need to change below QM dipole and alpha and put your QM results
+! This script will read the resi_mp2.crd
+
+
+set residue chlb
+
+set TOPPAR .
+stream toppar_drude_master_example.str
+stream toppar_drude_example.str
+
+! qm optimized @resi_mp.crd
+set mp2dir . 
+
+!non-bond parameters
+set 3 999.0  ! cutim
+set 4 999.0  ! cutnb
+set 5 980.0  ! ctonnb
+set 6 990.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+read sequence @residue 1
+generate @residue first none last none setup warn drude dmass 0.4
+bomlev 0
+
+open read card unit 21 name @mp2dir/@residue_mp2.crd
+read coor card unit 21
+
+! lone pairs and drudes
+coor sdrude
+coor shake
+coor copy comp
+
+update cdie inbfrq -1 ihbfrq 0 -
+@7 @8 @9 vswitch cutnb @4 ctofnb @6 ctonnb @5
+
+! Minimization for relaxing drude 
+cons harm force 10000000.0 sele .not. type D* show end
+cons harm force 10000000.0 sele type dum show end
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+cons harm force 0.0 sele all end
+
+! Mimimization for molecule
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+
+stream quick_qm_mm_@residue.str 
+
+! stop here if you only want quick measurements
+!stop 
+
+vibran
+diag
+end
+
+!MOLVIB analysis by CHARMm
+! insert MOLVIB stuff here (IC UMAT PED)
+
+stream ./molvib_mm.str
+
+stop

@@ -1,0 +1,133 @@
+* MD simulation of a single NMA
+*
+
+set resi nma
+!set temp 410.0
+set num 1
+set job run3
+set seed 917847
+
+set home /home/huangj/nma/test
+set file /home/huangj/nma/test/@job
+
+!ioformat noextended
+
+set cutim  99.0  ! cutim
+set cutnb  99.0  ! cutnb
+set ctonnb 96.0  ! ctonnb
+set ctofnb 98.0  ! ctofnb
+set eatom atom
+set etrun switch
+set vatom vatom
+set vtrun vswitch
+
+
+!--- Read parameters, psf and coordinates
+stream toppar.str
+
+read sequence @resi @num
+generate @resi FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4
+
+ic para
+ic seed 1 CL 1 C 1 O
+ic build
+coor sdrude
+coor shake
+!coor print
+
+ener
+
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+@eatom @etrun @vatom @vtrun cutnb @cutnb ctonnb @ctonnb ctofnb @ctofnb -
+cutim @cutim
+
+mini SD nstep 100 tolgrd 0.00001
+
+OPEN UNIT 1 WRITE CARD NAME @resi.gas.@job.psf
+WRITE PSF CARD UNIT 1
+CLOSE UNIT 1
+
+OPEN UNIT 1 WRITE CARD NAME @resi.gas.@job.pdb
+WRITE COOR PDB UNIT 1
+CLOSE UNIT 1
+
+OPEN UNIT 1 WRITE CARD NAME @resi.gas.@job.crd
+WRITE COOR CARD UNIT 1
+CLOSE UNIT 1
+
+! SHAKE!!!
+coor copy comp
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select ( .not. (type D*)) end -
+      select ( .not. (type D*)) end noreset
+
+DrudeHardWall L_WALL 0.2
+
+!set up temperature control for NPT simulation
+!scf    THER 2 TAU  0.005 TREF 0.00   SELECT TYPE D* END  -
+!TPCONTROL NTHER 2  CMDAMP 10.0  NSTEP 20  -
+!  THER 1 TAU  0.1   TREF @temp   SELECT .NOT.  TYPE D*  END  -
+!  THER 2 TAU  0.005 TREF 1.00   SELECT TYPE D* END -
+!  BARO   BTAU 0.1   PREF 1.00 DSCY
+
+TPCONTROL NTHER 2  NHGAM 5.0 NHGAMD 10.0 -
+  THER 1 TREF @temp LANG SELE .NOT. TYPE D* END -
+  THER 2 TREF 1.0 LANG SELE TYPE D* END
+
+OPEN UNIT 93 WRITe FORMatted NAME @resi.gas.@temp.@job.0.res
+!OPEN UNIT 92 WRITe UNFORMatted NAME @resi.gas.@temp.@job.0.dcd
+
+DYNAMICS  vv2      start    nstep    2000000  timestp 0.0005  -
+          ntrfrq    1000000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     -1  -
+          iunwrite    93  -
+          iuncrd      -1     nsavcrd   -1
+
+set ii 0
+set jj 1
+
+
+Open unit 91 read formatted name @resi.gas.@temp.@job.@ii.res
+OPEN UNIT 93 WRITe FORMatted NAME @resi.gas.@temp.@job.@jj.res
+OPEN UNIT 92 WRITe UNFORMatted NAME @resi.gas.@temp.@job.@jj.dcd
+
+DYNAMICS  vv2      restart    nstep    10000000  timestp 0.001  -
+          ntrfrq    1000000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     91  -
+          iunwrite    93  -
+          iuncrd      92     nsavcrd   1000
+
+
+stop
+
+label trj_loop
+
+
+Open unit 91 read formatted name @resi.gas.@temp.@job.@ii.res
+OPEN UNIT 93 WRITe FORMatted NAME @resi.gas.@temp.@job.@jj.res
+OPEN UNIT 92 WRITe UNFORMatted NAME @resi.gas.@temp.@job.@jj.dcd
+
+DYNAMICS  vv2      restart    nstep    1000000  timestp 0.001  -
+          ntrfrq    1000000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     91  -
+          iunwrite    93  -
+          iuncrd      92     nsavcrd   1000
+
+incr ii by 1
+incr jj by 1
+
+if jj .le. 10 goto trj_loop
+
+stop
+
+

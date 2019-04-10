@@ -1,0 +1,106 @@
+* For geometry optimization
+* 
+
+! Check the generated *_ini.pdb; it will indicate whether your structure or IC table is correct 
+! The generated *_mp2.crd  and *_min.crd include LP, D; you need to remove these lines and reorder the atom order ;
+! these crd files will be used in the following steps
+
+ioformat extended
+system "mkdir gauss_input"
+
+set workdir .
+
+!### Things that should be reconsidered for every molecule ###
+
+set residue CLET
+set bombover 1 ! needs to be set to -1 for 3-membered rings
+set zeed 1 CL11  1 C1  1 C2  ! variable for seed to do IC build
+
+!Gaussian
+set charmult 0 1            ! variable for gaussian input 
+set gmem 1200MB             !
+set gnproc 2                !
+
+set TOPPAR .
+stream toppar_drude_master_example.str
+stream toppar_drude_example.str
+
+!### Things that almost never should be changed (actual script) ###
+read sequence @residue 1
+bomlev @bombover
+
+generate @residue first none last none setup warn drude dmass 0.4
+bomlev 1  ! "SOME COORDINATES NOT BUILT" IS LVL1!
+
+!The following command may be uncommented to automatically generate an IC table
+!that may be copied into the toppar file. Note that the resulting IC table often
+!needs some editing to automatically build a molecule using "ic seed"
+!
+!ic generate rtf
+
+ic param
+ic seed @zeed
+ic build
+bomlev 0
+
+coor sdrude
+coor shake
+
+write coor pdb name @residue_init.pdb
+
+! First relax drude, so constrain the rest atoms
+cons harm force 1000000.0 sele .not. type D* show end
+cons harm force 1000000.0 sele type dum show end
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+cons harm force 0.0 sele all end
+
+! Do minimization
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+
+
+if ?grms gt 0.00001 then
+   echo FATAL ERROR: MINIMIZATION NOT CONVERGED
+   stop
+endif
+
+write coor card name @residue_min.crd
+write coor pdb name @residue_min.pdb
+
+!
+! Create gaussian file
+!
+  open unit 10 write form name gauss_input/@residue_opt_freq_mp2.gjf
+  prnlev 3
+  mmqm unit 10 
+%chk=@residue_opt_freq_mp2
+%mem=@gmem
+%NProcShared=@gnproc
+#MP2/aug-cc-pVDZ opt=(tight,maxcycle=200) pop=(mk,dipole) density=current
+
+@residue optimized at MP2/aug-cc-pvdz*
+
+@charmult
+END
+GAUSSIAN_BASIS
+
+
+--link1--
+%chk=@residue_opt_freq_mp2
+%mem=@gmem
+%NProcShared=@gnproc
+#MP2/aug-cc-pVDZ NOSYMM SCF=TIGHT GEOM=ALLCHECK FREQ IOP(7/33=1)
+
+@residue frequency
+
+@charmult
+
+
+
+
+END
+  close unit 10
+
+stop
+

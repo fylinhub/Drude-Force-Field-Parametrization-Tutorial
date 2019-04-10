@@ -1,0 +1,69 @@
+* Main configuration file
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+*
+
+! Solute name
+set  molecule   NMA 
+set  nwater     250 ! 0 - gas-phase; 250 - condensed-phase
+
+set  Drude      true
+
+set toppardir   .
+set topparfile  @toppardir/toppar.str                                
+
+!! Number of steps for the equilibration run
+! normal run requires 50000 steps
+set EqStepC 100000
+set EqStepA 100000
+set EqStepR 100000
+
+!! Number of steps for the production run
+! normal run requires 100000 steps
+set ProdStepC 300000
+set ProdStepA 300000
+set ProdStepR 300000
+
+!! General options for the molecular residue setup etc.
+set title    @molecule  ! molecule name for the solute 
+set molec    @molecule  ! moelcule name for the solute 
+set residue  @molecule  ! residue name for the solute molecule
+set resn     @molecule  ! residue name for the solute molecule
+set segid1  SOLU  ! segment name for the solute molecule
+set segid2  BULK  ! segment name for the solvent molecules
+
+!! Options for the molecular dynamics simulation (general)
+set temp     298.15 ! simulation temperature
+set timestep  0.001 ! size of timestep (in ps) 
+set tdrude  1.0     ! temperature of Drude particles
+
+!! Increment of the coupling parameter (lambda) for FEP
+!set DLamC 0.10
+set DLamA 0.10
+set DLamR 1.00
+
+set boxsize  19.6538   ! 100ps NPT = 50ps equillibration + 50ps production
+
+!! set non-bonded cutoffs
+if nwater gt 0 then
+  set 3 16.0  ! cutim
+  set 4 16.0  ! cutnb
+  set 5 10.0  ! ctonnb
+  set 6 12.0  ! ctofnb
+  set 7 switch
+  set 8 atom
+  set 9 vatom
+  set kap 0.34 ! epsilon for the PME
+  set ord 6    ! spline order for PME
+else
+  set 4 999.0  ! cutnb
+  set 5 995.0  ! ctonnb
+  set 6 997.0  ! ctofnb
+  set 7 switch
+  set 8 atom
+  set 9 vatom
+endif
+
+RETURN
+
+

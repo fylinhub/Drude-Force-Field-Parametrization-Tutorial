@@ -1,0 +1,15 @@
+#!/bin/sh
+# WHAM postprocessing; Extracting final numbers
+# 2003 Igor Vorobyov
+# 2007 Victor Anisimov
+#
+rep=`grep -i "wham free" *fpr*.txt | awk '{a+=$NF;} END {print a}'`
+dis=`grep -i "wham free" *fpa_*.txt | awk '{print -$NF}'`
+chr=`grep -i "wham free" *fpc_*.txt | awk '{print -$NF}'`
+npol=`echo "$rep $dis"| awk '{print $1 + $2}'`
+total=`echo "$npol $chr"| awk '{print $1 + $2}'`
+echo "REPU ${rep}"
+echo "DISP ${dis}"
+echo "NONP ${npol}"
+echo "CHAR ${chr}"
+echo "TOTA ${total}"

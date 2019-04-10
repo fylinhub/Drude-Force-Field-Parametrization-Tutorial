@@ -1,0 +1,31 @@
+A. Use the same "initialize" file as that for autofitting
+
+"CD2R6A   CD2R6A   CD2R6A   CLDR1" corresponds to c4-c5-c6-cl dihedral
+"HDR6A    CD2R6A   CD2R6A   CLDR1" corresponds to h5-c5-c6-cl dihedral
+
+B. Prepare a allscan_drude.inp; copy allscan_drude_lsfitpar.inp to allscan_drude.inp; and stream the toppar files with predicted dihedral parameters ( see toppar_drude_verify_lsfitpar.str)
+
+C. do 'initialize', then run charmn:
+   ./initialize
+   charmm < allscan_drude.inp > allscan_drude.out 
+
+  # It will also generate  ini_geom.pdb (qm)  and fin_geom.pdb (mm)
+
+D. use scanplot to get the dihedral qm and mm using the predicted parameters:
+   ./scanplot -i test scan_chlb.qme scan_chlb.mme
+
+  # The scan_chlb.qme is from the *.e_file
+  # cat  ../scan_h5c5c6cl/chlb_h5c5c6cl.e_file > scan_chlb.qme
+  # If you have more dihedral scanned results, you need to copy all of then in the *.qme in the same order as you assign 'peses' in allscan_drude_lsfitpar.inp 
+
+Usage:
+1. ./initialize 
+2. charmm < allscan_drude.inp > allscan_drude.out 
+3. ./scanplot -i [output_plot_name] scan_[resi].qme scan_[resi].mme
+# It will generate scan[[output_plot_name]]*.gpt so that you can just use it to generate the plot.
+
+Example commands:
+ ./initialize 
+ charmm < allscan_drude.inp > allscan_drude.out 
+ ./scanplot -i test scan_chlb.qme scan_chlb.mme 
+

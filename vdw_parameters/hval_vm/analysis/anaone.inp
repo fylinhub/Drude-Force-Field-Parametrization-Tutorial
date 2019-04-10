@@ -1,0 +1,77 @@
+* MD simulation of a single NMA
+*
+
+set resi nma
+set num 1
+set job run3
+set seed 917847
+
+
+!ioformat noextended
+
+set cutim  99.0  ! cutim
+set cutnb  99.0  ! cutnb
+set ctonnb 96.0  ! ctonnb
+set ctofnb 98.0  ! ctofnb
+set eatom atom
+set etrun switch
+set vatom vatom
+set vtrun vswitch
+
+
+!--- Read parameters, psf and coordinates
+stream toppar.str
+
+read sequence @resi @num
+generate @resi FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4
+
+ic para
+ic seed 1 CL 1 C 1 O
+ic build
+coor sdrude
+coor shake
+!coor print
+
+ener
+
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+@eatom @etrun @vatom @vtrun cutnb @cutnb ctonnb @ctonnb ctofnb @ctofnb -
+cutim @cutim
+
+! SHAKE!!!
+coor copy comp
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select ( .not. (type D*)) end -
+      select ( .not. (type D*)) end noreset
+
+! start analysis
+set i 1 ! ignore the first 1 ns
+set f 11
+
+open write unit 31 card name gasene.@job.@temp.dat
+
+label m_traj
+
+ open read unit 20 file name nma.gas.@temp.@job.@i.dcd
+ traj query unit 20
+
+ set j 0
+ label readFrame
+        calc frame = ?START + ?SKIP  * @j
+        coor dyna first 20 nunit 1 skip ?SKIP begin @frame stop @frame
+
+energy
+
+write title unit 31
+*?ener
+*
+
+      incr j by 1
+      if j lt ?NFILE goto readFrame
+incr i by 1
+if i .le. @f goto m_traj
+
+
+
+stop

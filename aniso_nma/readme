@@ -1,0 +1,22 @@
+Files for NMA + SOD/POT interaction energy calculations with QM/Drude
+
+Workflow:
+1) charmm script gen.inp to generate coordinates
+
+ charmm < gen.inp > gen.out 
+
+ **Note: convert to the correct atom name
+ ./makedrudecrd 
+
+2) python script aniso.py to generate qchem/gaussian input files
+    python aniso.py  
+
+3) charmm script drudeenergy.inp to compute Drude interaction energy by reading on the generated *.crd in step 1) 
+
+ charmm < drudeenergy.inp > drudeenergy.out 
+
+4) extract qm energy for comparison ( processqchem.py as example)
+
+
+
+

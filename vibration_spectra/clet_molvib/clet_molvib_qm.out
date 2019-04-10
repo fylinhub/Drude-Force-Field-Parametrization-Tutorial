@@ -1,0 +1,115 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-3.13.0-101-generic(x86_64)@strathmere.     
+                 Created on  4/3/17 at 15:59:45 by user: fylin       
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * MOLVIB ANALYSIS OF GAUSSIAN SECOND DERIVATIVES
+ RDTITL> * 0.971288 SCALE FACTOR SHOULD BE APPLIED TO THE MP2/6-31G* VIBRATIONAL MODES
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    set id1 1
+ Parameter: ID1 <- "1"
+  
+ CHARMM>    bomlev -1
+  
+ CHARMM>    faster 1
+ MISCOM> FAST option: ON (generic fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    MOLVIB NDI1 18 NDI2 18 NDI3 28  NATOM   8  NOTO
+
+   >>>>>> Entering MOLVIB module of CHARMM <<<<<<
+
+
+     MLVCOM: CHARMM RTF/PSF will be ignored inside MOLVIB
+
+  MOLVIB dimensions have been set
+
+   NQ,NIC,NIC0,NAT =      18      18      28       8
+   IZMAX,MAXSYB,NGMAX,NBLMAX =      10      18      18      18
+
+  The maximum dimension has been set to NQM =          28
+
+
+
+
+      MOLVIB : PROGRAM FOR MOLECULAR VIBRATIONAL SPECTROSCOPY
+
+
+
+ GFX      0    0    0    0
+
+
+   SELECTED OPTION : VIBRATIONAL EIGENVALUE PROBLEM IN CARTESIAN COORDINATES
+
+
+ PRNT     0    0    0    0
+
+ The dimensions are : NQ,NIC,NIC0 =       18      18      28
+  NQ2 =          324
+
+
+ The cartesian coordinates and mass/atomic numbers
+
+   1        1.818230    0.012897    0.000000   12.010700
+   2        0.007766    0.013717    0.000000   35.453200
+   3        2.122874   -0.544026    0.896000    1.007900
+   4        2.122874   -0.544026   -0.896000    1.007900
+   5        2.358515    1.434627    0.000000   12.010700
+   6        3.460768    1.407271    0.000000    1.007900
+   7        2.020266    1.979466   -0.893316    1.007900
+   8        2.020266    1.979466    0.893316    1.007900
+  U matrix has been read : INU =            1
+
+ The PED cutoff will be CUTPED =   0.150
+
+  The FX matrix will be scaled by FCTR =  0.95899999999999996     
+
+
+       Starting FX diagonalization 
+
+
+  **** Found            3   negative eigenvalues ****
+
+
+    Symbolic PED matrix [%] (sorted)
+
+   1    261.1   torC1-C2  97.
+   2    328.2   dC1CC     88.
+   3    673.7   sC1-CL11  89.
+   4    768.7   rC1H      55.   rC2H'     36.
+   5    973.6   rC2H      43.   sC1-C2    34.
+   6   1056.1   rC1H      37.   iC1H      29.   rC2H'     29.
+   7   1077.1   sC1-C2    56.   rC2H      31.
+   8   1244.2   iC1H      65.   rC2H'     25.
+   9   1283.5   wC1H      90.
+  10   1367.2   dsC2H     92.
+  11   1444.2   daC2H'    90.
+  12   1450.3   cC1-H     91.
+  13   1458.3   daC2H     84.
+  14   3005.7   sC2-H    100.
+  15   3054.5   sC1-H     98.
+  16   3096.8   sC2-H     98.
+  17   3107.5   sC2-H     69.   sC1-H     31.
+  18   3129.4   sC1-H     69.   sC2-H     31.
+ GFX option finished
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+ Total time                      0.02 Other:            0.00
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    NO WARNINGS WERE ISSUED
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.02  SECONDS 
+                         CPU TIME:     0.02  SECONDS 

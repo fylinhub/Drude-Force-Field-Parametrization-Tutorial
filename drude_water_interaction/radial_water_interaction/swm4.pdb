@@ -1,0 +1,9 @@
+REMARK  WATER INTERACTIONS                                                            
+REMARK   DATE:     3/26/17      1: 0:14      CREATED BY USER: fylin                   
+ATOM      1  OH2 SWM4    1       0.957   0.000   0.000  1.00  0.00      SWM4
+ATOM      2 DOH2 SWM4    1       0.957   0.000   0.000  1.00  0.00      SWM4
+ATOM      3  OM  SWM4    1       0.810   0.190   0.000  1.00  0.00      SWM4
+ATOM      4  H1  SWM4    1       0.000   0.000   0.000  1.00  0.00      SWM4
+ATOM      5  H2  SWM4    1       1.197   0.927   0.000  1.00  0.00      SWM4
+TER       6      SWM4     1
+END

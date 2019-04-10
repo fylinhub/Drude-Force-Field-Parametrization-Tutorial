@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ $# -ne 2 ] ; then
+  echo "Recovers cartesian coordinates of last geometry from Gaussian output.
+Picks the "Input orientation" if it finds the "NoSymm" keyword, otherwise
+the Standard Orientation.
+Usage: `basename $0` <gaussian output> <file for coordinates>"
+  exit 1
+ fi
+awk 'BEGIN {copy="";ori="Standard"}
+  /^ #/{if (tolower($0)~"nosymm") ori="Input"
+     else ori="Standard"}
+  ($0~ori " orientation:"){getline;getline;getline;getline;getline;
+    printf ("%-3i %11.6f %11.6f %11.6f\n",$2,$4,$5,$6)>nam;
+    getline;copy=1}
+  copy {if ($1 ~ "--------") {copy="";close(nam)}
+     else
+      printf ("%-3i %11.6f %11.6f %11.6f\n",$2,$4,$5,$6)>>nam}
+  /^ Normal termination of Gaussian/{exit}' nam=$2 $1

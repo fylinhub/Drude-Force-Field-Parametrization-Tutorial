@@ -1,0 +1,12 @@
+
+# Go to the bsse folder
+
+1. Exctract each structure from the scan results. 
+ ./getstdfromscan.py  [scan results].log
+ # note: once you run getstdfromscan.py, you need to run ctrl+c to quit it; this is kind of a bug script, but there is no problem for exctracting the structures
+ # it will generate a bunch of geom*.xyz that correspond to each scanned structure; make sure the number of atom is correct.
+2. Create input to run with psi4
+ ./script-mp2-ccpvqz 
+3. ./qsub
+4. Extract the interaction energy:
+ ./getinterE.sh 

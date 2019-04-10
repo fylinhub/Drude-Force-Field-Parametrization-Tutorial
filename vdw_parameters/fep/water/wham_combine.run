@@ -1,0 +1,51 @@
+#!/bin/sh
+# Script to combine WHAM files
+# 2003 Igor Vorobyov
+# 2007 Victor Anisimov
+#
+
+job=$1
+
+# Discharging term
+rm -f ${job}_fpc.wham
+echo "* File WHAM analysis for $job" > ${job}_fpc.wham
+echo "* Discharging term (combined)" >> ${job}_fpc.wham
+echo "*" >> ${job}_fpc.wham
+for curfile in ${job}_fpc_l*.wham
+do
+ echo $curfile
+ cat $curfile | awk '( $0 !~  /^\*/) {print $0;}'>>  ${job}_fpc.wham
+done
+echo "Files combined to  ${job}_fpc.wham"
+
+# Dispersive term
+rm -f ${job}_fpa.wham
+echo "* File WHAM analysis for $job" > ${job}_fpa.wham
+echo "* Dispersion term (combined)" >> ${job}_fpa.wham
+echo "*" >> ${job}_fpa.wham
+for curfile in ${job}_fpa_l*.wham
+do
+ echo $curfile
+ cat $curfile | awk '( $0 !~  /^\*/) {print $0;}'>>  ${job}_fpa.wham
+done
+echo "Files combined to  ${job}_fpa.wham"
+
+
+# Repulsive term
+rinit=0.0
+for rfin in 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+do
+rm -f ${job}_fpr_f${rinit}t${rfin}.wham
+echo "* File WHAM analysis for $job" > ${job}_fpr_f${rinit}t${rfin}.wham
+echo "* Repulsive term staging from $rinit to $rfin (combined)" >> ${job}_fpr_f${rinit}t${rfin}.wham
+echo "*" >> ${job}_fpr_f${rinit}t${rfin}.wham
+for curfile in ${job}_fpr_f${rinit}t${rfin}_l*.wham
+do
+ echo $curfile
+ cat $curfile | awk '( $0 !~  /^\*/) {print $0;}'>>  ${job}_fpr_f${rinit}t${rfin}.wham
+done
+echo "Files combined to  ${job}_fpr_f${rinit}t${rfin}.wham"
+rinit=$rfin
+done
+
+

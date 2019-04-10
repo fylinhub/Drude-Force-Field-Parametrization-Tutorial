@@ -1,0 +1,2917 @@
+ Entering Gaussian System, Link 0=g03
+ Initial command:
+ /opt/mackerell/apps/gaussian/g03/l1.exe /tmp/fylin/gauss16232/Gau-16235.inp -scrdir=/tmp/fylin/gauss16232/
+ Entering Link 1 = /opt/mackerell/apps/gaussian/g03/l1.exe PID=     16237.
+  
+ Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2004, Gaussian, Inc.
+                  All Rights Reserved.
+  
+ This is the Gaussian(R) 03 program.  It is based on the
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 03, Revision D.02,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, J. A. Montgomery, Jr., T. Vreven, 
+ K. N. Kudin, J. C. Burant, J. M. Millam, S. S. Iyengar, J. Tomasi, 
+ V. Barone, B. Mennucci, M. Cossi, G. Scalmani, N. Rega, 
+ G. A. Petersson, H. Nakatsuji, M. Hada, M. Ehara, K. Toyota, 
+ R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, 
+ H. Nakai, M. Klene, X. Li, J. E. Knox, H. P. Hratchian, J. B. Cross, 
+ V. Bakken, C. Adamo, J. Jaramillo, R. Gomperts, R. E. Stratmann, 
+ O. Yazyev, A. J. Austin, R. Cammi, C. Pomelli, J. W. Ochterski, 
+ P. Y. Ayala, K. Morokuma, G. A. Voth, P. Salvador, J. J. Dannenberg, 
+ V. G. Zakrzewski, S. Dapprich, A. D. Daniels, M. C. Strain, 
+ O. Farkas, D. K. Malick, A. D. Rabuck, K. Raghavachari, 
+ J. B. Foresman, J. V. Ortiz, Q. Cui, A. G. Baboul, S. Clifford, 
+ J. Cioslowski, B. B. Stefanov, G. Liu, A. Liashenko, P. Piskorz, 
+ I. Komaromi, R. L. Martin, D. J. Fox, T. Keith, M. A. Al-Laham, 
+ C. Y. Peng, A. Nanayakkara, M. Challacombe, P. M. W. Gill, 
+ B. Johnson, W. Chen, M. W. Wong, C. Gonzalez, and J. A. Pople, 
+ Gaussian, Inc., Wallingford CT, 2004.
+ 
+ ******************************************
+ Gaussian 03:  AM64L-G03RevD.02  1-Mar-2006
+                 8-Apr-2016 
+ ******************************************
+ %mem=16MW
+ ---------------------
+ #MP2/aug-cc-pVDZ scan
+ ---------------------
+ 1/38=1,60=1/1,8;
+ 2/17=6,18=5,29=3,40=1/2;
+ 3/5=16,7=10,11=9,16=1,25=1,30=1/1,2,3;
+ 4//1;
+ 5/5=2,38=5/2;
+ 8/10=1/1;
+ 9/16=-3/6;
+ 6/7=2,8=2,9=2,10=2,18=1/1;
+ 1/60=1/8(1);
+ 99/9=1/99;
+ 2/29=3/2;
+ 3/5=16,7=10,11=9,16=1,25=1,30=1/1,2,3;
+ 4/5=5,16=3/1;
+ 5/5=2,38=5/2;
+ 8/10=1/1;
+ 9/16=-3/6;
+ 1/60=1/8(-6);
+ 99/9=1/99;
+ ---------------------------------------
+ C1H...OHH 90.0 degrees, mp2/aug-cc-pVDZ
+ ---------------------------------------
+ Symbolic Z-matrix:
+ Charge =  0 Multiplicity = 1
+ C1                    0.        0.82237   0. 
+ CL11                  0.82536  -0.78902   0. 
+ H12                   0.35656   1.34757   0.896 
+ H13                   0.35656   1.34757  -0.896 
+ C2                   -1.51163   0.65442   0. 
+ H21                  -1.99023   1.64772   0. 
+ H22                  -1.84211   0.10483  -0.89332 
+ H23                  -1.84211   0.10483   0.89332 
+ h1w                  CL11 roh      C1    90.      C2    180.     0
+ o1w                  h1w   0.9572   CL11  180.     C1    90.      0
+ h2w                  o1w   0.9572   h1w   104.52   C1    180.     0
+       Variables:
+  roh                   2.5    Scan 15    0.1    
+ 
+ Scan the potential surface.
+ Variable   Value     No. Steps Step-Size
+ -------- ----------- --------- ---------
+     1       2.500000      15      0.1000
+ A total of     16 points will be computed.
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   2.500000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.050458    0.350688    0.000000
+   10          8             0        3.902405    0.787058    0.000000
+   11          1             0        4.538435    0.071728    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.086710   2.500000   3.008929   3.008929   4.572185
+    10  O    3.902565   3.457200   3.699997   3.699997   5.415656
+    11  H    4.600093   3.811539   4.463030   4.463030   6.078058
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.204882   4.979521   4.979521   0.000000
+    10  O    5.955153   5.853447   5.853447   0.957200   0.000000
+    11  H    6.716188   6.442857   6.442857   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+       C1-H3-H9= 83.6431      H3-Cl2-H9= 76.3762       C1-H4-H9= 83.6431
+      H4-Cl2-H9= 76.3762       H4-H3-H9= 72.6757      C5-Cl2-H9=121.1768
+       C5-H3-H9=122.5696       C5-H4-H9=122.5696       H6-H3-H9=139.849 
+       H6-H4-H9=139.849       H7-Cl2-H9=131.7812       H7-H4-H9=128.03  
+      H8-Cl2-H9=131.7812       H8-H3-H9=128.03       Cl2-H9-O10=180.    
+      H3-H9-O10=130.2269      H4-H9-O10=130.2269     Cl2-H9-H11=142.26  
+      H3-H9-H11=160.2232      H4-H9-H11=160.2232     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.920621   -0.615502    0.000000
+    2         17             0        0.000000    0.943420    0.000000
+    3          1             0        0.596235   -1.161162    0.896000
+    4          1             0        0.596235   -1.161162   -0.896000
+    5          6             0        2.419436   -0.357092    0.000000
+    6          1             0        2.956813   -1.319867    0.000000
+    7          1             0        2.716319    0.211347   -0.893316
+    8          1             0        2.716319    0.211347    0.893316
+    9          1             0       -2.152655   -0.327830    0.000000
+   10          8             0       -2.976864   -0.814566    0.000000
+   11          1             0       -3.654697   -0.138716    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      9.3919363      1.8758652      1.5954251
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       157.9158840578 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A') (A') (A") (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A') (A') (A') (A') (A") (A') (A")
+                 (A') (A') (A") (A') (A") (A') (A") (A') (A') (A')
+                 (A') (A') (A') (A') (A") (A") (A') (A") (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A') (A') (A")
+                 (A') (A") (A') (A') (A") (A') (A') (A") (A") (A')
+                 (A') (A') (A") (A") (A') (A') (A") (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A") (A') (A') (A') (A") (A') (A') (A")
+                 (A") (A') (A") (A') (A') (A") (A") (A') (A') (A")
+                 (A') (A") (A") (A') (A') (A') (A") (A') (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A") (A') (A') (A')
+                 (A") (A') (A") (A") (A') (A') (A')
+ The electronic state of the initial guess is 1-A'.
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208705545     A.U. after   12 cycles
+             Convg  =    0.5784D-08             -V/T =  2.0004
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.28471845D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2863272238D-01 E2=     -0.8216647101D-01
+     alpha-beta  T2 =       0.1677019738D+00 E2=     -0.5100000390D+00
+     beta-beta   T2 =       0.2863272238D-01 E2=     -0.8216647101D-01
+ ANorm=    0.1106782462D+01
+ E2 =    -0.6743329810D+00 EUMP2 =    -0.61488303852575D+03
+
+ **********************************************************************
+
+            Population analysis using the SCF density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A') (A') (A") (A') (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A")
+                 (A') (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A') (A")
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A") (A') (A') (A')
+                 (A') (A") (A") (A') (A") (A') (A')
+ The electronic state is 1-A'.
+ Alpha  occ. eigenvalues -- -104.83208 -20.56057 -11.31367 -11.25208 -10.55846
+ Alpha  occ. eigenvalues --   -8.02600  -8.02314  -8.02289  -1.34177  -1.14557
+ Alpha  occ. eigenvalues --   -1.00932  -0.84992  -0.70634  -0.65512  -0.61686
+ Alpha  occ. eigenvalues --   -0.57348  -0.56628  -0.53465  -0.51408  -0.49459
+ Alpha  occ. eigenvalues --   -0.44663  -0.44364
+ Alpha virt. eigenvalues --    0.03360   0.04629   0.05047   0.05142   0.06466
+ Alpha virt. eigenvalues --    0.07802   0.09344   0.10956   0.12970   0.14240
+ Alpha virt. eigenvalues --    0.14331   0.15878   0.17123   0.17510   0.17759
+ Alpha virt. eigenvalues --    0.18541   0.18772   0.20468   0.22774   0.22809
+ Alpha virt. eigenvalues --    0.24241   0.26238   0.27833   0.28129   0.28907
+ Alpha virt. eigenvalues --    0.30230   0.32778   0.34835   0.35049   0.35189
+ Alpha virt. eigenvalues --    0.38170   0.38396   0.40869   0.42551   0.43207
+ Alpha virt. eigenvalues --    0.43526   0.43546   0.46510   0.46802   0.47244
+ Alpha virt. eigenvalues --    0.47267   0.48428   0.49373   0.54197   0.54805
+ Alpha virt. eigenvalues --    0.56813   0.57239   0.58371   0.59165   0.61871
+ Alpha virt. eigenvalues --    0.62141   0.64785   0.65456   0.67734   0.68229
+ Alpha virt. eigenvalues --    0.68830   0.69008   0.71350   0.72638   0.73410
+ Alpha virt. eigenvalues --    0.73458   0.78448   0.79287   0.81392   0.83554
+ Alpha virt. eigenvalues --    0.84103   0.89537   0.93401   0.95449   1.01016
+ Alpha virt. eigenvalues --    1.01231   1.06682   1.07789   1.11379   1.12684
+ Alpha virt. eigenvalues --    1.13405   1.18671   1.18678   1.19767   1.20742
+ Alpha virt. eigenvalues --    1.24790   1.30077   1.36230   1.39572   1.44726
+ Alpha virt. eigenvalues --    1.44782   1.45604   1.47428   1.49762   1.54254
+ Alpha virt. eigenvalues --    1.55871   1.57333   1.60895   1.61332   1.67123
+ Alpha virt. eigenvalues --    1.75984   1.78714   1.79777   1.83895   1.87517
+ Alpha virt. eigenvalues --    1.93932   1.95858   1.98123   2.01875   2.04527
+ Alpha virt. eigenvalues --    2.07607   2.07897   2.10346   2.12970   2.13160
+ Alpha virt. eigenvalues --    2.20207   2.21403   2.21821   2.24246   2.32014
+ Alpha virt. eigenvalues --    2.41881   2.44389   2.45688   2.48212   2.53853
+ Alpha virt. eigenvalues --    2.55309   2.63748   2.66196   2.76504   2.82612
+ Alpha virt. eigenvalues --    2.85527   2.90189   2.91060   2.97086   3.02215
+ Alpha virt. eigenvalues --    3.04301   3.08807   3.69696   3.74848   3.74947
+ Alpha virt. eigenvalues --    4.10348   4.36993
+          Condensed to atoms (all electrons):
+              1          2          3          4          5          6
+     1  C    4.993149   0.245471   0.324865   0.324865   0.372301   0.000518
+     2  Cl   0.245471  17.256641  -0.092466  -0.092466  -0.076380   0.023955
+     3  H    0.324865  -0.092466   0.937544  -0.084331  -0.025203  -0.031270
+     4  H    0.324865  -0.092466  -0.084331   0.937544  -0.025203  -0.031270
+     5  C    0.372301  -0.076380  -0.025203  -0.025203   4.330403   0.346615
+     6  H    0.000518   0.023955  -0.031270  -0.031270   0.346615   0.926245
+     7  H   -0.076060  -0.027471   0.043851  -0.045780   0.370879  -0.118246
+     8  H   -0.076060  -0.027471  -0.045780   0.043851   0.370879  -0.118246
+     9  H   -0.008000   0.007551  -0.001963  -0.001963  -0.000233  -0.000446
+    10  O    0.003342  -0.017795   0.001923   0.001923  -0.000492  -0.000080
+    11  H    0.000857  -0.001853  -0.000665  -0.000665   0.000001   0.000035
+              7          8          9         10         11
+     1  C   -0.076060  -0.076060  -0.008000   0.003342   0.000857
+     2  Cl  -0.027471  -0.027471   0.007551  -0.017795  -0.001853
+     3  H    0.043851  -0.045780  -0.001963   0.001923  -0.000665
+     4  H   -0.045780   0.043851  -0.001963   0.001923  -0.000665
+     5  C    0.370879   0.370879  -0.000233  -0.000492   0.000001
+     6  H   -0.118246  -0.118246  -0.000446  -0.000080   0.000035
+     7  H    0.959454  -0.107691   0.000456  -0.000057  -0.000020
+     8  H   -0.107691   0.959454   0.000456  -0.000057  -0.000020
+     9  H    0.000456   0.000456   0.577148   0.293901  -0.059886
+    10  O   -0.000057  -0.000057   0.293901   7.709665   0.344840
+    11  H   -0.000020  -0.000020  -0.059886   0.344840   0.557250
+ Mulliken atomic charges:
+              1
+     1  C   -0.105248
+     2  Cl  -0.197717
+     3  H   -0.026506
+     4  H   -0.026506
+     5  C    0.336433
+     6  H    0.002187
+     7  H    0.000685
+     8  H    0.000685
+     9  H    0.192977
+    10  O   -0.337114
+    11  H    0.160124
+ Sum of Mulliken charges=   0.00000
+ Atomic charges with hydrogens summed into heavy atoms:
+              1
+     1  C   -0.158260
+     2  Cl  -0.197717
+     3  H    0.000000
+     4  H    0.000000
+     5  C    0.339990
+     6  H    0.000000
+     7  H    0.000000
+     8  H    0.000000
+     9  H    0.000000
+    10  O    0.015987
+    11  H    0.000000
+ Sum of Mulliken charges=   0.00000
+ Electronic spatial extent (au):  <R**2>=   734.3123
+ Charge=     0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=     2.1159    Y=     0.0618    Z=     0.0000  Tot=     2.1168
+ Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=   -31.1814   YY=   -35.6250   ZZ=   -34.0263
+   XY=    -7.7366   XZ=     0.0000   YZ=     0.0000
+ Traceless Quadrupole moment (field-independent basis, Debye-Ang):
+   XX=     2.4295   YY=    -2.0141   ZZ=    -0.4154
+   XY=    -7.7366   XZ=     0.0000   YZ=     0.0000
+ Octapole moment (field-independent basis, Debye-Ang**2):
+  XXX=   -19.4668  YYY=     1.8450  ZZZ=     0.0000  XYY=     3.1871
+  XXY=    19.6178  XXZ=     0.0000  XZZ=    -0.5017  YZZ=    -0.5695
+  YYZ=     0.0000  XYZ=     0.0000
+ Hexadecapole moment (field-independent basis, Debye-Ang**3):
+ XXXX=  -616.4151 YYYY=  -161.3835 ZZZZ=   -49.1079 XXXY=   -76.8524
+ XXXZ=     0.0000 YYYX=   -26.5560 YYYZ=     0.0000 ZZZX=     0.0000
+ ZZZY=     0.0000 XXYY=  -164.7761 XXZZ=  -132.9685 YYZZ=   -35.7301
+ XXYZ=     0.0000 YYXZ=     0.0000 ZZXY=    -5.0313
+ N-N= 1.579158840578D+02 E-N=-1.773207568516D+03  KE= 6.139326415555D+02
+ Symmetry A'   KE= 5.598296871701D+02
+ Symmetry A"   KE= 5.410295438533D+01
+ Variable Step   Value    
+ -------- ---- -----------
+     1       1    4.913288
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   2.600000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.139462    0.396276    0.000000
+   10          8             0        3.991409    0.832646    0.000000
+   11          1             0        4.627439    0.117316    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.168245   2.600000   3.074458   3.074458   4.658247
+    10  O    3.991422   3.557200   3.778896   3.778896   5.505921
+    11  H    4.680844   3.908615   4.533951   4.533951   6.162517
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.280135   5.069415   5.069415   0.000000
+    10  O    6.036912   5.946227   5.946227   0.957200   0.000000
+    11  H    6.792323   6.530940   6.530940   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+      H3-Cl2-H9= 76.3762      H4-Cl2-H9= 76.3762      C5-Cl2-H9=121.1768
+      H7-Cl2-H9=131.7812      H8-Cl2-H9=131.7812     Cl2-H9-O10=180.    
+     Cl2-H9-H11=142.26       H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.952367   -0.584556    0.000000
+    2         17             0        0.000000    0.955177    0.000000
+    3          1             0        0.639228   -1.136747    0.896000
+    4          1             0        0.639228   -1.136747   -0.896000
+    5          6             0        2.445573   -0.295492    0.000000
+    6          1             0        3.002562   -1.247056    0.000000
+    7          1             0        2.730747    0.278909   -0.893316
+    8          1             0        2.730747    0.278909    0.893316
+    9          1             0       -2.211204   -0.412513    0.000000
+   10          8             0       -3.025268   -0.916033    0.000000
+   11          1             0       -3.716806   -0.254212    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      9.2500971      1.8096537      1.5433780
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       156.7540060976 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A') (A') (A") (A') (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A")
+                 (A') (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A') (A")
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A") (A') (A') (A')
+                 (A') (A") (A") (A') (A") (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208946237     A.U. after   10 cycles
+             Convg  =    0.7946D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.28368142D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2860238992D-01 E2=     -0.8206914376D-01
+     alpha-beta  T2 =       0.1676813162D+00 E2=     -0.5097970767D+00
+     beta-beta   T2 =       0.2860238992D-01 E2=     -0.8206914376D-01
+ ANorm=    0.1106745723D+01
+ E2 =    -0.6739353643D+00 EUMP2 =    -0.61488288160120D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       2    5.102261
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   2.700000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.228466    0.441864    0.000000
+   10          8             0        4.080413    0.878234    0.000000
+   11          1             0        4.716444    0.162904    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.250812   2.700000   3.141805   3.141805   4.744857
+    10  O    4.080795   3.657200   3.858775   3.858775   5.596517
+    11  H    4.762325   4.005834   4.605952   4.605952   6.247436
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.356197   5.159680   5.159680   0.000000
+    10  O    6.119213   6.039237   6.039237   0.957200   0.000000
+    11  H    6.869069   6.619361   6.619361   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+      H3-Cl2-H9= 76.3762      H4-Cl2-H9= 76.3762      C5-Cl2-H9=121.1768
+      H7-Cl2-H9=131.7812      H8-Cl2-H9=131.7812     Cl2-H9-O10=180.    
+     Cl2-H9-H11=142.26       H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.982943   -0.553070    0.000000
+    2         17             0        0.000000    0.967326    0.000000
+    3          1             0        0.680900   -1.111408    0.896000
+    4          1             0        0.680900   -1.111408   -0.896000
+    5          6             0        2.470075   -0.234228    0.000000
+    6          1             0        3.045967   -1.174472    0.000000
+    7          1             0        2.743715    0.345757   -0.893316
+    8          1             0        2.743715    0.345757    0.893316
+    9          1             0       -2.267412   -0.498567    0.000000
+   10          8             0       -3.071252   -1.018253    0.000000
+   11          1             0       -3.775876   -0.370383    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      9.1191962      1.7460126      1.4933779
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       155.6493623627 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A') (A') (A") (A') (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A") (A') (A')
+                 (A') (A") (A") (A') (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A') (A")
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A') (A") (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.209024740     A.U. after   10 cycles
+             Convg  =    0.7275D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.28219564D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2857610644D-01 E2=     -0.8198654958D-01
+     alpha-beta  T2 =       0.1676606214D+00 E2=     -0.5096179472D+00
+     beta-beta   T2 =       0.2857610644D-01 E2=     -0.8198654958D-01
+ ANorm=    0.1106712625D+01
+ E2 =    -0.6735910463D+00 EUMP2 =    -0.61488261578601D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       3    5.291233
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   2.800000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.317470    0.487452    0.000000
+   10          8             0        4.169417    0.923822    0.000000
+   11          1             0        4.805448    0.208492    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.334333   2.800000   3.210854   3.210854   4.831983
+    10  O    4.170651   3.757200   3.939572   3.939572   5.687428
+    11  H    4.844499   4.103187   4.678982   4.678982   6.332794
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.433035   5.250298   5.250298   0.000000
+    10  O    6.202035   6.132467   6.132467   0.957200   0.000000
+    11  H    6.946407   6.708108   6.708108   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+      H3-Cl2-H9= 76.3762      H4-Cl2-H9= 76.3762      C5-Cl2-H9=121.1768
+      H7-Cl2-H9=131.7812      H8-Cl2-H9=131.7812     Cl2-H9-O10=180.    
+     Cl2-H9-H11=142.26       H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.012371   -0.521110    0.000000
+    2         17             0        0.000000    0.979851    0.000000
+    3          1             0        0.721262   -1.085226    0.896000
+    4          1             0        0.721262   -1.085226   -0.896000
+    5          6             0        2.493011   -0.173361    0.000000
+    6          1             0        3.087108   -1.102210    0.000000
+    7          1             0        2.755302    0.411844   -0.893316
+    8          1             0        2.755302    0.411844    0.893316
+    9          1             0       -2.321334   -0.585847    0.000000
+   10          8             0       -3.114898   -1.121092    0.000000
+   11          1             0       -3.832008   -0.487070    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.9981676      1.6848964      1.4453529
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       154.5976959206 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A") (A') (A')
+                 (A') (A") (A") (A') (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A') (A") (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208996981     A.U. after   10 cycles
+             Convg  =    0.6560D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.28047754D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2855335248D-01 E2=     -0.8191639419D-01
+     alpha-beta  T2 =       0.1676403714D+00 E2=     -0.5094598979D+00
+     beta-beta   T2 =       0.2855335248D-01 E2=     -0.8191639419D-01
+ ANorm=    0.1106682916D+01
+ E2 =    -0.6732926863D+00 EUMP2 =    -0.61488228966750D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       4    5.480206
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   2.900000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.406474    0.533040    0.000000
+   10          8             0        4.258421    0.969410    0.000000
+   11          1             0        4.894452    0.254080    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.418739   2.900000   3.281497   3.281497   4.919599
+    10  O    4.260959   3.857200   4.021232   4.021232   5.778639
+    11  H    4.927333   4.200664   4.752994   4.752994   6.418576
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.510616   5.341251   5.341251   0.000000
+    10  O    6.285356   6.225908   6.225908   0.957200   0.000000
+    11  H    7.024317   6.797167   6.797167   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+      H3-Cl2-H9= 76.3762      H4-Cl2-H9= 76.3762      C5-Cl2-H9=121.1768
+      H7-Cl2-H9=131.7812      H8-Cl2-H9=131.7812     Cl2-H9-O10=180.    
+     Cl2-H9-H11=142.26       H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.040677   -0.488738    0.000000
+    2         17             0        0.000000    0.992738    0.000000
+    3          1             0        0.760327   -1.058277    0.896000
+    4          1             0        0.760327   -1.058277   -0.896000
+    5          6             0        2.514450   -0.112949    0.000000
+    6          1             0        3.126069   -1.030354    0.000000
+    7          1             0        2.765586    0.477129   -0.893316
+    8          1             0        2.765586    0.477129    0.893316
+    9          1             0       -2.373027   -0.674218    0.000000
+   10          8             0       -3.156290   -1.224428    0.000000
+   11          1             0       -3.885305   -0.604130    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.8860625      1.6262485      1.3992306
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       153.5951831256 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A") (A') (A')
+                 (A') (A") (A") (A') (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208902459     A.U. after   10 cycles
+             Convg  =    0.5788D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.27830222D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2853368907D-01 E2=     -0.8185679225D-01
+     alpha-beta  T2 =       0.1676210756D+00 E2=     -0.5093207911D+00
+     beta-beta   T2 =       0.2853368907D-01 E2=     -0.8185679225D-01
+ ANorm=    0.1106656430D+01
+ E2 =    -0.6730343756D+00 EUMP2 =    -0.61488193683496D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       5    5.669178
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.000000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.495478    0.578629    0.000000
+   10          8             0        4.347425    1.014998    0.000000
+   11          1             0        4.983456    0.299668    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.503966   3.000000   3.353635   3.353635   5.007679
+    10  O    4.351691   3.957200   4.103705   4.103705   5.870137
+    11  H    5.010793   4.298258   4.827943   4.827943   6.504763
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.588910   5.432522   5.432522   0.000000
+    10  O    6.369157   6.319549   6.319549   0.957200   0.000000
+    11  H    7.102780   6.886527   6.886527   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435      C1-Cl2-H9= 90.    
+      H3-Cl2-H9= 76.3762      H4-Cl2-H9= 76.3762      C5-Cl2-H9=121.1768
+      H7-Cl2-H9=131.7812      H8-Cl2-H9=131.7812     Cl2-H9-O10=180.    
+     Cl2-H9-H11=142.26       H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.067887   -0.456010    0.000000
+    2         17             0        0.000000    1.005974    0.000000
+    3          1             0        0.798114   -1.030634    0.896000
+    4          1             0        0.798114   -1.030634   -0.896000
+    5          6             0        2.534461   -0.053040    0.000000
+    6          1             0        3.162936   -0.958981    0.000000
+    7          1             0        2.774646    0.541580   -0.893316
+    8          1             0        2.774646    0.541580    0.893316
+    9          1             0       -2.422557   -0.763551    0.000000
+   10          8             0       -3.195514   -1.328148    0.000000
+   11          1             0       -3.935871   -0.721433    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.7820358      1.5700033      1.3549389
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       152.6383764427 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A') (A")
+                 (A") (A') (A") (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A") (A') (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208768668     A.U. after   10 cycles
+             Convg  =    0.4993D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.27541093D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2851672951D-01 E2=     -0.8180616885D-01
+     alpha-beta  T2 =       0.1676031419D+00 E2=     -0.5091988619D+00
+     beta-beta   T2 =       0.2851672951D-01 E2=     -0.8180616885D-01
+ ANorm=    0.1106633002D+01
+ E2 =    -0.6728111996D+00 EUMP2 =    -0.61488157986709D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       6    5.858151
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.100000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.584482    0.624217    0.000000
+   10          8             0        4.436429    1.060587    0.000000
+   11          1             0        5.072460    0.345257    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.589955   3.100000   3.427172   3.427172   5.096199
+    10  O    4.442820   4.057200   4.186941   4.186941   5.961908
+    11  H    5.094849   4.395959   4.903786   4.903786   6.591341
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.667887   5.524095   5.524095   0.000000
+    10  O    6.453420   6.413382   6.413382   0.957200   0.000000
+    11  H    7.181779   6.976175   6.976175   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.094031   -0.422979    0.000000
+    2         17             0        0.000000    1.019545    0.000000
+    3          1             0        0.834645   -1.002367    0.896000
+    4          1             0        0.834645   -1.002367   -0.896000
+    5          6             0        2.553113    0.006325    0.000000
+    6          1             0        3.197794   -0.888156    0.000000
+    7          1             0        2.782555    0.605172   -0.893316
+    8          1             0        2.782555    0.605172    0.893316
+    9          1             0       -2.469988   -0.853730    0.000000
+   10          8             0       -3.232657   -1.432149    0.000000
+   11          1             0       -3.983816   -0.838860    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.6853343      1.5160888      1.3124064
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       151.7241566286 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208614493     A.U. after   10 cycles
+             Convg  =    0.4191D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.27181686D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2850212585D-01 E2=     -0.8176318920D-01
+     alpha-beta  T2 =       0.1675868259D+00 E2=     -0.5090925455D+00
+     beta-beta   T2 =       0.2850212585D-01 E2=     -0.8176318920D-01
+ ANorm=    0.1106612433D+01
+ E2 =    -0.6726189239D+00 EUMP2 =    -0.61488123341704D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       7    6.047124
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.200000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.673486    0.669805    0.000000
+   10          8             0        4.525433    1.106175    0.000000
+   11          1             0        5.161464    0.390845    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.676653   3.200000   3.502021   3.502021   5.185136
+    10  O    4.534324   4.157200   4.270897   4.270897   6.053939
+    11  H    5.179471   4.493762   4.980482   4.980482   6.678294
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.747518   5.615955   5.615955   0.000000
+    10  O    6.538126   6.507399   6.507399   0.957200   0.000000
+    11  H    7.261295   7.066102   7.066102   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.119140   -0.389695    0.000000
+    2         17             0        0.000000    1.033437    0.000000
+    3          1             0        0.869946   -0.973539    0.896000
+    4          1             0        0.869946   -0.973539   -0.896000
+    5          6             0        2.570475    0.065110    0.000000
+    6          1             0        3.230731   -0.817938    0.000000
+    7          1             0        2.789389    0.667885   -0.893316
+    8          1             0        2.789389    0.667885    0.893316
+    9          1             0       -2.515391   -0.944646    0.000000
+   10          8             0       -3.267807   -1.536340    0.000000
+   11          1             0       -4.029246   -0.956304    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.5952862      1.4644282      1.2715629
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       150.8496924474 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208452706     A.U. after   10 cycles
+             Convg  =    0.3444D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.26870539D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2848956465D-01 E2=     -0.8172671265D-01
+     alpha-beta  T2 =       0.1675722393D+00 E2=     -0.5090003846D+00
+     beta-beta   T2 =       0.2848956465D-01 E2=     -0.8172671265D-01
+ ANorm=    0.1106594491D+01
+ E2 =    -0.6724538099D+00 EUMP2 =    -0.61488090651618D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       8    6.236096
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.300000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.762491    0.715393    0.000000
+   10          8             0        4.614437    1.151763    0.000000
+   11          1             0        5.250468    0.436433    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.764011   3.300000   3.578100   3.578100   5.274470
+    10  O    4.626179   4.257200   4.355530   4.355530   6.146219
+    11  H    5.264633   4.591659   5.057991   5.057991   6.765607
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.827777   5.708090   5.708090   0.000000
+    10  O    6.623259   6.601592   6.601592   0.957200   0.000000
+    11  H    7.341313   7.156295   7.156295   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.143245   -0.356203    0.000000
+    2         17             0        0.000000    1.047638    0.000000
+    3          1             0        0.904044   -0.944211    0.896000
+    4          1             0        0.904044   -0.944211   -0.896000
+    5          6             0        2.586614    0.123285    0.000000
+    6          1             0        3.261832   -0.748375    0.000000
+    7          1             0        2.795217    0.729706   -0.893316
+    8          1             0        2.795217    0.729706    0.893316
+    9          1             0       -2.558834   -1.036197    0.000000
+   10          8             0       -3.301051   -1.640636    0.000000
+   11          1             0       -4.072271   -1.073669    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.5112913      1.4149412      1.2323396
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       150.0124065102 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A") (A') (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208291690     A.U. after   10 cycles
+             Convg  =    0.2823D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.26584347D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2847876609D-01 E2=     -0.8169576208D-01
+     alpha-beta  T2 =       0.1675593835D+00 E2=     -0.5089209939D+00
+     beta-beta   T2 =       0.2847876609D-01 E2=     -0.8169576208D-01
+ ANorm=    0.1106578924D+01
+ E2 =    -0.6723125180D+00 EUMP2 =    -0.61488060420784D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1       9    6.425069
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.400000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.851495    0.760981    0.000000
+   10          8             0        4.703441    1.197351    0.000000
+   11          1             0        5.339472    0.482021    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.851984   3.400000   3.655330   3.655330   5.364180
+    10  O    4.718365   4.357200   4.440802   4.440802   6.238738
+    11  H    5.350308   4.689645   5.136279   5.136279   6.853268
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.908639   5.800484   5.800484   0.000000
+    10  O    6.708802   6.695953   6.695953   0.957200   0.000000
+    11  H    7.421815   7.246746   7.246746   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.166380   -0.322544    0.000000
+    2         17             0        0.000000    1.062136    0.000000
+    3          1             0        0.936968   -0.914439    0.896000
+    4          1             0        0.936968   -0.914439   -0.896000
+    5          6             0        2.601595    0.180827    0.000000
+    6          1             0        3.291182   -0.679510    0.000000
+    7          1             0        2.800107    0.790625   -0.893316
+    8          1             0        2.800107    0.790625    0.893316
+    9          1             0       -2.600389   -1.128293    0.000000
+   10          8             0       -3.332475   -1.744963    0.000000
+   11          1             0       -4.112996   -1.190870    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.4328129      1.3675459      1.1946692
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       149.2099461274 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A") (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.208136644     A.U. after   10 cycles
+             Convg  =    0.2425D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.26343325D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2846948408D-01 E2=     -0.8166950252D-01
+     alpha-beta  T2 =       0.1675481907D+00 E2=     -0.5088530597D+00
+     beta-beta   T2 =       0.2846948408D-01 E2=     -0.8166950252D-01
+ ANorm=    0.1106565479D+01
+ E2 =    -0.6721920647D+00 EUMP2 =    -0.61488032870821D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      10    6.614041
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.500000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        3.940499    0.806569    0.000000
+   10          8             0        4.792445    1.242939    0.000000
+   11          1             0        5.428476    0.527609    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    3.940530   3.500000   3.733642   3.733642   5.454248
+    10  O    4.810864   4.457200   4.526677   4.526677   6.331483
+    11  H    5.436473   4.787714   5.215308   5.215308   6.941261
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    5.990078   5.893128   5.893128   0.000000
+    10  O    6.794739   6.790475   6.790475   0.957200   0.000000
+    11  H    7.502786   7.337445   7.337445   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.188578   -0.288755    0.000000
+    2         17             0        0.000000    1.076918    0.000000
+    3          1             0        0.968749   -0.884276    0.896000
+    4          1             0        0.968749   -0.884276   -0.896000
+    5          6             0        2.615481    0.237715    0.000000
+    6          1             0        3.318865   -0.611379    0.000000
+    7          1             0        2.804125    0.850639   -0.893316
+    8          1             0        2.804125    0.850639    0.893316
+    9          1             0       -2.640127   -1.220848    0.000000
+   10          8             0       -3.362164   -1.849254    0.000000
+   11          1             0       -4.151527   -1.307832    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.3593706      1.3221595      1.1584866
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       148.4401582955 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A") (A') (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207990459     A.U. after   10 cycles
+             Convg  =    0.2242D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.26135206D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2846150509D-01 E2=     -0.8164722306D-01
+     alpha-beta  T2 =       0.1675385560D+00 E2=     -0.5087953442D+00
+     beta-beta   T2 =       0.2846150509D-01 E2=     -0.8164722306D-01
+ ANorm=    0.1106553915D+01
+ E2 =    -0.6720897903D+00 EUMP2 =    -0.61488008024898D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      11    6.803014
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.600000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        4.029503    0.852158    0.000000
+   10          8             0        4.881449    1.288527    0.000000
+   11          1             0        5.517480    0.573197    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    4.029613   3.600000   3.812968   3.812968   5.544657
+    10  O    4.903657   4.557200   4.613121   4.613121   6.424447
+    11  H    5.523103   4.885862   5.295047   5.295047   7.029576
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    6.072072   5.986007   5.986007   0.000000
+    10  O    6.881057   6.885153   6.885153   0.957200   0.000000
+    11  H    7.584211   7.428383   7.428383   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.209872   -0.254871    0.000000
+    2         17             0        0.000000    1.091973    0.000000
+    3          1             0        0.999420   -0.853770    0.896000
+    4          1             0        0.999420   -0.853770   -0.896000
+    5          6             0        2.628334    0.293936    0.000000
+    6          1             0        3.344962   -0.544010    0.000000
+    7          1             0        2.807332    0.909746   -0.893316
+    8          1             0        2.807332    0.909746    0.893316
+    9          1             0       -2.678120   -1.313786    0.000000
+   10          8             0       -3.390202   -1.953450    0.000000
+   11          1             0       -4.187967   -1.424487    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.2905336      1.2786992      1.1237283
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       147.7010681182 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A') (A")
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A") (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207854408     A.U. after   10 cycles
+             Convg  =    0.2133D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.25933429D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2845464627D-01 E2=     -0.8162832058D-01
+     alpha-beta  T2 =       0.1675303604D+00 E2=     -0.5087466872D+00
+     beta-beta   T2 =       0.2845464627D-01 E2=     -0.8162832058D-01
+ ANorm=    0.1106544013D+01
+ E2 =    -0.6720033284D+00 EUMP2 =    -0.61487985773585D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      12    6.991987
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.700000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        4.118507    0.897746    0.000000
+   10          8             0        4.970453    1.334115    0.000000
+   11          1             0        5.606484    0.618786    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    4.119196   3.700000   3.893247   3.893247   5.635389
+    10  O    4.996728   4.657200   4.700103   4.700103   6.517619
+    11  H    5.610179   4.984083   5.375463   5.375463   7.118200
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    6.154599   6.079113   6.079113   0.000000
+    10  O    6.967741   6.979979   6.979979   0.957200   0.000000
+    11  H    7.666076   7.519550   7.519550   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.230296   -0.220923    0.000000
+    2         17             0        0.000000    1.107290    0.000000
+    3          1             0        1.029013   -0.822966    0.896000
+    4          1             0        1.029013   -0.822966   -0.896000
+    5          6             0        2.640213    0.349479    0.000000
+    6          1             0        3.369552   -0.477428    0.000000
+    7          1             0        2.809787    0.967949   -0.893316
+    8          1             0        2.809787    0.967949    0.893316
+    9          1             0       -2.714437   -1.407036    0.000000
+   10          8             0       -3.416669   -2.057498    0.000000
+   11          1             0       -4.222418   -1.540778    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.2259149      1.2370832      1.0903334
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       146.9908600980 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A") (A') (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A") (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207728702     A.U. after   10 cycles
+             Convg  =    0.2116D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.25719476D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2844875210D-01 E2=     -0.8161228374D-01
+     alpha-beta  T2 =       0.1675234804D+00 E2=     -0.5087059981D+00
+     beta-beta   T2 =       0.2844875210D-01 E2=     -0.8161228374D-01
+ ANorm=    0.1106535578D+01
+ E2 =    -0.6719305655D+00 EUMP2 =    -0.61487965926746D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      13    7.180959
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.800000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        4.207511    0.943334    0.000000
+   10          8             0        5.059457    1.379704    0.000000
+   11          1             0        5.695488    0.664374    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    4.209249   3.800000   3.974420   3.974420   5.726431
+    10  O    5.090062   4.757200   4.787594   4.787594   6.610990
+    11  H    5.697679   5.082373   5.456526   5.456526   7.207122
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    6.237636   6.172435   6.172435   0.000000
+    10  O    7.054777   7.074947   7.074947   0.957200   0.000000
+    11  H    7.748366   7.610940   7.610940   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.249883   -0.186940    0.000000
+    2         17             0        0.000000    1.122858    0.000000
+    3          1             0        1.057562   -0.791906    0.896000
+    4          1             0        1.057562   -0.791906   -0.896000
+    5          6             0        2.651175    0.404335    0.000000
+    6          1             0        3.392712   -0.411651    0.000000
+    7          1             0        2.811546    1.025256   -0.893316
+    8          1             0        2.811546    1.025256    0.893316
+    9          1             0       -2.749148   -1.500534    0.000000
+   10          8             0       -3.441644   -2.161353    0.000000
+   11          1             0       -4.254977   -1.656654    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.1651666      1.1972309      1.0582428
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       146.3078618418 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A") (A') (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A") (A') (A') (A') (A")
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A") (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207612942     A.U. after   10 cycles
+             Convg  =    0.2111D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.25491317D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2844369082D-01 E2=     -0.8159867900D-01
+     alpha-beta  T2 =       0.1675177931D+00 E2=     -0.5086722497D+00
+     beta-beta   T2 =       0.2844369082D-01 E2=     -0.8159867900D-01
+ ANorm=    0.1106528434D+01
+ E2 =    -0.6718696077D+00 EUMP2 =    -0.61487948254994D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      14    7.369932
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   3.900000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        4.296515    0.988922    0.000000
+   10          8             0        5.148462    1.425292    0.000000
+   11          1             0        5.784492    0.709962    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    4.299742   3.900000   4.056434   4.056434   5.817766
+    10  O    5.183645   4.857200   4.875566   4.875566   6.704552
+    11  H    5.785584   5.180729   5.538209   5.538209   7.296330
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    6.321165   6.265962   6.265962   0.000000
+    10  O    7.142152   7.170052   7.170052   0.957200   0.000000
+    11  H    7.831069   7.702544   7.702544   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.268666   -0.152946    0.000000
+    2         17             0        0.000000    1.138667    0.000000
+    3          1             0        1.085101   -0.760626    0.896000
+    4          1             0        1.085101   -0.760626   -0.896000
+    5          6             0        2.661274    0.458502    0.000000
+    6          1             0        3.414516   -0.346691    0.000000
+    7          1             0        2.812663    1.081673   -0.893316
+    8          1             0        2.812663    1.081673    0.893316
+    9          1             0       -2.782321   -1.594223    0.000000
+   10          8             0       -3.465203   -2.264972    0.000000
+   11          1             0       -4.285739   -1.772071    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.1079753      1.1590639      1.0273996
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       145.6505298086 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A') (A")
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A") (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A') (A")
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207506447     A.U. after   10 cycles
+             Convg  =    0.2127D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.25259424D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2843935051D-01 E2=     -0.8158713752D-01
+     alpha-beta  T2 =       0.1675131769D+00 E2=     -0.5086444719D+00
+     beta-beta   T2 =       0.2843935051D-01 E2=     -0.8158713752D-01
+ ANorm=    0.1106522425D+01
+ E2 =    -0.6718187469D+00 EUMP2 =    -0.61487932519379D+03
+ Variable Step   Value    
+ -------- ---- -----------
+     1      15    7.558905
+ ------------------------------------------------------------------------
+                         Z-MATRIX (ANGSTROMS AND DEGREES)
+ CD Cent Atom  N1     Length/X     N2    Alpha/Y     N3     Beta/Z      J
+ ------------------------------------------------------------------------
+   1   1  C     0   0.000000          0.822370          0.000000
+   2   2  Cl    0   0.825357         -0.789016          0.000000
+   3   3  H     0   0.356564          1.347568          0.896000
+   4   4  H     0   0.356564          1.347568         -0.896000
+   5   5  C     0  -1.511627          0.654420          0.000000
+   6   6  H     0  -1.990226          1.647724          0.000000
+   7   7  H     0  -1.842105          0.104833         -0.893316
+   8   8  H     0  -1.842105          0.104833          0.893316
+   9   9  H     2   4.000000(  8)   1   90.000( 17)   5  180.000( 25)   0
+  10  10  O     9   0.957200(  9)   2  180.000( 18)   1   90.000( 26)   0
+  11  11  H    10   0.957200( 10)   9  104.520( 19)   1  180.000( 27)   0
+ ------------------------------------------------------------------------
+                         Z-Matrix orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        0.000000    0.822370    0.000000
+    2         17             0        0.825357   -0.789016    0.000000
+    3          1             0        0.356564    1.347568    0.896000
+    4          1             0        0.356564    1.347568   -0.896000
+    5          6             0       -1.511627    0.654420    0.000000
+    6          1             0       -1.990226    1.647724    0.000000
+    7          1             0       -1.842105    0.104833   -0.893316
+    8          1             0       -1.842105    0.104833    0.893316
+    9          1             0        4.385519    1.034510    0.000000
+   10          8             0        5.237466    1.470880    0.000000
+   11          1             0        5.873496    0.755550    0.000000
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  Cl   1.810464   0.000000
+     3  H    1.098083   2.363805   0.000000
+     4  H    1.098083   2.363805   1.792000   0.000000
+     5  C    1.520928   2.746817   2.184813   2.184813   0.000000
+     6  H    2.154579   3.723602   2.529888   2.529888   1.102592
+     7  H    2.169383   2.951666   3.095188   2.525578   1.099670
+     8  H    2.169383   2.951666   2.525578   3.095188   1.099670
+     9  H    4.390647   4.000000   4.139239   4.139239   5.909382
+    10  O    5.277463   4.957200   4.963993   4.963993   6.798298
+    11  H    5.873876   5.279147   5.620484   5.620484   7.385816
+                    6          7          8          9         10
+     6  H    0.000000
+     7  H    1.788985   0.000000
+     8  H    1.788985   1.786632   0.000000
+     9  H    6.405166   6.359686   6.359686   0.000000
+    10  O    7.229855   7.265289   7.265289   0.957200   0.000000
+    11  H    7.914171   7.794354   7.794354   1.513901   0.957200
+                   11
+    11  H    0.000000
+                           Interatomic angles:
+      Cl2-C1-H3=106.1207      Cl2-C1-H4=106.1207       H3-C1-H4=109.3662
+      Cl2-H3-H4= 67.7252      Cl2-C1-C5=110.7818       H3-C1-C5=112.058 
+      Cl2-H3-C5= 74.1792       H4-C1-C5=112.058       Cl2-H4-C5= 74.1792
+       H4-H3-C5= 65.7886      Cl2-C1-H6=139.6456       H3-C1-H6= 96.7033
+      Cl2-H3-H6= 99.0305       H4-C1-H6= 96.7033      Cl2-H4-H6= 99.0305
+       H4-H3-H6= 69.2577       C1-C5-H6=109.3861      Cl2-C5-H6=147.4275
+       H3-C5-H6= 94.8962       H4-C5-H6= 94.8962      Cl2-C1-H7= 95.3201
+       H3-C1-H7=140.3472      H3-Cl2-H7= 70.2312       H4-C1-H7= 95.6195
+      Cl2-H4-H7= 74.1862       H3-H4-H7= 89.9391       C1-C5-H7=110.7245
+      Cl2-C5-H7= 89.6022       H3-C5-H7=138.4759       H4-C5-H7= 94.7255
+       C1-H6-H7= 65.9926      Cl2-H7-H6=100.6536       H3-H6-H7= 89.8695
+       H4-H7-H6= 69.4049       H6-C5-H7=108.6502      Cl2-C1-H8= 95.3201
+       H3-C1-H8= 95.6195      Cl2-H3-H8= 74.1862       H4-C1-H8=140.3472
+      H4-Cl2-H8= 70.2312       H4-H3-H8= 89.9391       C1-C5-H8=110.7245
+      Cl2-C5-H8= 89.6022       H3-C5-H8= 94.7255       H4-C5-H8=138.4759
+       C1-H6-H8= 65.9926      Cl2-H8-H6=100.6536       H3-H8-H6= 69.4049
+       H4-H6-H8= 89.8695       H6-C5-H8=108.6502       C1-H7-H8= 65.6831
+      Cl2-H7-H8= 72.3833       H3-H8-H7= 90.0609       H4-H7-H8= 90.0609
+       H7-C5-H8=108.6521       H6-H7-H8= 60.0435     H9-O10-H11=104.52  
+ Stoichiometry    C2H7ClO
+ Framework group  CS[SG(C2H3ClO),X(H4)]
+ Deg. of freedom    17
+ Full point group                 CS
+ Largest Abelian subgroup         CS      NOp   2
+ Largest concise Abelian subgroup CS      NOp   2
+                         Standard orientation:                         
+ ---------------------------------------------------------------------
+ Center     Atomic     Atomic              Coordinates (Angstroms)
+ Number     Number      Type              X           Y           Z
+ ---------------------------------------------------------------------
+    1          6             0        1.286678   -0.118965    0.000000
+    2         17             0        0.000000    1.154707    0.000000
+    3          1             0        1.111663   -0.729162    0.896000
+    4          1             0        1.111663   -0.729162   -0.896000
+    5          6             0        2.670562    0.511977    0.000000
+    6          1             0        3.435036   -0.282559    0.000000
+    7          1             0        2.813186    1.137213   -0.893316
+    8          1             0        2.813186    1.137213    0.893316
+    9          1             0       -2.814023   -1.688051    0.000000
+   10          8             0       -3.487419   -2.368323    0.000000
+   11          1             0       -4.314796   -1.886992    0.000000
+ ---------------------------------------------------------------------
+ Rotational constants (GHZ):      8.0540584      1.1225056      0.9977494
+ Standard basis: Aug-CC-pVDZ (5D, 7F)
+ There are   106 symmetry adapted basis functions of A'  symmetry.
+ There are    53 symmetry adapted basis functions of A"  symmetry.
+ Integral buffers will be    131072 words long.
+ Raffenetti 1 integral format.
+ Two-electron integral symmetry is turned on.
+   159 basis functions,   289 primitive gaussians,   167 cartesian basis functions
+    22 alpha electrons       22 beta electrons
+       nuclear repulsion energy       145.0174367937 Hartrees.
+ NAtoms=   11 NActive=   11 NUniq=    9 SFac= 1.12D+00 NAtFMM=   80 NAOKFM=F Big=F
+ One-electron integrals computed using PRISM.
+ NBasis=   159 RedAO= T  NBF=   106    53
+ NBsUse=   159 1.00D-06 NBFU=   106    53
+ Initial guess read from the read-write file:
+ Initial guess orbital symmetries:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A') (A') (A") (A') (A') (A') (A") (A') (A")
+                 (A') (A")
+       Virtual   (A') (A') (A") (A') (A') (A") (A') (A') (A') (A')
+                 (A") (A') (A') (A') (A') (A") (A") (A') (A") (A')
+                 (A') (A') (A') (A") (A") (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A") (A') (A") (A') (A') (A") (A')
+                 (A") (A') (A") (A') (A") (A') (A") (A') (A') (A")
+                 (A") (A') (A') (A') (A') (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A') (A') (A") (A') (A") (A') (A')
+                 (A") (A') (A') (A") (A") (A') (A') (A") (A') (A")
+                 (A') (A') (A') (A') (A') (A") (A") (A') (A') (A")
+                 (A') (A") (A') (A") (A') (A') (A') (A') (A") (A")
+                 (A') (A") (A") (A') (A") (A') (A") (A') (A") (A')
+                 (A") (A') (A') (A") (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A') (A') (A') (A') (A') (A") (A') (A')
+                 (A') (A") (A") (A") (A') (A') (A')
+ Harris functional with IExCor=  205 diagonalized for initial guess.
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on MAX density matrix=1.00D-06.
+ Requested convergence on             energy=1.00D-06.
+ No special actions if energy rises.
+ SCF Done:  E(RHF) =  -614.207408471     A.U. after   10 cycles
+             Convg  =    0.2103D-08             -V/T =  2.0005
+             S**2   =   0.0000
+ ExpMin= 2.97D-02 ExpMax= 1.28D+05 ExpMxC= 1.24D+03 IAcc=3 IRadAn=         5 AccDes= 0.00D+00
+ HarFok:  IExCor= 205 AccDes= 0.00D+00 IRadAn=         5 IDoV=1
+ ScaDFX=  1.000000  1.000000  1.000000  1.000000
+ Range of M.O.s used for correlation:     9   159
+ NBasis=   159 NAE=    22 NBE=    22 NFC=     8 NFV=     0
+ NROrb=    151 NOA=    14 NOB=    14 NVA=   137 NVB=   137
+
+ **** Warning!!: The largest alpha MO coefficient is  0.25038691D+02
+
+ Fully direct method using O(OVN) memory.
+ JobTyp=1 Pass  1:  I=   1 to  14 NPSUse=  1 ParTrn=F ParDer=F DoDerP=F.
+ Spin components of T(2) and E(2):
+     alpha-alpha T2 =       0.2843563506D-01 E2=     -0.8157734377D-01
+     alpha-beta  T2 =       0.1675095091D+00 E2=     -0.5086217489D+00
+     beta-beta   T2 =       0.2843563506D-01 E2=     -0.8157734377D-01
+ ANorm=    0.1106517410D+01
+ E2 =    -0.6717764364D+00 EUMP2 =    -0.61487918490713D+03
+ Scan completed.
+
+ Summary of the potential surface scan:
+   N      roh         SCF          MP2    
+ ----  ---------  -----------  -----------
+    1     2.5000   -614.20871   -614.88304
+    2     2.6000   -614.20895   -614.88288
+    3     2.7000   -614.20902   -614.88262
+    4     2.8000   -614.20900   -614.88229
+    5     2.9000   -614.20890   -614.88194
+    6     3.0000   -614.20877   -614.88158
+    7     3.1000   -614.20861   -614.88123
+    8     3.2000   -614.20845   -614.88091
+    9     3.3000   -614.20829   -614.88060
+   10     3.4000   -614.20814   -614.88033
+   11     3.5000   -614.20799   -614.88008
+   12     3.6000   -614.20785   -614.87986
+   13     3.7000   -614.20773   -614.87966
+   14     3.8000   -614.20761   -614.87948
+   15     3.9000   -614.20751   -614.87933
+   16     4.0000   -614.20741   -614.87918
+ ----  ---------  -----------  -----------
+  
+ 1\1\GINC-N080\Scan\RMP2-FC\Aug-CC-pVDZ\C2H7Cl1O1\FYLIN\08-Apr-2016\1\\
+ #MP2/aug-cc-pVDZ scan\\C1H...OHH 90.0 degrees, mp2/aug-cc-pVDZ\\0,1\C,
+ 0,0.,0.82237,0.\Cl,0,0.825357,-0.789016,0.\H,0,0.356564,1.347568,0.896
+ \H,0,0.356564,1.347568,-0.896\C,0,-1.511627,0.65442,0.\H,0,-1.990226,1
+ .647724,0.\H,0,-1.842105,0.104833,-0.893316\H,0,-1.842105,0.104833,0.8
+ 93316\H,2,roh,1,90.,5,180.,0\O,9,0.9572,2,180.,1,90.,0\H,10,0.9572,9,1
+ 04.52,1,180.,0\\roh=2.5,s,15,0.1\\Version=AM64L-G03RevD.02\HF=-614.208
+ 7055,-614.2089462,-614.2090247,-614.208997,-614.2089025,-614.2087687,-
+ 614.2086145,-614.2084527,-614.2082917,-614.2081366,-614.2079905,-614.2
+ 078544,-614.2077287,-614.2076129,-614.2075064,-614.2074085\MP2=-614.88
+ 30385,-614.8828816,-614.8826158,-614.8822897,-614.8819368,-614.8815799
+ ,-614.8812334,-614.8809065,-614.8806042,-614.8803287,-614.8800802,-614
+ .8798577,-614.8796593,-614.8794825,-614.8793252,-614.8791849\RMSD=5.78
+ 4e-09,7.946e-09,7.275e-09,6.560e-09,5.788e-09,4.993e-09,4.191e-09,3.44
+ 4e-09,2.823e-09,2.425e-09,2.242e-09,2.133e-09,2.116e-09,2.111e-09,2.12
+ 7e-09,2.103e-09\Thermal=0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0
+ .\PG=CS [SG(C2H3Cl1O1),X(H4)]\\@
+
+
+ AN AIRPLANE IS A COLLECTION OF SPARE PARTS
+ FLYING IN CLOSE FORMATION.
+ Job cpu time:  0 days  0 hours 18 minutes 37.9 seconds.
+ File lengths (MBytes):  RWF=     38 Int=      0 D2E=      0 Chk=     18 Scr=      1
+ Normal termination of Gaussian 03 at Fri Apr  8 15:14:05 2016.

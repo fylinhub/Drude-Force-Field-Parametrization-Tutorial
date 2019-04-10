@@ -1,0 +1,16 @@
+#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N geom24
+#$ -l h_data=1000M,h_rt=96:00:00
+#$ -pe mpirun1 4
+#$ -R y
+
+
+LD_LIBRARY_PATH=/opt/acml/acml5.1.0/gfortran64_mp/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+/opt/mackerell/apps/psi/psi -i geom_24.in -o geom_24.out -n $NSLOTS
+
+

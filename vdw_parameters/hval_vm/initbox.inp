@@ -1,0 +1,159 @@
+* construct and heat box of arbitrary liquid
+* streams files named by input parameters "vars" and "consts"
+*
+
+ioformat extended ! Para que admita nombres de residuos con mas de cuatro letras
+
+stream para.str
+stream toppar_drude_master_protein_2013_imid_commentout.str
+stream toppar_drude_imid_template.str
+
+set residue imid
+!First variables, then constants!
+!stream
+
+!### Simulation params ###
+set timestep 0.001
+set 3 14.0  ! cutim
+set 4 14.0  ! cutnb
+set 5 10.0  ! ctonnb
+set 6 12.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+!Calculate crystal lattice
+! Need to change the molar mass and density; 
+! calc xlatx ( Molar mass * 1.660577881 / density (g/cm³))**0.3333333333
+calc xlatx ( 68.077 * 1.660577881 / 1.23 )**0.3333333333
+calc nmolx 6
+calc xlat @xlatx * @nmolx
+calc ctnbmax @xlat / 2.0 - 1.0
+
+bomlev -5
+!Generate monomer
+read sequence @residue 1
+generate @residue FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4 HYPE HORD 6 KHYP 40000 RHYP 0.2 
+
+open unit 20 read form name imid_mp2.crd ! MP2 reference geometry
+read coor card unit 20
+
+ic param
+ic print
+coor shake
+coor sdrude
+coor print
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!coor init selec ( hydrogen ) end
+!hbuild
+
+!Minimize monomer
+coor orie norot
+mini sd nstep 1000
+
+!Write monomer
+open unit 1 write form name @residue.monomer.psf
+write psf card unit 1
+* @residue monomer
+*
+close unit 1
+open unit 1 write form name @residue.monomer.crd
+write coor card unit 1
+* @residue monomer
+*
+close unit 1
+open unit 1 write form name @residue.monomer.pdb
+write coor pdb unit 1
+* @residue monomer
+*
+close unit 1
+delete atom select all end
+
+!Generate box
+read sequence @residue 216
+generate @residue FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4 HYPE HORD 6 KHYP 40000 RHYP 0.2 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+open unit 1 write form name @residue.box.psf
+write psf card unit 1
+* box of 216 @residue
+*
+close unit 1
+
+set i 1
+set ii 1
+label coori
+  calc delx  @i * @xlatx
+  set j 1
+  label coorj
+    calc dely  @j * @xlatx
+    set k 1
+    label coork
+  
+      open unit 1 read form name @residue.monomer.crd
+      read coor card append unit 1 ! select ( ires @i ) end
+      calc delz  @k * @xlatx
+      coor trans xdir @delx ydir @dely zdir @delz select ( ires @ii ) end
+
+      incr ii by 1
+      incr k by 1
+      if @k .le. @nmolx goto coork
+
+    incr j by 1
+    if @j .le. @nmolx goto coorj
+
+  incr i by 1
+  if @i .le. @nmolx goto coori
+
+!Write initial box
+coor orie norot
+open unit 1 write form name @residue.box.pdb
+write coor pdb unit 1
+* box of @nmol @residue
+* 
+
+!Set up PBC
+crystal define cubic @xlat @xlat @xlat 90.00 90.00 90.00
+crystal build Noper 0 cutoff @3
+image byres xcen 0.0 ycen 0.0 zcen 0.0 sele resn @residue end
+
+!note inclusion of long-range correction
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+ewald pmewald kappa 0.34 fftx 32 ffty 32 fftz 32 order 4 -
+lrc @7 @8 @9 vfswitch cutimg @3 cutnb @4 ctofnb @6 ctonnb @5 bycb
+
+!Minimize box
+mini sd nstep 10000 nprint 1000
+
+shake bonh para
+
+!Write minimized box
+open unit 1 write form name @residue.box.min.pdb
+write coor pdb unit 1
+* minimized box of @nmol @residue
+* 
+open unit 1 write form name @residue.box.min.crd
+write coor card unit 1
+* minimized box of @nmol @residue
+* 
+
+bomlev 0
+
+!Heat up box
+open unit 20 write unform name data/@residue.box.0.dcd
+open unit 22 write form name data/@residue.box.0.res
+DYNAMICS  vv2      start    timestep 0.0005 nstep 200000  -
+          ntrfrq    1000   iprfrq   -1  -
+          nprint    10000     iseed    54321 -
+          iasvel       1     firstt   298   finalt    298    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     -1     kunit -1 -
+          iunwrite    22  -
+          iuncrd      20     nsavcrd   10000
+  
+!Write heated box
+open unit 20 write form name data/@residue.box.0.crd
+write coor card unit 20
+* @residue after heating to @tempr K
+* lattice size: ?xtla
+*
+

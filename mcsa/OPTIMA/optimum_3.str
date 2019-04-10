@@ -1,0 +1,22 @@
+* parameters for charges, alpha, Thole and so on
+* 
+ set   qc1         -0.024
+ set   qh1          0.076
+set   qc2          -0.110
+set   qh2           0.110
+set   qc3          -0.110
+ set   qh3          0.110
+ set   qc6          0.040
+ set   qcl6        -0.184
+ set   qlp6         0.040
+ set   ac1         -2.938
+ set   tc1          0.686
+ set   ac2         -1.642
+ set   tc2          1.183
+ set   ac3         -1.603
+ set   tc3          1.187
+ set   ac6         -1.890
+ set   tc6          0.660
+ set   acl6        -1.640
+ set   tcl6         0.660
+ set   dlp6         1.640

@@ -1,0 +1,247 @@
+* Potential energy scan
+* charmm < allscan_drude_lsfitpar.inp > allscan_drude_lsfitpar.out
+*1. prepare the reference data: from qm calculations
+*2. change the file "initialize": ./initialize
+*3. set some global variables 
+*
+
+ioformat extended
+
+!!!variables specific to each molecule
+set resi chlb 
+set bombover 0        !needs to be set to -1 for 3-membered rings, otherwise 0
+set basnam scan_@resi ! do not change this
+set pesbas scan_      ! do not change this
+set pesbas ..         ! do not change this
+
+!! indicator for constraint scan
+set ii 1    ! Don't need to change this value
+set noconstr 9   ! number of frames in the all the scanned diherals
+
+!!! Number of qm scans and corresponding folders
+! If there are other dihedral under scanning, eg. set peses 2 and set pes1.. set pes2.. ; or set peses 3, and set pes1, pes2, pes3.. 
+set peses 1
+set pes1 scan_h5c5c6cl
+
+!!!dihedrals
+set conds 1
+set cond1 1 h5 1 c5 1 c6 1 cl6
+
+! number of measurements correponds to those dihedral; in this example there are two measurements
+set meads 2                        
+set mead1 1 c4  1 c5 1 c6 1 cl6
+set medf1 @{basnam}.c4c5c6cl
+set mead2 1 h5 1 c5 1 c6 1 cl6
+set medf2 @{basnam}.h5c5c6cl
+
+!!!angles
+set conas 0
+!set coam1 1 c1 1 c7 1 n8
+!set cona1 sele bynu 1 end sele bynu 12 end sele bynu 15 end
+
+set meaas 0
+!set meaa1 1 c1 1 c7 1 n8
+!set meaf1 @{basnam}.c1c7n8
+
+!!!bonds
+set conbs 0
+!set conb1 sele bynu 5 end sele bynu 7 end
+!set cobm1 1 c3 1 n2
+
+set meabs 0
+!set meab1 1 c3 1 n2
+!set mebf1 @basnam.cn
+
+!!!read top and par
+stream toppar_drude_master_example.str
+!stream toppar_drude_example.str
+stream toppar_drude_autofitting.str    ! set zero of the dihedral for lsfitpar
+
+!!!!!!!!!!!!!DO NOT change the contents below!!!!!!!!!!!!!!!!!!!!!!
+!!!open the files for measurements
+set offset 21
+set mun @offset
+!!dihedrals
+if @meads ne 0 then
+  set meadc 1
+  label loop_medf
+    open unit @mun append form name @medf@@meadc
+   incr mun
+   incr meadc
+   if @meadc le @meads goto loop_medf
+ endif
+!!angles
+if @meaas ne 0 then
+  set meaac 1
+  label loop_meaf
+    open unit @mun append form name @meaf@@meaac
+   incr mun
+   incr meaac
+   if @meaac le @meaas goto loop_meaf
+  calc mgeo = @conas * 3
+ endif
+!!bonds
+if @meabs ne 0 then
+  set meabc 1
+  label loop_mebf
+    open unit @mun append form name @mebf@@meabc
+   incr mun
+   incr meabc
+   if @meabc le @meabs goto loop_mebf
+ endif
+
+open unit 9 append form name @basnam.mme
+open unit 10 write form name ini_geom.pdb
+open unit 11 write form name fin_geom.pdb
+
+!!!setup the system
+read sequence @resi 1
+
+bomlev @bombover
+generate @resi first none last none setup warn drude dmass 0.4
+bomlev 0
+
+!  patch @resi @resi 1 setup warn
+!  autogenerate angles dihedral
+
+set scan 1
+label loop_scan
+
+set pesdir @pesbas/@pes@@scan
+open unit 12 read form name @pesdir/s_file.txt
+
+set init 1
+label loop_pes
+get crdnam unit 12
+if "@CRDNAM" eq "END-OF-FILE" goto nextscan
+if "@CRDNAM" eq "" goto nextscan
+read coor card name @pesdir/@crdnam
+coor sdrude
+coor shake
+
+
+write coor pdb unit 10
+
+!!!apply restraints
+!!dihedrals
+if @conds ne 0 then
+  set cond 1
+  label loop_cond
+    cons dihe @cond@@cond FORCE 9999. MAIN PERIOD 0
+    incr cond
+   if @cond le @conds goto loop_cond
+ endif
+!!angles: Work around mmfp bug
+if @conas ne 0 then
+  quick @coam1
+  mmfp
+  geo maxgeo @mgeo sphere angle harmonic symmetric force 9999. tref ?thet dtoff 0.0 @cona1
+  end
+ endif
+if @conas gt 1 then
+  set cona 2
+  label loop_cona
+    quick @coam@@cona
+    !don't know whether it's better to specify RCM or not if each selection is 1 atom
+    mmfp
+    geo sphere angle harmonic symmetric force 9999. tref ?thet dtoff 0.0 @cona@@cona
+    end
+   incr cona
+   if @cona le @conas goto loop_cona
+ endif
+!!bonds
+if @conbs ne 0 then
+  set conb 1
+  label loop_conb
+    quick @cobm@@conb
+    ! was: ASSIgn @conb@@conb KMIN 99999. RMIN ?dist KMAX 99999. RMAX ?dist
+    noe
+    ASSIgn @conb@@conb KMIN 99999. RMIN ?dist KMAX 99999. RMAX ?dist FMAX 99999.
+    end
+   incr conb
+   if @conb le @conbs goto loop_conb
+ endif
+
+if @ii gt @noconstr goto loop_constr_scan
+! CONJ is sufficiently robust to not need to be preceded by SD
+!MINI SD nstep 100 nprint 50 inbfrq 1000 cutnb 999. bycu tolgrd 0.2
+!MINI CONJ nstep 30000 nprint 20 tolgrd 0.0001
+
+cons harm force 10000000.0 sele .not. type D* show end
+cons harm force 10000000.0 sele type dum show end
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+cons harm force 0.0 sele all end
+
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+
+! When restraining angles, we need to choose NSTEp and TOLGrd wisely if we want NRAP
+! to converge, but when also restraining bonds, NRAP simply becomes pathological.
+! Regardless of the algorithm, bond restraints proved too rough for TOLGrd 0.00001 .
+if ?grms gt 0.0001 MINI NRAP nstep 100 tolgrd 0.0001
+if ?grms gt 0.0001 then
+  echu
+  echo FATAL ERROR: MINIMIZATION NOT CONVERGED
+  stop
+endif
+
+label loop_constr_scan
+
+write coor pdb unit 11
+
+cons cldh
+if @conas gt 0 then
+!if @conas gt 1 then
+  mmfp
+  geo reset
+  end
+ endif
+noe
+reset
+end
+echu 9
+energy
+echo ?ener
+
+!!!measurements
+set mun @offset
+if @meads ne 0 then
+  set meadc 1
+  label loop_mead
+    echu @mun
+    quick @mead@@meadc
+    echo ?phi
+   incr mun
+   incr meadc
+   if @meadc le @meads goto loop_mead
+ endif
+if @meaas ne 0 then
+  set meaac 1
+  label loop_meaa
+    echu @mun
+    quick @meaa@@meaac
+    echo ?thet
+   incr mun
+   incr meaac
+   if @meaac le @meaas goto loop_meaa
+ endif
+if @meabs ne 0 then
+  set meabc 1
+  label loop_meab
+    echu @mun
+    quick @meab@@meabc
+    echo ?dist
+   incr mun
+   incr meabc
+   if @meabc le @meabs goto loop_meab
+ endif
+
+incr ii by 1
+goto loop_pes
+
+label nextscan
+close unit 12
+incr scan
+if @scan le @peses goto loop_scan
+

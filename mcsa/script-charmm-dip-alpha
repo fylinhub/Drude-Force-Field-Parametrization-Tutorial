@@ -1,0 +1,17 @@
+#!/bin/bash
+charmm < chlb_mcsa.inp > chlb_mcsa.out &
+wait
+
+grep "EMPIRICAL DIPOLE" chlb_water.ene    | awk '{print $3, $4, $5, $6}' > dipole.tmp
+grep "EMPIRICAL ALPHA" chlb_water.ene    | awk '{print $4, $6, $8, $10}' > alpha.tmp
+
+# paste dipole.tmp emp1.tmp emp2.tmp emp3.tmp emp4.tmp emp5.tmp emp6.tmp emp7.tmp emp8.tmp > dipolemm.dat
+ paste dipole.tmp  alpha.tmp> dipolemm.dat
+
+# if parameters are bad, charmm will not finish, so replace dipolemm with temporary 
+# dipolemmtmp.dat  contains very high dipoles so rmsd will be high and move rejected
+ nn=`cat dipolemm.dat | wc -l`
+ if [ $nn -ne 1 ]; then
+ cp dipolemmtmp.dat dipolemm.dat
+ fi
+

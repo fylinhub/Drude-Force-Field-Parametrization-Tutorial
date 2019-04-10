@@ -1,0 +1,112 @@
+* MD simulation of a box of NMA
+*
+
+set resi nma
+set num 128
+set boxsize 26.0!23.3
+set job run3
+set seed 917847
+
+
+!ioformat noextended
+
+set cutim  16.0  ! cutim
+set cutnb  16.0  ! cutnb
+set ctonnb 10.0  ! ctonnb
+set ctofnb 12.0  ! ctofnb
+set eatom atom
+set etrun switch
+set vatom vatom
+set vtrun vswitch
+
+
+!--- Read parameters, psf and coordinates
+stream toppar.str
+
+read sequence @resi @num
+generate @resi FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4
+
+open unit 10 read form name nma_liq@num_fix.crd
+read coor card unit 10
+
+coor sdrude
+coor shake
+
+ener
+
+! Setup crystal ----------------------------------------------------------------
+
+crystal define cubic @boxsize  @boxsize  @boxsize  90.0 90.0 90.0
+crystal build noper 0 cutoff @cutim
+
+image byres xcen 0.0 ycen 0.0 zcen 0.0 select resname @resi end
+
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+ewald pmewald kappa 0.34 fftx 32 ffty 32 fftz 32 order 6 lrc -
+@eatom @etrun @vatom @vtrun cutnb @cutnb ctonnb @ctonnb ctofnb @ctofnb -
+cutim @cutim
+
+! SHAKE!!!
+coor copy comp
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select ( .not. (type D*)) end -
+      select ( .not. (type D*)) end noreset
+
+cons harm force 10000000.0 sele .not. type D* end
+mini SD nstep 200 tolgrd 0.00001
+cons harm force 0.0 sele .not. type D* end
+
+
+DrudeHardWall L_WALL 0.2
+
+!set up temperature control for NPT simulation
+!scf    THER 2 TAU  0.005 TREF 0.00   SELECT TYPE D* END  -
+TPCONTROL NTHER 2  CMDAMP 10.0  NSTEP 20  -
+  THER 1 TAU  0.1   TREF @temp   SELECT .NOT.  TYPE D*  END  -
+  THER 2 TAU  0.005 TREF 1.00   SELECT TYPE D* END -
+  BARO   BTAU 0.1   PREF 1.00 DSCY
+
+OPEN UNIT 93 WRITe FORMatted NAME @resi.box@num.@temp.@job.0.res
+OPEN UNIT 92 WRITe UNFORMatted NAME @resi.box@num.@temp.@job.0.dcd
+
+DYNAMICS  vv2      start    nstep    2000000  timestp 0.0005  -
+          ntrfrq    1000000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     -1  -
+          iunwrite    93  -
+          iuncrd      92     nsavcrd   2000
+
+set ii 0
+set jj 1
+
+label trj_loop
+
+
+Open unit 91 read formatted name @resi.box@num.@temp.@job.@ii.res
+OPEN UNIT 93 WRITe FORMatted NAME @resi.box@num.@temp.@job.@jj.res
+OPEN UNIT 92 WRITe UNFORMatted NAME @resi.box@num.@temp.@job.@jj.dcd
+
+DYNAMICS  vv2      restart    nstep    1000000  timestp 0.001  -
+          ntrfrq    1000000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     91  -
+          iunwrite    93  -
+          iuncrd      92     nsavcrd   1000
+
+incr ii by 1
+incr jj by 1
+
+if jj .le. 10 goto trj_loop
+
+OPEN UNIT 1 WRITE CARD NAME @resi.box@num.@job.crd
+WRITE COOR CARD UNIT 1
+CLOSE UNIT 1
+
+stop
+
+

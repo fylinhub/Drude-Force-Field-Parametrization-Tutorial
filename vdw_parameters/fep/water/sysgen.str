@@ -1,0 +1,146 @@
+* System generating script
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+*
+
+!=========================================================
+! TOPOLOGY & PARAMETER READING
+!---------------------------------------------------------
+
+stream @topparfile 
+
+!=========================================================
+! RESIDUE GENERATION
+!---------------------------------------------------------
+
+!! Generate solute residue
+read sequence card
+* Solute
+*
+  1
+@residue
+
+generate @segid1 setup first none last none drude dmass 0.4 
+
+!=========================================================
+! Generate water residues 
+!---------------------------------------------------------
+
+if nwater gt 0 then
+  if Drude eq true then
+    read sequence SWM4 @nwater
+  else
+    read sequence TIP3 @nwater
+  endif
+  generate @segid2 setup noangle nodihedral drude dmass 0.4
+endif
+
+!Read coordinates of the system
+if nwater eq 0 then
+  ! gas-phase simulation
+  open read card unit 10 name @molecule_gas.crd
+else
+  ! condensed-phase simulation
+  open read card unit 10 name @molecule_wbox.crd
+endif
+read coor card unit 10 
+close unit 10
+
+!=========================================================
+! DRUDE SETUP
+!---------------------------------------------------------
+
+coor sdrude
+coor shake
+coor copy comp
+
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select  .not. type D*  end -
+      select  .not. type D*  end
+
+coor print
+
+! relax Drude particles
+if nwater gt 0 then
+  cons harm force 100000000. mass select .not. type D* end
+  mini SD   nstep 100 tolgrd 0.00001
+  mini ABNR nstep 300 tolgrd 0.00001
+  cons harm force 0.0 mass select all end
+else
+  UPDATE ihbfrq    0  -
+     inbfrq   10  ctonnb @5  ctofnb @6  cutnb @4  wmin 1.2  -
+     elec         switch        atom    cdie      eps  1.0  -
+     vdw          vswitch       vatom
+  !! Minimize coordinates of the solute
+  coor orie select segid @segid1 end
+  mini abnr nstep 500 nprint 100
+endif
+
+RETURN     
+
+if Drude eq true then
+  !! This is changed specially for the water molecule as a solute
+  if nwater gt 0 then
+    LONEPAIR bisector dist @DOM angle 0.0 dihe 0.0 -
+         select type OM end  select type OH2 end - 
+         select type H1 end  select type H2  end
+  endif
+
+  !! Set up charges/pols. for the solute residue 
+  if lonepair eq true then
+    set residue @segid1
+    stream lonepair_@resn.str
+    set residue @resn
+    stream @resn.charge.optimized.lp
+  else
+    set residue @resn
+    stream @resn.charge.optimized.no
+    coor shake
+  endif
+
+  scalar wmain  mult 0.724 select resn @residue END
+  scalar charge mult 0.7 select resn  @residue END
+
+  if nwater gt 0 then
+    !! Set the polarizability of SWM4-DP
+    scalar wmain set @{ALPHAO} select type OH2 end
+  endif
+
+  DRUDE vthole mass @mdrude kdrude @kdrude select .not. ( type H* .or. type OM .or. type *LP* ) end
+  scalar mass show
+  scalar charge show
+
+  if anisotropy eq true  then
+    set residue @segid1
+    stream anisotropy_@resn.str
+  endif
+
+  if nwater gt 0 then
+    coor dupl select type OH2 end select type DOH2 end
+  endif
+
+!  if tholepar eq true  then
+!    energy
+!    THOLEPAR tholeij @th1  sele type O1 end  sele type C1 end
+!    THOLEPAR tholeij @th1  sele type O1 end  sele type C2 end
+!  endif
+
+  ! relax Drude particles
+  if nwater gt 0 then
+    cons harm force 100000000. mass select .not. type D* end
+    mini SD   nstep 100 tolgrd 0.00001
+    mini ABNR nstep 300 tolgrd 0.00001
+    cons harm force 0.0 mass select all end
+  else
+    UPDATE ihbfrq    0  -
+       inbfrq   10  ctonnb @5  ctofnb @6  cutnb @4  wmin 1.2  -
+       elec         switch        atom    cdie      eps  1.0  -
+       vdw          vswitch       vatom
+    !! Minimize coordinates of the solute
+    coor orie select segid @segid1 end
+    mini abnr nstep 500 nprint 100
+  endif
+endif
+
+RETURN

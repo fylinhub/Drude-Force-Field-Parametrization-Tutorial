@@ -1,0 +1,18 @@
+#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N mon1
+#$ -l h_data=400M,h_rt=168:00:00
+#$ -pe mpirun1 1
+#$ -R y
+
+#charmm=/opt/mackerell/apps/charmm/parallel/charmm-parallel
+charmm=/home/huangj/charmm/charmm-c40a1drude-xlarge-parallel-64bit-repdstr
+
+mpirun="mpirun --leave-session-attached"
+ulimit -c 16
+
+
+$mpirun $charmm -i monomer.inp > monomer.1.out i=1 imax=18
+

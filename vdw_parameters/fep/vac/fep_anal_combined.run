@@ -1,0 +1,18 @@
+#!/bin/sh
+# WHAM postprocessing; Extracting final numbers
+# 2003 Igor Vorobyov
+# 2007 Victor Anisimov
+# 2011 Pedro Lopes
+#
+rep=`grep -i "wham free" *fpr*.txt | awk '{a+=$NF;} END {print a}'`
+dis=`grep -i "wham free" *fpa_*.txt | awk '{print -$NF}'`
+chr=`grep "TI Wind" *fpc_l*.out | awk 'BEGIN {ene=0;} {ene+=$7;} END {fe=ene/2; print -fe;}'`
+npol=`echo "$rep $dis"| awk '{print $1 + $2}'`
+total=`echo "$npol $chr"| awk '{print $1 + $2}'`
+echo "REPU ${rep}"
+echo "DISP ${dis}"
+echo "NONP ${npol}"
+echo "CHAR ${chr}"
+echo "TOTA ${total}"
+
+

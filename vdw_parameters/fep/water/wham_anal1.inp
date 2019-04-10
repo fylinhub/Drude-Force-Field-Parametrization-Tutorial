@@ -1,0 +1,30 @@
+* WHAM analysis 
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+* 
+
+!! Read this information from the command line
+!set job test
+!set mtime 80000
+set wsize 100000
+
+open write card unit 55 name @{job}_wham1.txt
+write title unit 55
+* WHAM analysis for job @job
+* #steps/window @MTIME
+*
+
+!=========================================================
+! WHAM post-processing
+!---------------------------------------------------------
+open read card unit 54 name @job.wham
+WHAM MAXWindow 50 MAXTime @MTIME WSIZe @wsize  - 
+   unit 54 tol 0.001 nstep 200 
+close unit 54
+
+write title unit 55
+* job @job
+* Wham free energy: ?WHAMFE
+*
+
+RETURN

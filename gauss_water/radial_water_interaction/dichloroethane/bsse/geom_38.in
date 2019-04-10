@@ -1,0 +1,29 @@
+# RI-MP2/cc-pVQZ//MP2/aug-cc-pvdz
+memory 1000 mb
+
+molecule geom_38 {
+0 1 
+ C       1.393433   0.374601   -0.403051
+Cl       -0.393614   0.230944   -0.261830
+Cl       2.178247   -1.146638   0.148322
+ H       1.608558   0.457137   -1.474801
+ C       1.898655   1.557134   0.400722
+ H       2.989803   1.638688   0.284564
+ H       1.421791   2.478633   0.034406
+ H       1.655513   1.419836   1.463755
+--
+0 1 
+ O       -5.660257   -0.192431   0.154366
+ H       -6.326205   0.207817   -0.404693
+ H       -6.158699   -0.686282   0.805441
+}
+
+set basis cc-pvqz
+set df_basis_scf cc-pvqz-jkfit
+set df_basis_mp2 cc-pvqz-ri
+set guess sad
+set scf_type df
+set freeze_core True
+cp('df-mp2')
+
+

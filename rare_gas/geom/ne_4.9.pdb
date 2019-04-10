@@ -1,0 +1,14 @@
+REMARK  CLET                                                                          
+REMARK   DATE:     3/26/17      0:56: 3      CREATED BY USER: fylin                   
+ATOM      1  C1  CLET    1       0.000   0.822  -0.000  1.00  0.00      CLET
+ATOM      3 CL11 CLET    1       0.825  -0.789   0.000  1.00  0.00      CLET
+ATOM      5  LP  CLET    1       1.573  -2.249   0.000  1.00  0.00      CLET
+ATOM      6  H12 CLET    1       0.357   1.348   0.896  1.00  0.00      CLET
+ATOM      7  H13 CLET    1       0.357   1.348  -0.896  1.00  0.00      CLET
+ATOM      8  C2  CLET    1      -1.512   0.654  -0.000  1.00  0.00      CLET
+ATOM     10  H21 CLET    1      -1.990   1.648   0.000  1.00  0.00      CLET
+ATOM     11  H22 CLET    1      -1.842   0.105  -0.893  1.00  0.00      CLET
+ATOM     12  H23 CLET    1      -1.842   0.105   0.893  1.00  0.00      CLET
+ATOM     13  NE  NE      2       3.059  -5.150   0.000  1.00  0.00      CLET
+TER      16      NE       2
+END

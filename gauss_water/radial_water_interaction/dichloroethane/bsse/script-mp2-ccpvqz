@@ -1,0 +1,96 @@
+#!/bin/bash
+
+##  Please read all the comments before you run this script.
+##  Before to check the generated geom*.in when you do the next step; 
+##  Make sure to change the '3,10p'; this correspond to the molecules of the lines
+
+natom=11          ## total number of atoms
+resi=8            ## number of atoms in the molecule
+water=3           ## number of atoms in water
+memory=1000
+nmpi=4
+nline=$(expr $natom + 4) 
+
+
+rm qsub
+rm *.in
+
+
+for i in {0..45}   ## these correspond to the extract geometry
+do
+filemp2=geom-$i.xyz 
+###1. title
+echo "# RI-MP2/cc-pVQZ//MP2/aug-cc-pvdz
+memory $memory mb
+
+molecule geom_$i {
+0 1 " > geom_$i.in
+
+###2. coordinate
+
+ sed -n '3,10p' ./$filemp2 | awk '{print " "$1, "   "$2, "  "$3, "  "$4}' > tmp1.in
+awk '{
+if($1==1) print " H    "  "   " $2 "   " $3  "   " $4;
+if($1==6) print " C    "  "   " $2 "   " $3  "   " $4;
+if($1==17) print "Cl    "  "   " $2 "   " $3  "   " $4;
+if($1==8) print " O    "  "   " $2 "   " $3  "   " $4;
+}' tmp1.in >> geom_$i.in
+
+echo "--
+0 1 " >> geom_$i.in 
+
+tail -n $water ./$filemp2 > tmp2.in
+awk '{
+if($1==1) print " H    "  "   " $2 "   " $3  "   " $4;
+if($1==6) print " C    "  "   " $2 "   " $3  "   " $4;
+if($1==7) print " N    "  "   " $2 "   " $3  "   " $4;
+if($1==8) print " O    "  "   " $2 "   " $3  "   " $4;
+}' tmp2.in >> geom_$i.in
+
+###3. basis
+echo "}
+
+set basis cc-pvqz
+set df_basis_scf cc-pvqz-jkfit
+set df_basis_mp2 cc-pvqz-ri
+set guess sad
+set scf_type df
+set freeze_core True
+cp('df-mp2')
+
+" >> geom_$i.in
+
+###4. qsub
+echo "#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N geom$i
+#$ -l h_data="$memory"M,h_rt=96:00:00
+#$ -pe mpirun1 "$nmpi"
+#$ -R y
+
+
+LD_LIBRARY_PATH=/opt/acml/acml5.1.0/gfortran64_mp/lib:\$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+/opt/mackerell/apps/psi/psi -i geom_$i.in -o geom_$i.out -n \$NSLOTS
+
+" > qsub_$i
+
+echo "qsub ./qsub_$i" >> qsub
+
+
+chmod +x qsub*
+#./qsub
+
+
+
+
+
+done
+
+
+
+
+

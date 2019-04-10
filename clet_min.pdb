@@ -1,0 +1,16 @@
+REMARK  FOR GEOMETRY OPTIMIZATION                                                     
+REMARK   DATE:     3/25/17     14:49:42      CREATED BY USER: fylin                   
+ATOM      1  C1  CLET    1       1.785   0.010  -0.000  1.00  0.00      CLET
+ATOM      2  DC1 CLET    1       1.786   0.009   0.000  1.00  0.00      CLET
+ATOM      3 CL11 CLET    1      -0.008   0.003  -0.000  1.00  0.00      CLET
+ATOM      4 DCL1 CLET    1       0.003   0.012   0.000  1.00  0.00      CLET
+ATOM      5  LP  CLET    1      -1.648  -0.004  -0.000  1.00  0.00      CLET
+ATOM      6  H12 CLET    1       2.094  -0.542   0.913  1.00  0.00      CLET
+ATOM      7  H13 CLET    1       2.094  -0.542  -0.913  1.00  0.00      CLET
+ATOM      8  C2  CLET    1       2.305   1.443   0.000  1.00  0.00      CLET
+ATOM      9  DC2 CLET    1       2.306   1.443  -0.000  1.00  0.00      CLET
+ATOM     10  H21 CLET    1       3.415   1.464  -0.000  1.00  0.00      CLET
+ATOM     11  H22 CLET    1       1.951   1.993  -0.898  1.00  0.00      CLET
+ATOM     12  H23 CLET    1       1.951   1.993   0.898  1.00  0.00      CLET
+TER      13      CLET     1
+END

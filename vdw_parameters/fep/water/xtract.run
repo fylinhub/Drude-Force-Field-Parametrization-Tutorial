@@ -1,0 +1,37 @@
+#!/bin/sh
+# Master script for FE data extraction
+# 2007 Victor Anisimov
+#
+
+# move computational data to job.1 directory
+if [ -e job.1 ] ; then
+  echo job.1 exist
+else
+  mkdir job.1
+  mv *.out *.txt *.prt *.wham job.1
+  rm *.o1* *.o2* *.e1* *.e2* *.qs*
+fi
+
+# perform data analysis; compute free energy
+if [ -e job.1 ] ; then
+  cp job.1/*.wham .
+  ./wham_combine.run md
+  ./wham_anal.run    md
+
+  cp job.1/*.out .
+  echo WHAM > job.1/summary.1
+  ./fep_anal2_WHAM.run >> job.1/summary.1
+  echo TI >> job.1/summary.1
+  ./fep_anal5_TI.run >> job.1/summary.1
+
+  echo '-------- FINAL RESULTS --------' >> job.1/summary.1
+  ./fep_anal_combined.run >> job.1/summary.1
+  rm *.out *.txt *.wham
+
+  pwd
+  cat job.1/summary.1
+  gzip job.1/*
+  gzip -d job.1/summary.1*
+else
+  echo error
+fi

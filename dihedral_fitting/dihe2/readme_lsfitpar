@@ -1,0 +1,39 @@
+A. Prepare the "initialize" file
+
+"CD2R6A   CD2R6A   CD2R6A   CLDR1" corresponds to c4-c5-c6-cl dihedral
+"HDR6A    CD2R6A   CD2R6A   CLDR1" corresponds to h5-c5-c6-cl dihedral
+
+B. Prepare allscan_drude_lsfitpar.inp
+
+C. do 'initialize', then run charmn:
+   ./initialize
+   charmm < allscan_drude_lsfitpar.inp > allscan_drude_lsfitpar.out 
+
+  # It will also generate ini_geom.pdb (qm)  and fin_geom.pdb (mm)
+
+D. Run lsfitpar: 
+   ./lsfitpar -i [output_name].prm [output_name].ene  
+
+  # lsfitpar will provide a interactive input, if you want to run it in background, you may prepare those input and do :
+  ./lsfitpar -i [output_name].prm [output_name].ene < chlb_lsfitpar.in
+  # It is better to do the interactive input for the first time, the interactive input will ask you for the keywords.
+  # The scan_chlb.qme is from the *.e_file
+  # cat  ../scan_h5c5c6cl/chlb_h5c5c6cl.e_file > scan_chlb.qme
+  # If you have more dihedral scanned results, you need to copy all of then in the *.qme in the same order as you assign 'peses' in allscan_drude_lsfitpar.inp 
+
+Usage:
+1. ./initialize 
+2. charmm < allscan_drude_lsfitpar.inp > allscan_drude_lsfitpar.out
+3. ./lsfitpar -i [output_name].prm [output_name].ene < chlb_lsfitpar.in 
+# [output_name].prm is the estimated parameters for dihedrals
+# [output_name].ene is the energy of qm, mm0 (withouth fitting) mme (using the estimate parameters), difference
+4../fitplot -i [output_plot_name] [output_name].ene
+# It will generate all[[output_plot_name]]*.gpt so that you can just use it to generate the plot.
+5. Verify the [output_name].prm. Copy them in your stream file and verify the dihedral PES.
+
+Example commands:
+ ./initialize 
+ charmm < allscan_drude_lsfitpar.inp > allscan_drude_lsfitpar.out 
+ ./lsfitpar -i chlb.prm chlb.ene < chlb_lsfitpar.in 
+ ./fitplot -i test chlb.ene
+

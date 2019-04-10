@@ -1,0 +1,29 @@
+# RI-MP2/cc-pVQZ//MP2/6-31G(d)
+
+memory 1000 mb
+
+molecule form_water_mp2_bsse_H1 {
+0 1
+ C                 -0.780819     -0.150525     -0.000017
+ O                 -1.391915     -1.217298      0.000006
+ H                  0.321204     -0.100432     -0.000011
+ N                 -1.370640      1.076857      0.000013
+ H                 -2.381532      1.141281     -0.000009
+ H                 -0.824176      1.926653     -0.000039
+--
+0 1
+ O                  2.712866      0.008282      0.000002
+ H                  3.298149      0.034867     -0.756946
+ H                  3.298140      0.034904      0.756955
+}
+
+set basis cc-pvqz
+set df_basis_scf cc-pvqz-jkfit
+set df_basis_mp2 cc-pvqz-ri
+set guess sad
+set scf_type df
+set freeze_core True
+cp('df-mp2')
+
+
+

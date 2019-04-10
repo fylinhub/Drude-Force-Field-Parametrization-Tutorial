@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo CD2R6A   CD2R6A   CD2R6A   CLDR1 > scan_chlb.c4c5c6cl
+echo HDR6A    CD2R6A   CD2R6A   CLDR1 > scan_chlb.h5c5c6cl
+
+echo -n > scan_chlb.mme

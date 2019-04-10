@@ -1,0 +1,64 @@
+* NMA/ALAD with SOD/water
+*
+
+bomlev 0
+set resi nma
+set resi2 pot
+
+set r1 2.6
+!set a1 165.0
+!set d1 -180.0
+set aincr 15
+set dincr 15
+
+ioformat extended
+
+set 3 16.0  ! cutim
+set 4 99.0  ! cutnb
+set 5 90.0  ! ctonnb
+set 6 92.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+! Read in Topology and  Parameter files
+set lib  ./libtop
+read rtf card name @lib/top_all36_prot.rtf
+read para card flex name @lib/par_all36_prot.prm
+
+! CGENFF
+open read card unit 10 name @lib/top_all36_cgenff.rtf
+read  rtf card unit 10 append
+open read card unit 20 name @lib/par_all36_cgenff.prm
+read para card unit 20 append flex
+
+! Read additional topology and parameter file for water and ions
+stream @lib/toppar_water_ions.str
+
+ioformat noextended
+
+! if angle equals 180 then the dihedral must be 180
+set a1 180
+set d1 180
+
+stream @resi_@resi2.str
+
+! loop over to generate different conformations 
+
+decr a1 by @aincr
+label angle_loop
+set d1 180
+label dihe_loop
+
+stream @resi_@resi2.str
+
+decr d1 by @dincr
+if d1 .gt. -180 goto dihe_loop
+
+decr a1 by @aincr
+if a1 .ge. 90 goto angle_loop
+
+stop
+
+
+

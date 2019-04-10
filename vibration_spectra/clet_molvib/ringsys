@@ -1,0 +1,303 @@
+#!/usr/bin/awk -f
+# Scope: simple conjugated planar systems consisting of 5- and 6-membered
+# rings with 0 or 1 hydrogens per ring atom.
+# Does not work if there are hydrogens attached to a bridge!
+# SECOND atom of 5-ring should be the "tip"!
+# User has to add bridge dihedral manually!
+# Sufficiently tested on sp2 systems but be sceptical if you have sp3 atoms.
+# Quick hack; code is horribly inconsequent, redundant and inperformant.
+# !!! Near critical mess; thourough cleanup required prior to extension !!!
+# Also to do: auto fill-in of quick measurements (actually quite easy)
+BEGIN{nri=-1;natyp=2;atyp[0]="C";atyp[1]="N"}
+/^RING/{mem[++nri]=$2;subs=0}
+/^[CNOS]/{cnam[nri,subs]=$1;c[nri,subs]=$2;
+  hnam[nri,subs]=$3;h[nri,subs]=$4;
+  h2nam[nri,subs]=$5;h2[nri,subs++]=$6}
+END{nri++;
+  printf("!mp2/6-31g* data\n!\n")
+# H stretching; ordered to allow averaging; check for absent Hs
+  for (j=0;j<nri;j++) {
+    max=mem[j];
+    for (k=0;k<max;k++) {
+      cn=cnam[j,k];hn=hnam[j,k];
+      if (hn!="") {
+        printf("!%-3s-%-3s \nquick%3i%3i\n",cn,hn,c[j,k],h[j,k]);
+        h2n=h2nam[j,k];
+        if (h2n!="")
+          printf("!%-3s-%-3s \nquick%3i%3i\n",cn,h2n,c[j,k],h2[j,k]) } } };
+# In-ring stretching; check for duplicates (bridges)
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      nam1=cnam[i,j];nam2=cnam[i,k];
+      flag=1;
+      for (l=0;l<ncon;l++) {
+        con1=con[1,l];con2=con[2,l];
+        if ((nam1==con1&&nam2==con2)||(nam1==con2&&nam2==con1)) {
+          flag="";break } }
+      if (flag) {
+        con[1,ncon]=nam1;con[2,ncon++]=nam2;
+        printf("!%-3s-%-3s \nquick%3i%3i\n",nam1,nam2,c[i,j],c[i,k]) } } };
+# H bending; check for absent Hs
+  printf("\n");
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      hi=h[i,k];hn=hnam[i,k];
+      ci=c[i,k];cn=cnam[i,k];
+      if (hn!="") {
+        printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+cnam[i,j],cn,hn,c[i,j],ci,hi);
+        printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+hn,cn,cnam[i,l],hi,ci,c[i,l]);
+        h2i=h2[i,k];h2n=h2nam[i,k];
+        if (h2n!="") {
+        printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+cnam[i,j],cn,h2n,c[i,j],ci,h2i);
+        printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+h2n,cn,cnam[i,l],h2i,ci,c[i,l]);
+        printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+hn,cn,h2n,hi,ci,h2i) } } } };
+# In-ring bending; SECOND atom of 5-ring should be the "tip"
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      printf("!%-3s-%-3s-%-3s \nquick%3i%3i%3i\n",
+cnam[i,j],cnam[i,k],cnam[i,l],c[i,j],c[i,k],c[i,l]) } };
+  printf("\n\nIC\n");
+  cnt=0;
+# H stretching; ordered to allow averaging; check for absent Hs
+  for (j=0;j<nri;j++) {
+    max=mem[j];
+    for (k=1;k<=max;k++) {
+      l=k % max
+      cn=cnam[j,l];hn=hnam[j,l];
+      if (hn!="") {
+        printf(" 1%3i%3i%3i%3i  ! %i ring %-3s-%-3s\n",
+c[j,l],h[j,l],0,0,++cnt,cn,hn);
+        stre[1,cnt]=cn;stre[2,cnt]=hn;
+        h2n=h2nam[j,l];
+        if (h2n=="")
+          mene[cnt]="";
+         else {
+          mene[cnt]=1;
+          printf(" 1%3i%3i%3i%3i  ! %i ring %-3s-%-3s\n",
+c[j,l],h2[j,l],0,0,++cnt,cn,h2n);
+          stre[1,cnt]=cn;stre[2,cnt]=h2n } } } };
+  nh=cnt;
+  ncon=0;
+# In-ring stretching; check for duplicates (bridges)
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      nam1=cnam[i,j];nam2=cnam[i,k];
+      flag=1;
+      for (l=0;l<ncon;l++) {
+        con1=con[1,l];con2=con[2,l];
+        if ((nam1==con1&&nam2==con2)||(nam1==con2&&nam2==con1)) {
+          flag="";break } }
+      if (flag) {
+        con[1,ncon]=nam1;con[2,ncon++]=nam2;
+        printf(" 1%3i%3i%3i%3i  ! %i ring %-3s-%-3s\n",
+c[i,j],c[i,k],0,0,++cnt,nam1,nam2);
+        stre[1,cnt]=nam1;stre[2,cnt]=nam2 } } };
+  strh=cnt;
+# H bending; check for absent Hs
+  nhr=0;nht=0;
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      hi=h[i,k];hn=hnam[i,k];
+      h2i=h2[i,k];h2n=h2nam[i,k];
+      cj=c[i,j];cnj=cnam[i,j];
+      ck=c[i,k];cnk=cnam[i,k];
+      cl=c[i,l];cnl=cnam[i,l];
+      if (h2n!="") {
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b1\n",
+cl,ck,hi,0,++cnt,cnl,cnk,hn);
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b2\n",
+cl,ck,h2i,0,++cnt,cnl,cnk,h2n);
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b3\n",
+hi,ck,cj,0,++cnt,hn,cnk,cnj);
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b4\n",
+h2i,ck,cj,0,++cnt,h2n,cnk,cnj);
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s alpha\n",
+hi,ck,h2i,0,++cnt,hn,cnk,h2n);
+        ctwist[++nht]=cnk;
+        alpha[nht]=cnt }
+       else if (hn!="") {
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b1\n",
+cj,ck,hi,0,++cnt,cnj,cnk,hn);
+        printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s b2\n",
+hi,ck,cl,0,++cnt,hn,cnk,cnl);
+        hrock[++nhr]=cnk } } };
+# In-ring bending; SECOND atom of 5-ring should be the "tip"
+  m=0;
+  for (i=0;i<nri;i++) {
+    m++;n=0;
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      cnk=cnam[i,k]; flag=1;
+      for (o=1;o<=nht;o++)
+        if (cnk==ctwist[o]) {
+          printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s r%ia%i gamma\n",
+c[i,j],c[i,k],c[i,l],0,++cnt,cnam[i,j],cnam[i,k],cnam[i,l],m,++n);
+          gamma[o]=cnt; flag="" };
+      if (flag) printf(" 2%3i%3i%3i%3i  ! %i ring %-3s-%-3s-%-3s r%ia%i\n",
+c[i,j],c[i,k],c[i,l],0,++cnt,cnam[i,j],cnam[i,k],cnam[i,l],m,++n) } };
+# Ring H impropers; check for absent Hs
+  for (i=0;i<nri;i++) {
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      if (hnam[i,k]!=""&&h2nam[i,k]=="")
+        printf(" 3%3i%3i%3i%3i  ! %i ring H improper, %-3s\n",
+h[i,k],c[i,j],c[i,l],c[i,k],++cnt,cnam[i,k]) } };
+# Ring inner dihedrals; SECOND atom of 5-ring should be the "tip"
+  m=0;
+  for (i=0;i<nri;i++) {
+    m++;n=0;
+    max=mem[i];
+    for (j=0;j<max;j++) {
+      k = (j+1) % max;
+      l = (k+1) % max;
+      o = (l+1) % max;
+      printf(" 4%3i%3i%3i%3i  ! %i ring inner dihedral r%it%i\n",
+c[i,j],c[i,k],c[i,l],c[i,o],++cnt,m,++n) } };
+  printf("UMAT     0    1    0           ! row normalization");
+# Stretches
+# Fixme: formatting.
+  flag=1;
+  for (i=1;i<=strh;i++) {
+    if (mene[i]) {
+      ip=i+1;
+      printf("\n%3i%3i  1.        %3i%3i  1.        %3i%3i  1.        %3i%3i -1.\n",i,i,i,ip,ip,i,ip,++i);
+      flag="" }
+     else {
+      if ((i % 4)==1&&flag) printf("\n");
+      flag=1;
+      printf("%3i%3i  1.        ",i,i)} };
+  printf("\n");
+# H rocking
+  icc=strh;
+  vcc=strh;
+  nme=0;
+  for (i=1;i<=nh;i++)
+    if (mene[i]) {
+      printf("%3i%3i  5.        %3i%3i  1.\n",++vcc,alpha[++nme],vcc,gamma[nme]);
+      printf("%3i%3i  1.        %3i%3i -1.        %3i%3i  1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+      icc-=4;
+      printf("%3i%3i  1.        %3i%3i  1.        %3i%3i -1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+      icc-=4;
+      printf("%3i%3i  1.        %3i%3i -1.        %3i%3i -1.        %3i%3i  1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+      icc++; i++ }
+     else
+      printf("%3i%3i  1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc);
+# ring deformations
+  for (j=0;j<nri;j++) {
+    k=mem[j];
+    if (k==5) {
+      printf ("%3i%3i  1.        %3i%3i -0.81      %3i%3i  0.31      %3i%3i  0.31\n%3i%3i -0.81\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+      icc-=4;
+      printf ("%3i%3i -1.12      %3i%3i  1.81      %3i%3i -1.81      %3i%3i  1.12\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc) }
+     else
+      if (k==6) {
+        printf("%3i%3i  1.        %3i%3i -1.        %3i%3i  1.        %3i%3i -1.\n%3i%3i  1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+        icc-=6;
+        printf("%3i%3i  2.        %3i%3i -1.        %3i%3i -1.        %3i%3i  2.\n%3i%3i -1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+        icc-=5;
+        printf("%3i%3i  1.        %3i%3i -1.        ",++vcc,++icc,vcc,++icc);
+        icc++;
+        printf("%3i%3i  1.        %3i%3i -1.\n",vcc,++icc,vcc,++icc) }
+       else {
+        printf("Fatal: %i-membered rings not supported!\n",k);
+        exit 1 } };
+# H impropers
+  hihi=nh-2*nht;
+  for (i=1;i<=hihi;i++) {
+    printf("%3i%3i  1.        ",++vcc,++icc)
+     if ((i % 4)==0) printf("\n")};
+  if ((i % 4)!=1) printf("\n");
+# ring puckering & torsions
+  for (j=0;j<nri;j++) {
+    k=mem[j];
+    if (k==5) {
+      printf ("%3i%3i  0.31      %3i%3i -0.81      %3i%3i  1.        %3i%3i -0.81\n%3i%3i  0.31\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+      icc-=5;
+      printf ("%3i%3i -1.81      %3i%3i  1.12      ",++vcc,++icc,vcc,++icc);
+      icc++;
+      printf ("%3i%3i -1.12      %3i%3i  1.81\n",vcc,++icc,vcc,++icc) }
+     else
+      if (k==6) {
+        printf("%3i%3i  1.        %3i%3i -1.        %3i%3i  1.        %3i%3i -1.\n%3i%3i  1.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc);
+        icc-=6;
+        printf("%3i%3i  1.        ",++vcc,++icc);
+        icc++;
+        printf("%3i%3i -1.        %3i%3i  1.        ",vcc,++icc,vcc,++icc);
+        icc++;
+        printf("%3i%3i -1.\n",vcc,++icc);
+        icc-=6;
+        printf("%3i%3i -1.        %3i%3i  2.        %3i%3i -1.        %3i%3i -1.\n%3i%3i  2.        %3i%3i -1.\n",++vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc,vcc,++icc)} };
+  printf("-1\nPED      0   15");
+# Stretches
+# Fixme: formatting.
+  flag=1;
+  for (i=1;i<=strh;i++) {
+    if (mene[i]) {
+      printf("\n%3i  %-8s  %3i  %-8s\n",i,"ss" stre[1,i] "H2",++i,"sa" stre[1,i] "H2");
+      flag="" }
+     else {
+      if ((i % 4)==1&&flag) printf("\n");
+      flag=1;
+      printf("%3i  %-8s  ",i,"s" stre[1,i] "-" stre[2,i]) } };
+# H rocking
+# Fixme: formatting.
+  vcc=strh;
+  ntw=0;
+  nro=0;
+  flag=1;
+  for (i=1;i<=nh;i++) {
+    if (mene[i]) {
+      ccc=ctwist[++ntw];
+      printf("\n%3i  %-8s  %3i  %-8s  %3i  %-8s  %3i  %-8s\n",++vcc,"c" ccc "H2",++vcc,"r" ccc "H2",++vcc,"w" ccc "H2",++vcc,"i" ccc "H2");
+      i++;
+      flag="" }
+     else {
+      if ((i % 4)==1) printf("\n");
+      flag=1;
+      printf("%3i  %-8s  ",++vcc,"d" hrock[++nro] "H") } };
+# ring deformations
+  n=0;
+  for (j=0;j<nri;j++) {
+    k=mem[j];
+    if (k==5)
+      printf ("\n%3i  %-8s  %3i  %-8s",++vcc,"d5RNG" ++n,++vcc,"d5RNG" n "a")
+     else
+      if (k==6)
+        printf ("\n%3i  %-8s  %3i  %-8s  %3i  %-8s",++vcc,"dt6RNG" ++n,++vcc,"da6RNG" n,++vcc,"da6RNG" n "a") };
+# H impropers
+  for (i=1;i<=hihi;i++) {
+    if ((i % 4)==1) printf("\n");
+    printf("%3i  %-8s  ",++vcc,"w" hrock[i] "H") };
+  printf("\n");
+# ring puckering & torsions
+  n=0;
+  for (j=0;j<nri;j++) { 
+    k=mem[j];
+    if (k==5)
+      printf ("%3i  %-8s  %3i  %-8s\n",++vcc,"t5RNG" ++n,++vcc,"t5RNG" n "a")
+     else
+      if (k==6)
+        printf ("%3i  %-8s  %3i  %-8s  %3i  %-8s\n",++vcc,"tp6RNG" ++n,++vcc,"ta6RNG" n,++vcc,"ta6RNG" n "a") };
+  printf("-1\nEND\n")}

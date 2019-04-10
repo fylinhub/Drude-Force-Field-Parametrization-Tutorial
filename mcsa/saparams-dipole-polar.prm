@@ -1,0 +1,20 @@
+20 9 11
+-0.022 0.080 -0.110 0.110 -0.110 0.110 0.039 -0.195 0.040 -2.945  0.660  -1.615 1.195 -1.615  1.195 -1.890 0.660 -1.640  0.660 1.64   
+-0.025 0.075 -0.110 0.110 -0.110 0.110 0.032 -0.204 0.040 -2.985  0.630  -1.645 1.145 -1.635  1.135 -1.890 0.660 -1.640  0.660 1.64   
+-0.020 0.085 -0.110 0.110 -0.110 0.110 0.042 -0.184 0.040 -2.915  0.690  -1.505 1.205 -1.505  1.205 -1.890 0.660 -1.640  0.660 1.64   
+0.01   0.01   0.01   0.01    0.01   0.01   0.01   0.01  0.01   0.01   0.01    0.01  0.01   0.01   0.50   0.50  0.50   0.50   0.50  0.01
+500
+0.125 0.125 0.125 0.125 0.125 0.125 0.125 0.125
+1 9
+1 2 2 2 3 2 4 2 5 1 6 1 7 1 8 1 9 1 
+
+
+cc line 1:  '20' is the total variable; '9' corresponds to the charge variables; '11' corresponds to alpha and tole variables;
+cc line 2:  intial parameters for charges (the order corresponds to "stream.txt") 
+cc line 3: lower bound
+cc line 4: upper bound
+cc line 5: step size for mcsa code; may not be changed
+cc line 6: starting temperature for sa
+cc line 7: weighting corresponding to each taget values (dipoleqm.dat) ; currently, there are 8 values
+cc line 8: '1' is group, '9' is the number of charge variables in the group; 
+cc line 9: '1 2' means the 1st variables have 2 equivalents, meaning two atoms will have the same charges; '2 2' means the 2nd variables have 2 equivalents;  '3 2' means the 3rd variables have 2 equivalents; '4 2' means the 4th variables have 2 equivalents; '5 1' means the 5th variables have 1 equivalent, no other atom will have the same charge..and so on. Note that, the order mentioned here is based on the order in "stream.txt"

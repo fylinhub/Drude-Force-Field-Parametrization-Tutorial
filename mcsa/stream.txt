@@ -1,0 +1,31 @@
+      open (11, file=name)
+      rewind (11)
+      write(11,'(a)')'* parameters for charges, alpha, Thole and so on'
+      write(11,'(a)')'* '
+
+      write(11,'(a16,f9.3)')'set   qc1      ', x(1)
+      write(11,'(a16,f9.3)')'set   qh1      ', x(2)
+      write(11,'(a16,f9.3)')'set   qc2        ', x(3)
+      write(11,'(a16,f9.3)')'set   qh2        ', x(4)
+      write(11,'(a16,f9.3)')'set   qc3       ', x(5)
+      write(11,'(a16,f9.3)')'set   qh3      ', x(6)
+      write(11,'(a16,f9.3)')'set   qc6      ', x(7)
+      write(11,'(a16,f9.3)')'set   qcl6     ', x(8)
+      write(11,'(a16,f9.3)')'set   qlp6     ', x(9)
+      write(11,'(a16,f9.3)')'set   ac1      ', x(10)
+      write(11,'(a16,f9.3)')'set   tc1      ', x(11)
+      write(11,'(a16,f9.3)')'set   ac2      ', x(12)
+      write(11,'(a16,f9.3)')'set   tc2      ', x(13)
+      write(11,'(a16,f9.3)')'set   ac3      ', x(14)
+      write(11,'(a16,f9.3)')'set   tc3      ', x(15)
+      write(11,'(a16,f9.3)')'set   ac6      ', x(16)
+      write(11,'(a16,f9.3)')'set   tc6      ', x(17)
+      write(11,'(a16,f9.3)')'set   acl6     ', x(18)
+      write(11,'(a16,f9.3)')'set   tcl6     ', x(19)
+      write(11,'(a16,f9.3)')'set   dlp6     ', x(20)
+
+
+      close (11)
+
+
+

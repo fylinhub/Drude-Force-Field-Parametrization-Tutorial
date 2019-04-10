@@ -1,0 +1,30 @@
+# RI-MP2/cc-pVQZ//MP2/aug-cc-pvdz
+
+memory 1000 mb
+
+molecule clet_water_mp2_H13 {
+0 1 
+ C       -0.349041   0.443894   0.494782
+Cl       -1.251243   -1.015656   -0.082733
+ H       -0.532727   0.508024   1.575492
+ H       0.714339   0.234750   0.317950
+ C       -0.815414   1.691865   -0.238900
+ H       -0.252238   2.565129   0.129816
+ H       -0.644082   1.594140   -1.320737
+ H       -1.887413   1.866596   -0.066962
+--
+0 1 
+ O       2.972525   -0.209387   -0.057570
+ H       3.722850   0.100887   0.449356
+ H       3.356932   -0.742839   -0.753194
+}
+
+set basis cc-pvqz
+set df_basis_scf cc-pvqz-jkfit
+set df_basis_mp2 cc-pvqz-ri
+set guess sad
+set scf_type df
+set freeze_core True
+cp('df-mp2')
+
+

@@ -1,0 +1,36 @@
+%CHK=CHLB_OPT_FREQ_MP2
+%MEM=1200MB
+%NPROCSHARED=2
+#MP2/aug-cc-pVDZ opt=(tight,maxcycle=200) pop=(mk,dipole) density=current
+
+CHLB OPTIMIZED AT MP2/aug-cc-pVDZ
+
+0 1
+ C    -0.00615    -0.01051     0.00000
+ H    -0.54230    -0.93784     0.00000
+ C     1.38171    -0.01093     0.00000
+ H     1.91745    -0.93923     0.00000
+ C     2.07276     1.19084     0.00000
+ H     3.14620     1.19085     0.00000
+ C     1.38146     2.39255     0.00000
+ H     1.91726     3.32038     0.00000
+ C    -0.00631     2.39231     0.00000
+ H    -0.54218     3.31925     0.00000
+ C    -0.69905     1.19089     0.00000
+ Cl   -2.42917     1.19084    -0.00000
+
+
+
+--LINK1--
+%CHK=CHLB_OPT_FREQ_MP2
+%MEM=1200MB
+%NPROCSHARED=2
+#MP2/aug-cc-pVDZ NOSYMM SCF=TIGHT GEOM=ALLCHECK FREQ IOP(7/33=1)
+
+CHLB FREQUENCY
+
+0 1
+
+
+
+

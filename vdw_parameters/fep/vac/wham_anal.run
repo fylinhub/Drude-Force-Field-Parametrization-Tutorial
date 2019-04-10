@@ -1,0 +1,22 @@
+#!/bin/sh
+# Script to invoke WHAM postprocessing
+# 2003 Igor Vorobyov
+# 2007 Victor Anisimov
+#
+
+chexec=/home/lopes/bin/c38a1_serial_static.x                       
+
+mtime=100000
+rinit=0.0
+eps1=1.0
+eps2=1.0
+
+for rfin in 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+do
+$chexec job:md_fpr_f${rinit}t${rfin} mtime:$mtime < wham_anal1.inp  > fpr_f${rinit}t${rfin}_wham1.out
+rinit=$rfin
+done
+
+$chexec job:md_fpa mtime:$mtime < wham_anal1.inp  > fpa_wham1.out
+
+$chexec job:md_fpc mtime:$mtime < wham_anal1.inp  > fpc_wham1.out

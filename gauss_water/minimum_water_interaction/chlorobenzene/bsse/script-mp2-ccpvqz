@@ -1,0 +1,99 @@
+#!/bin/bash
+
+
+natom=15
+resi=12
+water=3
+memory=1000
+nmpi=4
+nline=$(expr $natom + 4) 
+
+
+
+
+rm qsub
+rm *.in
+
+###the filename
+array=( chlb_water_mp2_H2 )
+path=./
+
+for i in "${array[@]}"
+do
+filemp2=$i.log 
+###1. title
+echo "# RI-MP2/cc-pVQZ//MP2/aug-ccpvdz
+
+memory $memory mb
+
+molecule $i {
+0 1 " > $i.in
+
+###2. coordinate
+grep -A $nline "Standard orientation:" ../$filemp2 | tail -n $natom | awk '{print " "$2, "   "$4, "  "$5, "  "$6}' > tmp0.in
+head -n $resi tmp0.in > tmp.in
+awk '{
+if($1==1) print " H    "  "   " $2 "   " $3  "   " $4;
+if($1==6) print " C    "  "   " $2 "   " $3  "   " $4;
+if($1==17) print "Cl    "  "   " $2 "   " $3  "   " $4;
+if($1==8) print " O    "  "   " $2 "   " $3  "   " $4;
+}' tmp.in >> $i.in
+
+echo "--
+0 1 " >> $i.in 
+
+tail -n $water tmp0.in > tmp.in
+awk '{
+if($1==1) print " H    "  "   " $2 "   " $3  "   " $4;
+if($1==6) print " C    "  "   " $2 "   " $3  "   " $4;
+if($1==7) print " N    "  "   " $2 "   " $3  "   " $4;
+if($1==8) print " O    "  "   " $2 "   " $3  "   " $4;
+}' tmp.in >> $i.in
+
+###3. basis
+echo "}
+
+set basis cc-pvqz
+set df_basis_scf cc-pvqz-jkfit
+set df_basis_mp2 cc-pvqz-ri
+set guess sad
+set scf_type df
+set freeze_core True
+cp('df-mp2')
+
+" >> $i.in
+
+###4. qsub
+echo "#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N $i
+#$ -l h_data="$memory"M,h_rt=96:00:00
+#$ -pe mpirun1 "$nmpi"
+#$ -R y
+
+
+LD_LIBRARY_PATH=/opt/acml/acml5.1.0/gfortran64_mp/lib:\$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+/opt/mackerell/apps/psi/psi -i $i.in -o $i.out -n \$NSLOTS
+
+" > qsub_$i
+
+echo "qsub ./qsub_$i" >> qsub
+
+
+chmod +x qsub*
+#./qsub
+
+
+
+rm tmp0.in tmp.in
+
+done
+
+
+
+
+

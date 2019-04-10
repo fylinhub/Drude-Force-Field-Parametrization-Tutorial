@@ -1,0 +1,6 @@
+REMARK  WATER INTERACTIONS                                                            
+REMARK   DATE:     3/26/17      0:56: 2      CREATED BY USER: fylin                   
+ATOM      1  NE  NE      1    9999.0009999.0009999.000  1.00  0.00      NE  
+ATOM      2  DNE NE      1    9999.0009999.0009999.000  1.00  0.00      NE  
+TER       3      NE       1
+END

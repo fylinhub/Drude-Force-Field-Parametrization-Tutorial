@@ -1,0 +1,126 @@
+* Free energy perturbation calculations
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+*
+
+!=========================================================
+! SHAKE and LONEPAIR
+!---------------------------------------------------------
+coor copy comp
+coor stat
+
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select ( .not. type D* ) end -
+      select ( .not. type D* ) end
+
+coor shake
+
+faster off
+
+!=========================================================
+! Water boundary constraints
+!---------------------------------------------------------
+! Impose a harmonic restraint on the solute at the origin
+
+! constrain movement of the solute residue relative to the center of mass
+cons hmcm force 0.5 weig refx 0.0 refy 0.0 refz 0.0 select (segid @segid1) end
+
+if nwater gt 0 then
+  !! Setup the cubic crystal with the size boxsize
+  crystal define cubic @boxsize @boxsize @boxsize 90.00 90.00 90.00
+  crystal build Noper 0 cutoff @3
+  !! Center image atoms of water molecules to zero if they move away
+  image byres xcen 0.0 ycen 0.0 zcen 0.0 sele segid @segid1  end
+  !! Center image atoms of water molecules to zero if they move away
+  image byres xcen 0.0 ycen 0.0 zcen 0.0 sele segid @segid2  end
+
+  ENERGY vdw vatom vswitch cutim @3 ihbfrq 0 inbfrq 10 imgfrq -1   -
+         EWALD PMEWald spline KAPPa @kap ORDEr @ord -
+         FFTX 32 FFTY 32 FFTZ 32 switch atom cdiel -
+         CTOFNB @6 CTONNB @5 CUTNB @4 
+!         LRC
+else
+  UPDATE ihbfrq    0  -
+       inbfrq   -1  ctonnb @5  ctofnb @6  cutnb @4  wmin 1.2  -
+       elec         switch        atom    cdie      eps  1.0  -
+       vdw          vswitch       vatom
+
+  ENERGY vdw vatom vswitch atom switch cdiel   -
+       ctonnb @5  ctofnb @6  cutnb @4
+endif
+
+coor print 
+
+open write card unit 54 name @{system}.wham
+write title unit 54
+** This is a file for WHAM post-processing
+** job: @job
+**     LAMBDA   (E_1-E_0)
+**
+*
+
+open write card unit 55 name @{job}_sum.txt
+write title unit 55
+* Free energy perturbation simulation
+* Job: @job
+*
+
+!=========================================================
+! FES dynamics
+!---------------------------------------------------------
+
+!open write unformatted unit 32 name @{system}.trj
+!open write card unit 51 name @{system}.rst
+open read card unit 52 name @{system}.prt
+
+if nwater gt 0 then
+  bomlev -4
+  !    tolscf 1.0e-5 maxscf 500 
+  if Drude eq true then
+    TPCONTROL NTHER 2  CMDAMP 10.0    -
+      THER 1 TAU  0.1   TREF @temp   SELECT .NOT. TYPE D* END -  
+      THER 2 TAU  0.005 TREF @tdrude SELECT TYPE D* END - 
+      BARO   BTAU 0.1   PREF   1.00
+  else
+    TPCONTROL NTHER 1  CMDAMP 10.0    -
+      THER 1 TAU  0.1   TREF @temp   SELECT .NOT. TYPE D* END -  
+      BARO   BTAU 0.1   PREF   1.00
+  endif
+  bomlev -1
+
+  DYNAMICS  vv2       start    nstep @nstep  timestp @timestep  -
+          ntrfrq @nstep  iprfrq  -1  -
+          nprint    1000 iseed @useed -
+          iasvel       1  firstt   @temp    finalt    @temp    -
+          inbfrq      -1  imgfrq   -1     ihbfrq        0  ilbfrq        0  -
+          iunread     -1  -
+          iunwrite    -1  -
+          iuncrd      -1  nsavcrd     100   -
+!          iunwrite    51  -
+!          iuncrd      32  nsavcrd     100   -
+          punit 52 wham 54
+else
+  scalar fbeta set 5.0 select .not.( type H* .or. type D*) end
+  DYNAMICS  start    nstep @nstep  timestp @timestep  -
+          ntrfrq @nstep  iprfrq  -1  -
+          nprint    1000  iseed @useed -
+          iasvel       1  firstt   @temp    finalt    @temp  tstruc  @temp  -
+          langevin        tbath    @temp  rbuf        0.0  -
+          inbfrq      -1  imgfrq   -1     ihbfrq        0  ilbfrq        0  -
+          iunread     -1  -
+!          iunwrite    51  -
+!          iuncrd      32  nsavcrd     100   -
+          punit 52 wham 54
+endif
+
+!close unit 51
+close unit 52
+!close unit 32
+
+write title unit 55
+* Perturbation window 
+* LSTART @LSTART LAMBDA @LAMBDA LSTOP @LSTOP PSTART @PSTART PSTOP @PSTOP PWIND
+*
+
+return

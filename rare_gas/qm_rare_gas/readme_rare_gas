@@ -1,0 +1,4 @@
+Need to change the energies of your molecule in *.pl
+Usage:  ./cal_inter.pl <optimized>.log <ne or he>
+Example:
+./cal_inter.pl clet_ne_mp2_scan_inplane.log ne

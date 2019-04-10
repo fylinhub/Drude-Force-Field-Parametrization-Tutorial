@@ -1,0 +1,105 @@
+* average energies of monomers
+* streams files named by input parameters "vars" and "consts"
+*
+
+dimension maxres 2000000 maxaim 12000000 maxgrp 20000000
+
+! stream in necessary parameter files
+stream ../param_cons.str
+stream ../para.str
+stream ../toppar_drude_master_protein_2013c_halogen_withmass_alex_variable_lp.str
+stream ../toppar_drude_halogen_v3_withmass_alex_chlb_template2.str
+
+set resi chlb
+set temp 298
+
+set seed @i23456@i
+! --------------------------------------------------------
+label loop
+
+read sequence @resi 216
+generate @resi FIRST NONE LAST NONE SETUP WARN DRUDE DMASS 0.4 
+
+! bulk structures
+OPEN UNIT 1 CARD READ NAME ../results/chlb.298.0.crd 
+READ coor card UNIT 1
+close unit 1
+
+coor sdrude
+coor shake
+print coor
+
+!delete all but ith residue
+delete atom sele .not. resi @i end
+
+bomlev -2
+
+! Nonbonded Options
+! -------------------------------------------------
+set cutim  99.0  ! cutim
+set cutnb  99.0  ! cutnb
+set ctonnb 96.0  ! ctonnb
+set ctofnb 98.0  ! ctofnb
+set eatom atom
+set etrun switch
+set vatom vatom
+set vtrun vswitch
+
+ener
+update inbfrq -1 imgfrq -1 ihbfrq 0 -
+@eatom @etrun @vatom @vtrun cutnb @cutnb ctonnb @ctonnb ctofnb @ctofnb -
+cutim @cutim
+
+!  turn on faster options and set-up SHAKE
+! SHAKE!!!
+! -------------------------------------------------
+coor copy comp
+SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select ( .not. (type D*)) end -
+      select ( .not. (type D*)) end noreset
+
+! Minimization for input 
+! -------------------------------------------------
+cons harm force 10000000.0 sele .not. type D* end
+mini SD nstep 200 tolgrd 0.00001
+cons harm force 0.0 sele .not. type D* end
+
+mini SD nstep 200 tolgrd 0.0001
+mini ABNR nstep 200 tolgrd 0.00001
+
+DrudeHardWall L_WALL 0.2
+
+! TPcontrol
+! -------------------------------------------------
+
+TPCONTROL NTHER 2  NHGAM 5.0 NHGAMD 10.0 -
+  THER 1 TREF @temp LANG SELE .NOT. TYPE D* END -
+  THER 2 TREF 1.0 LANG SELE TYPE D* END
+
+
+OPEN UNIT 92 WRITe UNFORMatted NAME monodata/@resi.monomer.@i.dcd
+
+DYNAMICS  vv2      start    nstep    200000  timestp 0.001  -
+          ntrfrq    1000   iprfrq   -1  -
+          nprint    1000     iseed    @seed -
+          iasvel       1     firstt   @temp   finalt    @temp    -
+          inbfrq      -1     imgfrq   -1      ihbfrq    0       ilbfrq     0  -
+          iunread     -1  -
+          iunwrite    -1  -
+          iuncrd      92     nsavcrd   1000
+
+
+open unit 1 write card name monodata/@resi.monomer.@i.crd
+write coor card unit 1
+* crd for monomer @i
+*
+
+shake off  ! otherwise will generate a lot of constraints
+delete atom select all end
+
+incr i by 1
+if @i .le. @imax goto loop
+! --------------------------------------------------------
+
+stop

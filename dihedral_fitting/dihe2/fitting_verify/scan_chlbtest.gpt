@@ -1,0 +1,6 @@
+#!/usr/bin/gnuplot
+plot "scan_chlb.qne" using 1 with lines t "qm" lw 2, "scan_chlbtest.mne" using 1 with lines t "mm" lw 2
+set term png
+set output "test.png"
+replot
+pause mouse

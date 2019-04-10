@@ -1,0 +1,74 @@
+* Electrostatic term
+* WCA free energy perturbation simulation
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+*
+
+bomlev -1
+ 
+!! Setting up all initial parameters
+stream parset.str
+
+!! Setting up file names 
+set    job = md_fpc
+set system = md_fpc_l@{Lambda}
+
+random uniform iseed @useed
+
+!=========================================================
+! Write perturbation files (punit)
+!---------------------------------------------------------
+! generate perturbation files .prt
+
+set eqstep @EqStepC
+set prodstep @ProdStepC
+calc nstep = @eqstep + @prodstep
+
+set  Pstart @EqStepC
+calc Pstop = @Pstart + @ProdStepC
+
+!format (f5.3)
+!set  Lstart   @Lambda
+!calc Lstop  = @Lambda + @DLamC
+!calc Lambda = (@Lstart + @Lstop) / 2
+!format
+
+calc  Lstart = @Lambda - @DLamC
+if Lstart lt 0.00 set Lstart 0.00
+calc  Lstop = @Lambda + @DLamC
+if Lstop gt 1.00 set Lstop 1.00
+
+open write card unit 53 name @system.prt
+write title unit 53
+** Forward Perturbation file (punit) for windowing @system,
+* LSTART @Lstart LAMBDA @Lambda  LSTOP @Lstop PSTART @Pstart PSTOP @Pstop  PWIND
+*
+
+close unit 53
+
+! Generate the structure and set constraint on the Solute
+stream sysgen.str
+
+!=========================================================
+! FES dynamics
+!---------------------------------------------------------
+
+title
+* @system
+*  Non-interacting -> Discharging  Free Energy
+*
+
+!scalar fbeta set 5.0 select .not.( type H* .or. type D*) end
+
+scalar wcad show select ALL end
+scalar wcad set 1.0 select ALL end
+
+PERT  select segid SOLU end
+
+scalar charge set 0.0 select segid SOLU end
+scalar charge show select segid SOLU end
+
+stream dynamics.str
+
+stop
+

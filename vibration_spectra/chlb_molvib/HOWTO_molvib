@@ -1,0 +1,8 @@
+1.
+./mp2geom chlb_opt_freq_mp2.log 
+
+2.  
+./molvib_mm.py chlb toppar_template_chlb.str  "sp2 C:C6 H1:CL6 X:C5 Y:C1" 
+
+3.
+./molvib_qm.py chlb 

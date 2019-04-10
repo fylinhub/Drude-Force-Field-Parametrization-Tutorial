@@ -1,0 +1,88 @@
+#!/bin/sh
+# Main Free Energy execution script
+# 2003 Igor Vorobyov
+# 2007 Victor Anisimov
+#
+date
+chexec=/opt/mackerell/apps/charmm/serial/c38b2-serial
+
+molecule=`grep ^set parset.str | awk '{if($2 == "molecule") print $3}'`
+nwater=`grep ^set parset.str | awk '{if($2 == "nwater") print $3}'`
+nwater=250
+phase=wbox
+#if [ ${nwater} == 0 ] ; then
+#  phase=gas
+#else
+#  phase=wbox
+#fi
+
+rinit=0.0
+eps0=1.0
+eps2=1.0
+lstepc=0.1
+lstepa=0.1
+lstepr=1.0
+
+#seed=$RANDOM
+seed=98437  
+
+# Dischaging term
+
+lambda=0.00
+cflag=1
+while [ $cflag -eq 1 ]
+do
+# RUN=${molecule}_${phase}_fpc_l${lambda}.qsub
+ RUN=${phase}_fpc_l${lambda}.qsub
+ echo "#$ -S /bin/sh" > ${RUN}
+ echo "#$ -cwd" > ${RUN}
+ echo "#$ -V" > ${RUN}
+ echo "#$ -l h_data=500M,h_rt=480:00:00" > ${RUN}
+ echo "$chexec lambda:$lambda useed:$seed DLamC:$lstepc < wca_pbc_drude_fpc.inp > fpc_l${lambda}.out" >> ${RUN}
+ qsub -cwd ${RUN}
+ lambda=`echo "${lambda} + ${lstepc}" | bc -l | awk '{printf "%4.2f", $0}'`
+ cflag=`echo $lambda | awk '($0 > 1 ){print "0";} ($0 <= 1) {print "1"}'`
+done
+
+# Repulsive term
+
+for rfin in 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+do
+lambda=0.0
+cflag=1
+while [ $cflag -eq 1 ]
+do
+# RUN=${molecule}_${phase}_fpr_f${rinit}t${rfin}_l${lambda}.qsub
+ RUN=${phase}_fpr_f${rinit}t${rfin}_l${lambda}.qsub
+ echo "#$ -S /bin/sh" > ${RUN}
+ echo "#$ -cwd" > ${RUN}
+ echo "#$ -V" > ${RUN}
+ echo "#$ -l h_data=500M,h_rt=480:00:00" > ${RUN}
+ echo "$chexec scr1:$rinit scr2:$rfin eps1:$eps1 eps2:$eps2 lambda:$lambda useed:$seed < wca_pbc_drude_fpr.inp >  fpr_f${rinit}t${rfin}_l${lambda}.out" >> ${RUN} 
+ qsub -cwd ${RUN}
+ lambda=`echo "${lambda} + ${lstepr}" | bc -l`
+ cflag=`echo $lambda | awk '($0 > 1 ){print "0";} ($0 <= 1) {print "1"}'`
+done
+rinit=$rfin
+done
+
+# Attractive (dispersive) term
+
+lambda=0.0
+cflag=1
+while [ $cflag -eq 1 ]
+do
+# RUN=${molecule}_${phase}_fpa_l${lambda}.qsub
+ RUN=${phase}_fpa_l${lambda}.qsub
+ echo "#$ -S /bin/sh" > ${RUN}
+ echo "#$ -cwd" > ${RUN}
+ echo "#$ -V" > ${RUN}
+ echo "#$ -l h_data=500M,h_rt=480:00:00" > ${RUN}
+ echo "$chexec lambda:$lambda useed:$seed < wca_pbc_drude_fpa.inp >  fpa_l${lambda}.out" >> ${RUN}
+ qsub -cwd ${RUN}
+ lambda=`echo "${lambda} + ${lstepa}" | bc -l | awk '{printf "%2.1f", $0}'`
+ cflag=`echo $lambda | awk '($0 > 1 ){print "0";} ($0 <= 1) {print "1"}'`
+done
+
+
+exit

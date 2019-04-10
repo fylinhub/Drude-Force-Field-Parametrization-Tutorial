@@ -1,0 +1,120 @@
+* toppar stream file for tutorial
+*
+
+ioformat extended
+
+read rtf card append
+* Topology for drude model compounds
+*
+40
+
+AUTOGENERATE ANGLES DIHEDRALS DRUDE
+
+RESI CLET          0.000 !  temporary  chloroethane
+!
+! CL11 H12 H13
+!     \ | /
+!      C1
+!       |
+!      C2
+!     / | \
+!  H21 H22 H23
+!
+GROUP 
+ATOM C1   CD32A  0.120 ALPHA -2.110  THOLE  0.800           
+ATOM CL11 CLDA1 -0.260 ALPHA -2.100  THOLE  1.450
+ATOM LP   LPD    0.020                                     
+ATOM H12  HDA2A  0.047                                     
+ATOM H13  HDA2A  0.047                                     
+ATOM C2   CD33A -0.151 ALPHA -2.110  THOLE  0.600          
+ATOM H21  HDA3A  0.059                                     
+ATOM H22  HDA3A  0.059                                     
+ATOM H23  HDA3A  0.059                                     
+BOND C1 CL11  C1 H12 C1 H13
+BOND C1 C2
+BOND C2 H21  C2 H22   C2 H23 LP CL11
+LONEPAIR COLINEAR LP CL11 C1  DIST 1.64 SCALE 0.0 ! Lone pair location
+IC CL11   C1      C2      H21        0.0000    0.00  180.00    0.00   0.0000
+IC C2     CL11    *C1     H12        0.0000    0.00  120.00    0.00   0.0000
+IC C2     CL11    *C1     H13        0.0000    0.00 -120.00    0.00   0.0000
+IC H21    C1      *C2     H22        0.0000    0.00  120.00    0.00   0.0000
+IC H21    C1      *C2     H23        0.0000    0.00 -120.00    0.00   0.0000
+PATC FIRS NONE LAST NONE
+
+RESI CHLB          0.000 ! temporary chlorobenzene
+!RING planar 6 C1 C2 C3 C4 C5 C6
+! 
+!            H2   H1 
+!             |    | 
+!            C2---C1     
+!            /      \    
+!       H3--C3      C6--CL6--LP6
+!            \      / 
+!            C4---C5
+!             |    | 
+!            H4   H5
+! 
+GROUP 
+ATOM C1   CD2R6A   @qc1   ALPHA @ac1    THOLE @tc1 
+ATOM H1   HDR6A    @qh1                            
+ATOM C2   CD2R6A   @qc2   ALPHA @ac2    THOLE @tc2 
+ATOM H2   HDR6A    @qh2                            
+ATOM C3   CD2R6A   @qc3   ALPHA @ac3    THOLE @tc3 
+ATOM H3   HDR6A    @qh3                            
+ATOM C4   CD2R6A   @qc2   ALPHA @ac2    THOLE @tc2 
+ATOM H4   HDR6A    @qh2                            
+ATOM C5   CD2R6A   @qc1   ALPHA @ac1    THOLE @tc1 
+ATOM H5   HDR6A    @qh1                            
+ATOM C6   CD2R6A   @qc6   ALPHA @ac6    THOLE @tc6 
+ATOM CL6  CLDR1    @qcl6  ALPHA @acl6   THOLE @tcl6
+ATOM LP6  LPD      @qlp6 
+BOND C1   C2   C2   C3   C3   C4   C4   C5   C5   C6   C6   C1
+BOND C1   H1   C2   H2   C3   H3   C4   H4   C5   H5   
+BOND C6   CL6  CL6  LP6
+LONEPAIR COLINEAR LP6 CL6 C6 DIST @dlp6 SCALE 0.0 ! Lone pair location
+IC C1   C2   C3    C4   0.0000   0.00      0.00     0.00    0.0000 
+IC C2   C3   C4    C5   0.0000   0.00      0.00     0.00    0.0000 
+IC C3   C4   C5    C6   0.0000   0.00      0.00     0.00    0.0000 
+IC C2   C6   *C1   H1   0.0000   0.00    180.00     0.00    0.0000 
+IC C1   C3   *C2   H2   0.0000   0.00    180.00     0.00    0.0000 
+IC C2   C4   *C3   H3   0.0000   0.00    180.00     0.00    0.0000 
+IC C3   C5   *C4   H4   0.0000   0.00    180.00     0.00    0.0000 
+IC C4   C6   *C5   H5   0.0000   0.00    180.00     0.00    0.0000 
+IC C5   C1   *C6   CL6  0.0000   0.00    180.00     0.00    0.0000 
+PATC FIRS NONE LAST NONE
+END     
+
+read para card append
+* Halogen 
+*
+
+!add flourine, aliphatic halogens
+BONDS
+CLDA1    LPD        0.00      0.00   !
+CLDR1    LPD        0.00      0.00   !
+CD2R6A   CLDR1    350.00      1.750  ! CHLB
+CD32A    CLDA1    220.00      1.795  ! CLET 
+
+ANGLES
+CD33A    CD32A    CLDA1     68.00    109.50 ! CLET
+CLDA1    CD32A    HDA2A     42.00    104.50 ! CLET
+CD2R6A   CD2R6A   CLDR1     58.00    119.00 ! CHLB 
+
+
+DIHEDRALS
+HDA3A    CD33A    CD32A    CLDA1       0.2500   3     0.00 ! CLET 
+CD2R6A   CD2R6A   CD2R6A   CLDR1       3.200    2   180.00 ! CHLB 
+HDR6A    CD2R6A   CD2R6A   CLDR1       3.200    2   180.00 ! CHLB
+
+IMPROPERS
+
+NONBONDED nbxmod  5 atom vatom cdiel vdistance switch vswitch -
+cutnb 16.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5
+
+! atom (ignore)   eps       rmin/2
+
+CLDA1    0.0   -0.3400     1.9400 ! CLET
+CLDR1    0.0   -0.2300     1.9400 ! CHLB
+
+END
+RETURN

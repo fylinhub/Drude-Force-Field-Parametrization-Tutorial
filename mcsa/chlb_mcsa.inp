@@ -1,0 +1,92 @@
+* Water interactions
+* 
+
+ioformat extended
+
+!### Things that should be reconsidered for every molecule ###
+set residue chlb
+set bombover 0 !needs to be set to -1 for 3-membered rings
+
+set stage 5 !4=do everything with mp2 geometry for h2o inter
+            !5=do everything with charmm geometry for h2o inter
+
+set NoDrude false
+
+!### Things that usually shouldn't be changed. ####
+set dontmini 0 ! Don't minimize main conformation. Should normally not be used.
+
+!non-bond parameters
+set 3 999.0  ! cutim
+set 4 999.0  ! cutnb
+set 5 980.0  ! ctonnb
+set 6 990.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+!stream in files
+stream para.str
+stream toppar_drude_master_example.str
+stream toppar_drude_mcsa_template.str
+
+read sequence card
+* @residue
+*
+1
+@residue
+
+bomlev @bombover
+generate  @residue first none last none setup warn drude dmass 0.4
+bomlev 0
+
+open read card unit 21 name @residue_mp2.crd
+read coor card unit 21
+
+coor sdrude
+coor shake
+coor copy comp
+coor print ! use to make sure parent coords are not modified
+
+
+update cdie inbfrq -1 ihbfrq 0 -
+@7 @8 @9 vswitch cutnb @4 ctofnb @6 ctonnb @5
+
+if @stage eq 4 then
+  open unit 50 write form name @residue_water_constr.ene
+else
+  if @dontmini eq 0 then
+    ! minimize Drude coordinates
+    cons harm force 10000000.0 sele .not. type D* show end
+    cons harm force 10000000.0 sele type dum show end
+    MINI SD nstep 200 tolgrd 0.00001
+    MINI ABNR nstep 500 tolgrd 0.00001
+    cons harm force 0.0 sele all end
+
+  endif
+  if @stage ne 5 stop
+
+! align charmm optimized structure ito mp2 in order to allow
+! for the components of the dipole moment to be checked.
+
+  open unit 50 write form name @residue_water.ene
+endif
+
+!compute the energy for the molecule only
+energy
+
+coor dipole oxyz select segid @residue end
+echu 50
+echo @residue water interaction
+if @stage eq 4 echo ######## USING MP2 GEOMETRY!!! ########
+echo QM dipole (Debye)
+echo mp2/cc-pVQZ:  X=     0.0000    Y=    -1.7655    Z=     0.0000  Tot=     1.7655
+echo empirical dipole: ?xdip ?ydip ?zdip ?rdip
+echo
+
+stream polar.efield.str
+echo empirical       alpha: xx= @alphaxx yy= @alphayy  zz=  @alphazz  tot= @malpha
+echo
+
+ic delete sele all end
+
+stop

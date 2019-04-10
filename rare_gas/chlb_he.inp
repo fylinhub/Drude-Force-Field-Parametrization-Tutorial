@@ -1,0 +1,241 @@
+* Water interactions
+* 
+
+ioformat extended
+
+system "mkdir geom"
+
+set residue chlb
+set bombover 0 !needs to be set to -1 for 3-membered rings
+
+set stage 5 
+            
+
+set NoDrude false
+
+!### Things that usually shouldn't be changed. ####
+set dontmini 0 ! Don't minimize main conformation. Should normally not be used.
+
+!non-bond parameters
+set 3 999.0  ! cutim
+set 4 999.0  ! cutnb
+set 5 980.0  ! ctonnb
+set 6 990.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+!stream in files
+    
+    stream toppar_drude_master_example.str 
+    stream toppar_drude_example.str
+
+!SINCE inter is not correctly implemented for drude ff, the interaction should be computed:
+!interaction = E_mol_wat - E_wat - E_mol
+
+read sequence card
+* He
+*
+1
+He
+
+generate He first none last none setup warn noangle nodihedral drude dmass 0.4
+
+if NoDrude .eq. false then
+   coor sdrude
+   coor shake
+endif
+coor print
+
+update cdie inbfrq -1 ihbfrq 0 -
+@7 @8 @9 vswitch cutnb @4 ctofnb @6 ctonnb @5
+
+cons harm force 1000.0 sele .not. type D* show end
+cons harm force 1000.0 sele type dum show end
+MINI SD nstep 200 tolgrd 0.00001
+MINI ABNR nstep 500 tolgrd 0.00001
+cons harm force 0.0 sele all end
+coor print
+
+energy
+
+set wele ?elec
+set wvdw ?vdw
+set wener ?ener
+write coor pdb name he.pdb
+
+delete atom select all end
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+read sequence card
+* @residue
+*
+1
+@residue
+
+bomlev @bombover
+   generate  @residue first none last none setup warn drude dmass 0.4
+bomlev 0
+
+open read card unit 21 name @residue_mp2.crd
+read coor card unit 21
+
+coor sdrude
+coor shake
+coor copy comp
+coor print ! use to make sure parent coords are not modified
+
+update cdie inbfrq -1 ihbfrq 0 -
+@7 @8 @9 vswitch cutnb @4 ctofnb @6 ctonnb @5
+
+if @stage eq 4 then
+  open unit 50 write form name @residue_water_constr.ene
+else
+  if @dontmini eq 0 then
+
+    ! minimize Drude coordinates
+    cons harm force 10000000.0 sele .not. type D* show end
+    cons harm force 10000000.0 sele type dum show end
+    MINI SD nstep 200 tolgrd 0.00001
+    MINI ABNR nstep 500 tolgrd 0.00001
+    cons harm force 0.0 sele all end
+
+  endif
+  if @stage ne 5 stop
+
+
+  open unit 50 write form name @residue_water.ene
+endif
+
+!compute the energy for the molecule only
+energy
+
+set mele ?elec
+set mvdw ?vdw
+set mener ?ener
+
+!water interactions: variables for averages etc.
+set count 0
+set asum 0.0
+set sum 0.0
+set sum2 0.0
+coor print
+coor dipole oxyz select segid @residue end
+echu 50
+echo @residue water interaction
+if @stage eq 4 echo ######## USING MP2 GEOMETRY!!! ########
+
+ic delete sele all end
+!!! ***** BEGIN of water interactions ***** !!!
+!11) He...CL  
+open unit 51 write form name @residue_he_inplane.plt ! File with CHARMM computed energies 
+
+set d 2.50 ! initial interaction distance
+coor copy
+
+read sequence card
+* He
+*
+1
+He
+
+generate He first none last none setup warn noangle nodihedral drude dmass 0.4
+
+join @residue He renumber
+
+read sequence card
+* dummy
+*
+1
+dum
+
+generate dum first none last none setup warn noangle nodihedral
+
+join @residue dum renumber
+
+ic fill preserve
+ic edit
+dihe 3 dum  1 CL6  1 C6   1 C5    0.0
+dihe 2 he  1 CL6  3 dum  1 C6  180.0
+
+bond 3 dum  1 CL6  1 
+bond 2 he  1 CL6  @d
+
+angl 3 dum  1 CL6  1 C6     90.0
+angl 2 he  1 CL6  3 dum    90.0
+
+end
+
+ic print
+ic build
+coor sdrude
+coor shake
+
+update cutnb 999.0 ctofnb 998.0 ctonnb 997.0 switch vswitch inbfrq 100
+    cons harm force 10000000.0 sele .not. type D* show end
+    cons harm force 10000000.0 sele type dum show end
+    MINI SD nstep 200 tolgrd 0.00001
+    MINI ABNR nstep 500 tolgrd 0.00001
+    cons harm force 0.0 sele all end
+
+set u 1000. ! minimum energy
+
+label loop_11 
+energy
+set cele ?elec
+set cvdw ?vdw
+set cener ?ener
+
+calc eo = @cele - @mele - @wele
+calc ex = @cvdw - @mvdw - @wvdw
+calc em = @cener - @mener - @wener
+
+!check for lowest energy and store data
+set n @d
+set o @eo
+set x @ex
+set m @em
+
+if @d gt 5 goto done_11
+set u @m
+
+incr d by 0.1
+ic edit
+bond 2 he  1 CL6  @d
+end
+
+!initialize water coordinates
+coor init sele resn He .or. resn dum end
+
+ic build
+coor sdrude
+coor shake
+    
+    cons harm force 10000000.0 sele .not. type D* show end
+    cons harm force 10000000.0 sele type dum show end
+    MINI SD nstep 200 tolgrd 0.00001
+    MINI ABNR nstep 500 tolgrd 0.00001
+    cons harm force 0.0 sele all end
+
+open unit 30 write form name geom/he_@d.pdb
+write coor pdb unit 30 sele .not. ( type D* .or. type OM) end
+* @residue
+*
+
+prnlev -5
+
+write title unit 51
+*@d @m @o @x
+*
+
+if @d lt 5 goto loop_11
+label done_11
+decr d by 0.1
+
+prnlev 5
+
+
+delet atom sele resn He .or. resn dum end
+
+
+
+stop

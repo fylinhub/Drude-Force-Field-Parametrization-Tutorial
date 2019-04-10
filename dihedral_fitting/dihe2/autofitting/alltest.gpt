@@ -1,0 +1,4 @@
+#!/usr/bin/gnuplot
+set title "chlb.ene"
+plot "chlb.ene" using 1 with lines t "qm" lw 2, "chlb.ene" using 2 with lines t "mm0" lw 2, "chlb.ene" using 3 with lines t "mme" lw 2
+pause mouse

@@ -1,0 +1,44 @@
+! NMA
+read sequence @resi 1
+generate A   first none last none setup warn
+
+ic print
+
+ic param
+ic seed 1 O 1 C 1 N ! this will be nma only
+ic build
+
+mini sd nstep 100
+!coor print
+
+!POT part
+set atom2 pot
+
+read sequence @resi2 1
+generate B   first none last none setup warn noangle nodihedral
+
+join A B renumber
+
+ic edit
+dihe 1 N 1 C 1 O 2 @atom2 @d1
+end
+ic fill preserve
+ic edit
+bond 1 O   2 @atom2  @r1
+angl 1 C 1 O 2 @atom2 @a1
+end
+
+ic print 
+ic build
+coor print
+
+quick A 1 O A 2 @atom2
+quick A 1 C A 1 O A 2 @atom2
+quick A 1 N A 1 C A 1 O A 2 @atom2
+
+open write card unit 50 name @resi.@resi2.@r1_@a1_@d1.crd
+write coor card unit 50
+
+delete atom sele all end
+return
+

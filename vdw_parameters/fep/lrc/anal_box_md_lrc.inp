@@ -1,0 +1,149 @@
+* Polarizable ethanol
+* 
+
+set residue NMA 
+
+set Drude true
+
+if Drude eq true then
+  set lonepair   true 
+  set anisotropy false
+  set resn       swm4
+else
+  set lonepair   false
+  set anisotropy false
+  set resn       tip3
+endif
+
+set segid1  @resn
+set id1     npt_3
+set temp    298.15
+set atemp   298
+set boxsize 19.65
+
+set start    0
+set nstep   250000  ! 50000
+set timestep 0.001
+
+set ord 6
+set kap 0.34
+
+bomlev -1
+
+! 1: Initial coordinate file
+! 2: Final coordinate file after equillibration
+
+set coorfile1 @residue_wbox.crd
+
+set toppardir   .
+set topparfile  @toppardir/toppar.str                                   
+set ptopparfile @toppardir/toppar_polar_swm4nf_dp.str
+
+!! Standard toppar files
+if Drude eq true then
+  stream @topparfile
+!  stream @ptopparfile
+
+else
+  set topparpath ../toppar/charmm22
+  open unit 10 read form name @topparpath/top_all22_model.inp
+  read rtf card unit 10
+  open unit 10 read form name @topparpath/par_all22_prot.inp
+  read param card unit 10
+endif
+
+set 3 16.0  ! cutim
+set 4 16.0  ! cutnb
+set 5 10.0  ! ctonnb
+set 6 12.0  ! ctofnb
+set 7 switch
+set 8 atom
+set 9 vatom
+
+read sequence @residue 1
+generate @residue first none last none setup warn drude dmass 0.4
+
+!! Generate box
+read sequence @segid1 250
+generate @segid1 setup noangle nodihedral drude dmass 0.4
+
+open unit 10 read form name @coorfile1  
+read coor card unit 10
+
+if Drude eq true then
+
+ coor sdrude
+ coor shake
+ coor copy comp
+
+ SHAKE bonh param tolerance 1.0e-9 -
+      nofast -
+      select  .not. type D*  end -
+      select  .not. type D*  end
+
+endif
+
+update cdie inbfrq -1 ihbfrq 0 -
+ewald pmewald kappa @kap fftx 32 ffty 32 fftz 32 order @ord -
+lrc -
+@7 @8 @9 vswitch cutnb @4 ctofnb @6 ctonnb @5 ! bycb
+
+!! Setup crystal
+crystal define cubic @boxsize @boxsize @boxsize 90.00 90.00 90.00
+crystal build Noper 0 cutoff @3
+
+!open read  file unit 52 name job.1/@resn_box_md@atemp_@id1_@idout_@loop.trj
+open read  file unit 52 name @resn_box_md@atemp.trj
+open write card unit 82 name energy_lrc.txt
+
+
+! skip 20ps out of 50
+! use last 30ps as production run
+trajectory iread 52 nunit 1 skip 1000 begin  5000 ! 21000
+set index 1
+set eLrcAve 0.0
+label loop_trj
+  traj read
+
+  ! compute VDW energy with regular cutoffs
+  !
+  update cdie inbfrq -1 imgfrq -1 ihbfrq 0 -
+  ewald pmewald kappa @kap fftx 32 ffty 32 fftz 32 order @ord -
+  lrc @7 @8 @9 vswitch -
+  cutimg 16.0 cutnb 16.0 ctofnb 12.0 ctonnb 10.0
+
+  !
+  inte   sele resn @residue end    sele resn @resn end
+  calc e1 ?vdw + ?imnb
+
+  ! compute VDW energy with extended cutoffs
+  !
+  update cdie inbfrq -1 imgfrq -1 ihbfrq 0 -
+  ewald pmewald kappa @kap fftx 32 ffty 32 fftz 32 order @ord -
+  lrc @7 @8 @9 vswitch -
+  ! cutimg 56.0 cutnb 56.0 ctofnb 52.0 ctonnb 50.0
+  cutimg 36.0 cutnb 36.0 ctofnb 32.0 ctonnb 30.0
+!  cutimg 20.0 cutnb 20.0 ctofnb 16.0 ctonnb 18.0
+  !
+  inte   sele resn @residue end    sele resn @resn end
+  calc e2 ?vdw + ?imnb
+ 
+  ! compute LRC
+  !
+  calc elrc = @e2 - @e1
+  calc eLrcAve = @eLrcAve + @e2 - @e1
+
+  write title unit 82
+  * @index  @elrc
+  *
+
+  incr index by 1
+if index le 100 goto loop_trj
+
+! compute average LRC
+calc eLrcAve = @eLrcAve / ( @index - 1 )
+write title unit 82
+* average LRC = @eLrcAve
+*
+
+stop

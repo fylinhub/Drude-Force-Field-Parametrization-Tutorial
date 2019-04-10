@@ -1,0 +1,8 @@
+1. 
+./mp2geom clet_opt_freq_mp2.log 
+
+2. 
+./molvib_mm.py clet toppar_template_clet.str 
+
+3. 
+./molvib_qm.py clet

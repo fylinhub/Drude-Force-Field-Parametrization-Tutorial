@@ -1,0 +1,14 @@
+sed -i "s/CR/CC/g" nma.pot.2.6_180_180.crd
+sed -i "s/HR/HC/g" nma.pot.2.6_180_180.crd
+#sed -i "s/TIP3/SWM4/g" nma.pot.2.6_180_180.crd
+
+for i in {90..165..15}
+do
+    for j in {-165..180..15}
+        do
+            sed -i "s/CR/CC/g" nma.pot.2.6_"$i"_"$j".crd
+            sed -i "s/HR/HC/g" nma.pot.2.6_"$i"_"$j".crd
+            #sed -i "s/TIP3/SWM4/g" nma.pot.2.6_"$i"_"$j".crd
+        done
+done
+

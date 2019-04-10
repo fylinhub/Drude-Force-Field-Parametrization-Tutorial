@@ -1,0 +1,31 @@
+! NMA
+read sequence @resi 1
+generate A   first none last none setup warn drude dmass 0.4
+
+!POT part
+read sequence @resi2 1
+generate B   first none last none setup warn noangle nodihedral drude dmass 0.4
+
+join A B renumber
+
+open unit 10 read form name @resi.@resi2.@r1_@a1_@d1.crd
+read coor card unit 10
+
+coor sdrude
+coor shake
+
+cons harm force 100000000. mass select .not. type D* end
+mini SD   nstep 200 inbfrq 1000 tolgrd 0.0001 cutnb @4 ctofnb @6 ctonnb @5 nprint 50
+mini ABNR   nstep 200 inbfrq 1000 tolgrd 0.00001 cutnb @4 ctofnb @6 ctonnb @5 nprint 50
+cons harm force 0.0 sele all end
+
+ener
+calc e1 = ?ener - @e0
+write title unit 30
+* @r1 @a1 @d1 @e1
+*
+
+
+delete atom sele all end
+return
+

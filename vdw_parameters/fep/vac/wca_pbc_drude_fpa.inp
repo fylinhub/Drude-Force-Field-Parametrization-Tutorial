@@ -1,0 +1,72 @@
+* Attractive LJ (Dispersion) Free Energy 
+* WCA free energy perturbation simulation
+* 2003 Igor Vorobyov
+* 2007 Victor Anisimov
+*
+
+bomlev -1
+ 
+!! Setting up all initial parameters
+stream parset.str
+
+!! Setting up file names 
+set    job  = md_fpa
+set system  = md_fpa_l@{Lambda}
+
+set rcut = 2.0
+
+random uniform iseed @useed
+
+!=========================================================
+! Write perturbation files (punit)
+!---------------------------------------------------------
+! generate perturbation files .prt
+
+set eqstep @EqStepA
+set prodstep @ProdStepA
+calc nstep = @eqstep + @prodstep
+
+set  Pstart @EqStepA
+calc Pstop = @Pstart + @ProdStepA
+calc  Lstart = @Lambda - @DLamA
+if Lstart lt 0 set Lstart 0
+calc  Lstop = @Lambda + @DLamA
+if Lstop gt 1 set Lstop 1
+
+open write card unit 53 name @system.prt
+write title unit 53
+** Perturbation file (punit) for windowing @system,
+* LSTART @Lstart LAMBDA @Lambda  LSTOP @Lstop PSTART @Pstart PSTOP @Pstop  PWIND
+*
+
+close unit 53
+
+! Generate the structure and set constraint on the Solute
+stream sysgen.str
+
+
+!=========================================================
+! FES dynamics
+!---------------------------------------------------------
+
+title
+* @system
+*  Non-interacting -> Dispersive (attractive) Free Energy
+*
+
+scalar charge set 0.0 select segid SOLU end
+scalar charge show select segid SOLU end
+
+scalar wcad show select ALL end
+scalar wcad set 1.0 select ALL end
+
+scalar fbeta set 5.0 select .not. type H* end
+
+PERT scl0 scr0 1.0 scl1 scr1 1.0 select segid SOLU end
+
+scalar wcad set 0.0 select segid SOLU end
+scalar wcad show select segid SOLU end
+
+stream dynamics.str
+
+stop

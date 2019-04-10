@@ -1,0 +1,34 @@
+#!/bin/sh
+unset id help
+getopts i: f 2> /dev/null
+if [ $? -eq 0 ] ; then
+  if [ "$f" = "i" ] ; then
+    id=$OPTARG
+    shift 2
+   else
+    help=1
+   fi
+ fi
+if [ $# -ne 2 -o "$help" ] ; then
+  echo "Usage: `basename $0` [-i <id>] <qm energy file> <mm energy file>
+Where <id> is an identifier to be integrated in the output file names."
+  exit 1
+ fi
+qmf=${1%.*}.qne
+bas=${2%.*}
+mmf=$bas$id.mne
+out=$bas$id.gpt
+png=$id.png
+alias normalize="awk 'BEGIN{absm=32000}
+  {r=\$1;rec[NR]=r;if (absm>r) absm=r}
+  END{for(i=1;i<=NR;i++) print rec[i]-absm}'"
+normalize $1 > $qmf
+normalize $2 > $mmf
+echo "#!/usr/bin/gnuplot
+plot \"$qmf\" using 1 with lines t \"qm\" lw 2, \"$mmf\" using 1 with lines t \"mm\" lw 2
+set term png
+set output \"$png\"
+replot
+pause mouse" > $out
+chmod 755 $out
+./$out

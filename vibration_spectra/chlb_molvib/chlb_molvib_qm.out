@@ -1,0 +1,138 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-3.13.0-101-generic(x86_64)@strathmere.     
+                 Created on  3/24/17 at 15:20:09 by user: fylin       
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * MOLVIB ANALYSIS OF GAUSSIAN SECOND DERIVATIVES
+ RDTITL> * 0.971288 SCALE FACTOR SHOULD BE APPLIED TO THE MP2/6-31G* VIBRATIONAL MODES
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    set id1 1
+ Parameter: ID1 <- "1"
+  
+ CHARMM>    bomlev -1
+  
+ CHARMM>    faster 1
+ MISCOM> FAST option: ON (generic fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    MOLVIB NDI1 30 NDI2 30 NDI3 42  NATOM  12  NOTO
+
+   >>>>>> Entering MOLVIB module of CHARMM <<<<<<
+
+
+     MLVCOM: CHARMM RTF/PSF will be ignored inside MOLVIB
+
+  MOLVIB dimensions have been set
+
+   NQ,NIC,NIC0,NAT =      30      30      42      12
+   IZMAX,MAXSYB,NGMAX,NBLMAX =      10      30      30      30
+
+  The maximum dimension has been set to NQM =          42
+
+
+
+
+      MOLVIB : PROGRAM FOR MOLECULAR VIBRATIONAL SPECTROSCOPY
+
+
+
+ GFX      0    0    0    0
+
+
+   SELECTED OPTION : VIBRATIONAL EIGENVALUE PROBLEM IN CARTESIAN COORDINATES
+
+
+ PRNT     0    0    0    0
+
+ The dimensions are : NQ,NIC,NIC0 =       30      30      42
+  NQ2 =          900
+
+
+ The cartesian coordinates and mass/atomic numbers
+
+   1       -0.016387   -0.035761    0.000000   12.010700
+   2       -0.576423   -0.974077    0.000000    1.007900
+   3        1.390664   -0.026419    0.000000   12.010700
+   4        1.933061   -0.976457    0.000000    1.007900
+   5        2.097241    1.190787    0.000000   12.010700
+   6        3.190674    1.190789    0.000000    1.007900
+   7        1.390658    2.407989    0.000000   12.010700
+   8        1.933051    3.358030    0.000000    1.007900
+   9       -0.016392    2.417325    0.000000   12.010700
+  10       -0.576434    3.355638    0.000000    1.007900
+  11       -0.701966    1.190780    0.000000   12.010700
+  12       -2.456067    1.190776    0.000000   35.453200
+  U matrix has been read : INU =            1
+
+ The PED cutoff will be CUTPED =   0.150
+
+  The FX matrix will be scaled by FCTR =  0.94340000000000002     
+
+
+       Starting FX diagonalization 
+
+
+  **** Found            3   negative eigenvalues ****
+
+
+    Symbolic PED matrix [%] (sorted)
+
+   1    180.1   ta6RNG1a  42.   wC6H      40.
+   2    284.1   dC6H      90.
+   3    389.7   ta6RNG1   87.   ta6RNG1a  29.
+   4    400.9   sC6-CL6   41.   da6RNG1a  34.
+   5    447.0   wC6H      46.   ta6RNG1a  43.
+   6    574.5   tp6RNG1  114.
+   7    588.6   da6RNG1   66.   da6RNG1a  22.
+   8    681.1   da6RNG1a  35.   sC6-CL6   32.
+   9    709.9   wC3H      31.   wC2H      17.   wC4H      17.   wC1H      15.
+                wC5H      15.
+  10    800.9   wC1H      33.   wC5H      33.   wC4H      17.   wC2H      17.
+
+  11    848.7   wC5H      38.   wC1H      38.   wC3H      21.
+  12    900.2   wC3H      57.   wC2H      30.   wC4H      30.
+  13    908.0   wC4H      37.   wC2H      37.   wC1H      21.   wC5H      21.
+
+  14    965.2   dt6RNG1   80.
+  15   1003.6   sC2-C3    30.   sC3-C4    30.
+  16   1052.8   sC4-C5    19.   sC1-C2    19.
+  17   1077.8   sC6-CL6   22.   sC6-C1    20.   sC5-C6    20.
+  18   1131.7   dC3H      43.   dC2H      20.   dC4H      20.
+  19   1148.1   dC4H      20.   dC2H      20.   dC5H      19.   dC1H      19.
+
+  20   1260.9   dC5H      28.   dC1H      28.
+  21   1396.1   dC3H      31.
+  22   1429.5   dC5H      16.   dC1H      15.   dC2H      15.   dC4H      15.
+
+  23   1430.9   sC1-C2    21.   sC4-C5    21.
+  24   1565.0   sC1-C2    25.   sC4-C5    25.
+  25   1567.8   sC3-C4    21.   sC2-C3    21.   sC6-C1    18.   sC5-C6    18.
+
+  26   3115.3   sC3-H3    31.   sC4-H4    31.   sC2-H2    31.
+  27   3123.6   sC2-H2    41.   sC4-H4    41.
+  28   3135.9   sC3-H3    48.   sC1-H1    22.   sC5-H5    22.
+  29   3142.2   sC1-H1    41.   sC5-H5    41.
+  30   3145.6   sC5-H5    24.   sC1-H1    24.   sC3-H3    20.   sC4-H4    16.
+                sC2-H2    16.
+ GFX option finished
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+ Total time                      0.05 Other:            0.00
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    NO WARNINGS WERE ISSUED
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.05  SECONDS 
+                         CPU TIME:     0.03  SECONDS 
