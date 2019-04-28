@@ -1,5 +1,6 @@
       program simulann
 c use saparam3.prm 
+c  revised: 2017 fylin
 c  revised: 2014-OCT-06 by mingjun
 c  PEML based on the algorithm of Corona et al. ACM Trans Math 13(3). 262 (1987) 
       implicit none
